@@ -1,5 +1,8 @@
 package kr.ac.kopo.controller;
 
-public class RootController {
+import org.springframework.stereotype.Controller;
 
+@Controller
+public class RootController {
+	String str = "hahaha";
 }
