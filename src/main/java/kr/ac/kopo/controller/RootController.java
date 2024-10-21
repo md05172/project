@@ -16,7 +16,8 @@ public class RootController {
 	@GetMapping("/")
 	String index(Model model) {
 		model.addAttribute("list", service.list());
-		
 		return "index";
 	}
+	
+	
 }

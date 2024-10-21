@@ -19,4 +19,9 @@ public class BookServiceImpl implements BookService{
 		return dao.list();
 	}
 
+	@Override
+	public void add(Book item) {
+		dao.add(item);
+	}
+
 }

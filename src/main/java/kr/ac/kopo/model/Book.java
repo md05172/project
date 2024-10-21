@@ -7,6 +7,8 @@ public class Book {
 	private int price;
 	private String path;
 	private String info;
+	private String writer;
+	private String writerinfo;
 
 	public Long getId() {
 		return id;
@@ -54,6 +56,28 @@ public class Book {
 
 	public void setInfo(String info) {
 		this.info = info;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public String getWriterinfo() {
+		return writerinfo;
+	}
+
+	public void setWriterinfo(String writerinfo) {
+		this.writerinfo = writerinfo;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", name=" + name + ", publisher=" + publisher + ", price=" + price + ", path=" + path
+				+ ", info=" + info + ", writer=" + writer + ", writerinfo=" + writerinfo + "]";
 	}
 
 }

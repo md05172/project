@@ -8,4 +8,6 @@ public interface BookService {
 
 	List<Book> list();
 
+	void add(Book item);
+
 }

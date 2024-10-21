@@ -8,14 +8,83 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>index</h1>
-	<c:forEach var="item" items="${list }">
-		<div>${item.id }</div>
-		<div>${item.name }</div>
-		<div>${item.publisher }</div>
-		<div>${item.price }</div>
-		<div>${item.path }</div>
-		<div>${item.info }</div>
+	<div>
+		<header>
+			<!-- 로고 -->
+			<div>
+				<a href="#"><img src="" alt=""></a>
+			</div>
+			
+			<!-- 검색 -->
+			<div>
+				<input>
+				<div>
+					<a href="#"><img src="" alt=""></a>
+				</div>
+			</div>
+			
+			<c:if test="${sessionScope.accessToken == null && sessionScope.kaccessToken == null && sessionScope.naceessToken == null }">
+				<ul>
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">회원가입</a></li>
+				</ul>
+			</c:if>
+			
+			<c:if test="${sessionScope.kaccessToken != null }">
+				<a href="#">카카오 로그아웃</a>
+			</c:if>
+			
+			<c:if test="${sessionScope.naccessToken != null }">
+				<a href="#">네이버 로그아웃</a>
+			</c:if>
+		</header>
+		
+		<!-- 메뉴 -->
+		<nav>
+			<ul>
+				<li><a href="">베스트</a></li>
+				<li><a href="">국내도서</a></li>
+				<li><a href="">외국도서</a></li>
+				<li><a href="">이벤트</a></li>
+				<li><a href="">고객센터</a></li>
+			</ul>
+		</nav>   
+		
+		<!-- 이벤트 -->
+		<div>
+			<div>
+				<div>
+					<img alt="" src="">
+				</div>
+				
+				<div>
+					<img alt="" src="">
+				</div>
+				
+				<div>
+					<img alt="" src="">
+				</div>
+				
+				<div>
+					<img alt="" src="">
+				</div>
+				
+				<div>
+					<img alt="" src="">
+				</div>
+			</div>
+		</div>
+		
+		<!-- 베스트 책 5개 -->
+		<c:forEach var="item" items="${list }">
+			<div>${item.id }</div>
+			<div>${item.name }</div>
+			<div>${item.publisher }</div>
+			<div>${item.price }</div>
+			<div>${item.path }</div>
+			<div>${item.info }</div>
 	</c:forEach>
+		
+	</div>
 </body>
 </html>
