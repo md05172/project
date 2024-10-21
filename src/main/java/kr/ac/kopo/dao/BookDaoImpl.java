@@ -19,4 +19,9 @@ public class BookDaoImpl implements BookDao {
 		return sql.selectList("book.list");
 	}
 
+	@Override
+	public void add(Book item) {
+		sql.insert("book.add", item);
+	}
+
 }

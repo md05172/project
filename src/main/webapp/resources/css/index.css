@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #3331;
+	display: flex;
+	height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+	width: 500px;
+	background-color: white;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.dataContainer {
+	display: flex;
+	padding-left: 10%;
+	margin-bottom: 10px;
+	align-items: center;
+}
+
+.data {
+	display: inline-block;
+	width: 15%;
+	text-align: left;
+	margin-right: 2%;
+}
+
+.dataContainer p {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.dataContainer input, textarea {
+	width: 70%;
+}
+
+.dataContainer input {
+	height: 25px;
+}
+
+.dataContainer textarea {
+	height: 50px;
+	resize: none;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+}
+
+.button button {
+	margin-left:10px;
+	margin-right:10px;
+	width: 80px;
+	height: 30px;
+	border: none;
+	border-radius: 5px;
+	background-color: skyblue;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.imgContainer {
+  	display: flex; /* 파일 업로드 섹션의 자식 요소들을 플렉스 박스로 배치합니다. */
+    flex-direction: column; /* 자식 요소들을 세로 방향으로 배치합니다. */
+    align-items: center; /* 자식 요소들을 수평 중앙에 배치합니다. */
+    margin-bottom: 20px; /* 섹션 하단에 20px의 여백을 추가합니다. */
+    border: 1px solid #ddd; /* 섹션의 테두리를 연한 회색으로 설정합니다. */
+    border-radius: 8px; /* 섹션의 모서리를 둥글게 만들어 부드러운 느낌을 줍니다. */
+    padding: 15px; /* 섹션 내부에 15px의 여백을 추가합니다. */
+    background: #f9f9f9; /* 섹션의 배경색을 밝은 회색으로 설정합니다. */
+
+}
+
+.file-label {
+    font-weight: bold; /* 레이블의 글자를 굵게 설정합니다. */
+    color: #333; /* 레이블의 글자 색상을 어두운 회색으로 설정합니다. */
+    margin-bottom: 10px; /* 레이블 하단에 10px의 여백을 추가합니다. */
+}
+
+.file-preview {
+	width: 450px;
+}
+
+.file-preview img {
+	max-width: 100%;
+	height: auto;
+}
+
+.file-input {
+	display: none;
+}
