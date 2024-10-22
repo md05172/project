@@ -24,4 +24,9 @@ public class BookDaoImpl implements BookDao {
 		sql.insert("book.add", item);
 	}
 
+	@Override
+	public void delete(String name) {
+		sql.delete("book.delete", name);
+	}
+
 }

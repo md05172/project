@@ -39,17 +39,19 @@ public class BookController {
 	
 	@PostMapping("/add")
 	String add(Book item, List<MultipartFile> uploadFile) {
-		System.out.println("확인 " + item);
-		System.out.println("확인 " + uploadFile);
+		
 		for (MultipartFile file : uploadFile) {
 			if(file != null && !file.isEmpty()) {
+				// 파일 원본 이름을 가져온다.
 				String filename = file.getOriginalFilename();
+				// 랜덤한 문자열을 만들어준다.
 				String uuid = UUID.randomUUID().toString();
 				String str = "";
 				System.out.println(filename);
 				System.out.println(uuid);
 				
 				try {
+					// 지정해둔 경로에 원본이름이랑 랜덤한 문자열을 연결해서 저장한다.
 					file.transferTo(new File(uploadPath + uuid + "_" + filename));
 					
 					str = uuid + "_" + filename;
@@ -61,6 +63,20 @@ public class BookController {
 		}
 		
 		service.add(item);					
+		
+		return "redirect:../";
+	}
+	
+	@GetMapping("/dummy")
+	String dummy() {
+		service.dummy();
+		
+		return "redirect:../";
+	}
+	
+	@GetMapping("/init")
+	String init() {
+		service.init();
 		
 		return "redirect:../";
 	}
