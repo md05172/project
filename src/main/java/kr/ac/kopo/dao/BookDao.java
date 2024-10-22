@@ -10,4 +10,6 @@ public interface BookDao {
 
 	void add(Book item);
 
+	void delete(String name);
+
 }

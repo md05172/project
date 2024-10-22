@@ -14,18 +14,18 @@
 	
 	<delete id="delete">
 		DELETE FROM book
-		WHERE bookid = #{bookid}
+		WHERE name = #{name}
 	</delete>
 	
 	<select id="item" resultType="Book">
 		SELECT * FROM book
-		WHERE bookid = #{bookid}	
+		WHERE id = #{id}	
 	</select>
 	
 	<update id="update">
 		UPDATE book
-		SET bookname = #{bookname}, publisher = #{publisher}, price = #{price}
-		WHERE bookid = #{bookid}
+		SET name = #{name}, publisher = #{publisher}, price = #{price}
+		WHERE id = #{id}
 	</update>
 	
 </mapper>

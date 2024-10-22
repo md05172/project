@@ -10,4 +10,8 @@ public interface BookService {
 
 	void add(Book item);
 
+	void dummy();
+
+	void init();
+
 }

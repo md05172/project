@@ -47,6 +47,8 @@
 				<li><a href="">외국도서</a></li>
 				<li><a href="">이벤트</a></li>
 				<li><a href="">고객센터</a></li>
+				<li><a href="book/dummy">더미데이터</a></li>
+				<li><a href="book/init">초기화</a></li>
 			</ul>
 		</nav>   
 		
