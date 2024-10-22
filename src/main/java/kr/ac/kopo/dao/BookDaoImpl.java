@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.model.Book;
+import kr.ac.kopo.page.Pager;
 
 @Repository
 public class BookDaoImpl implements BookDao {
@@ -15,7 +16,7 @@ public class BookDaoImpl implements BookDao {
 	SqlSession sql;
 
 	@Override
-	public List<Book> list() {
+	public List<Book> list(Pager pager) {
 		return sql.selectList("book.list");
 	}
 
@@ -27,6 +28,11 @@ public class BookDaoImpl implements BookDao {
 	@Override
 	public void delete(String name) {
 		sql.delete("book.delete", name);
+	}
+
+	@Override
+	public float total(Pager pager) {
+		return sql.selectOne("book.total", pager);
 	}
 
 }
