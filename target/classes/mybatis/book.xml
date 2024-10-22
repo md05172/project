@@ -3,8 +3,22 @@
 
 <mapper namespace="book">
 
+	<sql id="search">
+		SELECT * FROM book
+		ORDER BY id		
+	</sql>
+	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM (<include refid="search"></include>)
+	</select>
+
 	<select id="list" resultType="Book">
-		SELECT * FROM book	
+		SELECT * FROM
+	    	(SELECT sub.*, ROWNUM rnum FROM
+	        	(<include refid="search"></include>) sub)
+		<if test="perPage != 0">
+			WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+		</if>	
 	</select>
 	
 	<insert id="add">

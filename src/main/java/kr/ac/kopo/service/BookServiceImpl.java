@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.ac.kopo.dao.BookDao;
 import kr.ac.kopo.model.Book;
+import kr.ac.kopo.page.Pager;
 
 @Service
 public class BookServiceImpl implements BookService{
@@ -16,8 +17,10 @@ public class BookServiceImpl implements BookService{
 	BookDao dao;
 
 	@Override
-	public List<Book> list() {
-		return dao.list();
+	public List<Book> list(Pager pager) {
+		pager.setTotal(dao.total(pager));
+		
+		return dao.list(pager);
 	}
 
 	@Override

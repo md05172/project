@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.kopo.model.Book;
+import kr.ac.kopo.page.Pager;
 import kr.ac.kopo.service.BookService;
 
 @Controller
@@ -26,8 +27,8 @@ public class BookController {
 	BookService service;
 	
 	@GetMapping("/list")
-	String list(Model model) {
-		model.addAttribute(path, service.list());
+	String list(Model model, Pager pager) {
+		model.addAttribute(path, service.list(pager));
 		
 		return path + "list";
 	}
