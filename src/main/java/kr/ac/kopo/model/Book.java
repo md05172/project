@@ -8,7 +8,7 @@ public class Book {
 	private String path;
 	private String info;
 	private String writer;
-	private String writerinfo;
+	private String writerInfo;
 	private int good;
 
 	public Long getId() {
@@ -67,12 +67,12 @@ public class Book {
 		this.writer = writer;
 	}
 
-	public String getWriterinfo() {
-		return writerinfo;
+	public String getWriterInfo() {
+		return writerInfo;
 	}
 
-	public void setWriterinfo(String writerinfo) {
-		this.writerinfo = writerinfo;
+	public void setWriterInfo(String writerInfo) {
+		this.writerInfo = writerInfo;
 	}
 
 	public int getGood() {
