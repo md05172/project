@@ -43,7 +43,7 @@
 		<nav>
 			<ul>
 				<li><a href="">베스트</a></li>
-				<li><a href="">국내도서</a></li>
+				<li><a href="book/list">국내도서</a></li>
 				<li><a href="">외국도서</a></li>
 				<li><a href="">이벤트</a></li>
 				<li><a href="">고객센터</a></li>

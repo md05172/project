@@ -9,6 +9,7 @@ public class Book {
 	private String info;
 	private String writer;
 	private String writerinfo;
+	private int good;
 
 	public Long getId() {
 		return id;
@@ -74,10 +75,12 @@ public class Book {
 		this.writerinfo = writerinfo;
 	}
 
-	@Override
-	public String toString() {
-		return "Book [id=" + id + ", name=" + name + ", publisher=" + publisher + ", price=" + price + ", path=" + path
-				+ ", info=" + info + ", writer=" + writer + ", writerinfo=" + writerinfo + "]";
+	public int getGood() {
+		return good;
+	}
+
+	public void setGood(int good) {
+		this.good = good;
 	}
 
 }

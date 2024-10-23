@@ -18,6 +18,7 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	public List<Book> list(Pager pager) {
+		// 도서의 총 개수를 pager total에 저장한다.
 		pager.setTotal(dao.total(pager));
 		
 		return dao.list(pager);
@@ -40,6 +41,7 @@ public class BookServiceImpl implements BookService{
 			item.setInfo("info" + i);
 			item.setWriter("저자" + i);
 			item.setWriterinfo("저자소개" + i);
+			item.setGood(i.intValue());
 			dao.add(item);
 		}
 	}
