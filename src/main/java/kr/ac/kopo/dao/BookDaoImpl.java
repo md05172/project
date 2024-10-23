@@ -17,7 +17,7 @@ public class BookDaoImpl implements BookDao {
 
 	@Override
 	public List<Book> list(Pager pager) {
-		return sql.selectList("book.list");
+		return sql.selectList("book.list", pager);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	@Override
-	public float total(Pager pager) {
+	public int total(Pager pager) {
 		return sql.selectOne("book.total", pager);
 	}
 

@@ -28,7 +28,7 @@ public class BookController {
 	
 	@GetMapping("/list")
 	String list(Model model, Pager pager) {
-		model.addAttribute(path, service.list(pager));
+		model.addAttribute("list", service.list(pager));
 		
 		return path + "list";
 	}

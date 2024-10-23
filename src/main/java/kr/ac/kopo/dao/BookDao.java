@@ -13,6 +13,6 @@ public interface BookDao {
 
 	void delete(String name);
 
-	float total(Pager pager);
+	int total(Pager pager);
 
 }
