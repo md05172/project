@@ -24,9 +24,9 @@
 			</div>
 			
 			<c:if test="${sessionScope.accessToken == null && sessionScope.kaccessToken == null && sessionScope.naceessToken == null }">
-				<ul>
-					<li><a href="#">로그인</a></li>
-					<li><a href="#">회원가입</a></li>
+				<ul>  
+					<li><a href="member/login">로그인</a></li>
+					<li><a href="member/join">회원가입</a></li>
 				</ul>
 			</c:if>
 			

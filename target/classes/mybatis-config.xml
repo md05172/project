@@ -3,7 +3,7 @@
 
 <configuration>
 	<settings>
-		<setting name="mapUnderscoreToCamleCase" value="true"/>	
+		<setting name="mapUnderscoreToCamelCase" value="true"/>	
 	</settings>
 
 	<typeAliases>

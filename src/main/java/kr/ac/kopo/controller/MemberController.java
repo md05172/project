@@ -21,5 +21,10 @@ public class MemberController {
 		
 		return path + "login";
 	}
+	
+	@GetMapping("/join")
+	String join() {
+		return path + "join";
+	}
 
 }

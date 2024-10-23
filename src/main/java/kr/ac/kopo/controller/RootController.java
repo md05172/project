@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import kr.ac.kopo.service.BookService;
-import kr.ac.kopo.service.NaverService;
 
 @Controller
 public class RootController {
