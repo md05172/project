@@ -40,7 +40,7 @@ public class BookServiceImpl implements BookService{
 			item.setPath("path" + i);
 			item.setInfo("info" + i);
 			item.setWriter("저자" + i);
-			item.setWriterinfo("저자소개" + i);
+			item.setWriterInfo("저자소개" + i);
 			item.setGood(i.intValue());
 			dao.add(item);
 		}
@@ -57,7 +57,7 @@ public class BookServiceImpl implements BookService{
 			item.setPath("path" + i);
 			item.setInfo("info" + i);
 			item.setWriter("저자" + i);
-			item.setWriterinfo("저자소개" + i);
+			item.setWriterInfo("저자소개" + i);
 			dao.delete(item.getName());
 		}
 	}
