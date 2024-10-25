@@ -10,6 +10,7 @@ public class Book {
 	private String writer;
 	private String writerInfo;
 	private int good;
+	private String category;
 
 	public Long getId() {
 		return id;
@@ -81,6 +82,14 @@ public class Book {
 
 	public void setGood(int good) {
 		this.good = good;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 }

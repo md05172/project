@@ -42,6 +42,7 @@ public class BookServiceImpl implements BookService{
 			item.setWriter("저자" + i);
 			item.setWriterInfo("저자소개" + i);
 			item.setGood(i.intValue());
+			item.setCategory("ko");
 			dao.add(item);
 		}
 	}
@@ -52,12 +53,6 @@ public class BookServiceImpl implements BookService{
 		for (Long i = 1L; i < 100; i++) {
 			Book item = new Book();
 			item.setName("name" + i);
-			item.setPublisher("출판사" + i);
-			item.setPrice(1000 * i.intValue());
-			item.setPath("path" + i);
-			item.setInfo("info" + i);
-			item.setWriter("저자" + i);
-			item.setWriterInfo("저자소개" + i);
 			dao.delete(item.getName());
 		}
 	}

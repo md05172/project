@@ -85,7 +85,7 @@
 			<div>${item.price }</div>
 			<div>${item.path }</div>
 			<div>${item.info }</div>
-	</c:forEach>
+		</c:forEach>
 		
 	</div>
 </body>
