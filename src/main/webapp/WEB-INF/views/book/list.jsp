@@ -15,7 +15,7 @@
 		<div>${item.price }</div>
 		<div>${item.writer }</div>
 		<div>${item.info }</div>
-		<div>${item.writerinfo }</div>
+		<div>${item.writerInfo }</div>
 		<hr>
 	</c:forEach>
 	<div><a href="?page=1">처음</a></div>

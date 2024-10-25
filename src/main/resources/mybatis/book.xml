@@ -23,7 +23,7 @@
 	
 	<insert id="add">
 		INSERT INTO book
-		VALUES (SEQ_BOOK.nextval, #{name}, #{publisher}, #{price}, #{path}, #{info}, #{writer}, #{writerinfo}, #{good})
+		VALUES (SEQ_BOOK.nextval, #{name}, #{publisher}, #{price}, #{path}, #{info}, #{writer}, #{writerInfo}, #{good}, #{category})
 	</insert>
 	
 	<delete id="delete">

@@ -72,14 +72,14 @@ public class BookController {
 	String dummy() {
 		service.dummy();
 		
-		return "redirect:../";
+		return "redirect:..";
 	}
 	
 	@GetMapping("/init")
 	String init() {
 		service.init();
 		
-		return "redirect:../";
+		return "redirect:..";
 	}
 	
 }
