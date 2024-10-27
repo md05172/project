@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title></title>
 <link rel="stylesheet" href="/resources/css/join.css">
-<script type="text/javascript" src="/resources/js/join.js"></script>
+<script type="text/javascript" src="/resources/js/j	oin.js"></script>
 </head>
 <body>
 	<div class="container">

@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container {
+	width: 30%;
+	border: 2px solid burlywood;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+	height: 120px;
+	text-align: center;
+}
+
+.logo a {
+	display: inline-block;
+	height: 100%;
+}
+
+.logo img {
+	max-width: 100%;
+	height: 100%;
+}
+
+.login_box {
+	width: 60%;
+	margin: 0 auto;
+	margin-bottom: 12px;
+}
+
+.login_box input {
+	display: block;
+	width: 100%;
+	height: 40px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	margin-bottom: 12px;
+}
+
+.btn_box {
+	text-align: center;
+}
+
+.btn_box button {
+	display: block;
+	width: 100%;
+	height: 40px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	margin-bottom: 12px;
+}
+
+.btn_box button:hover {
+	cursor: pointer;
+}
+
+.btn_box a {
+	text-decoration: none;
+	color: black;
+	font-size: 0.3em;
+}
+
+.login_box > p {
+	font-size: 0.3em;
+	text-align: center;
+	color: gray;
+	margin-bottom: 12px;
+}
+
+.social {
+	text-align: center;
+}
+
+.social a {
+	display: inline-block;
+	height: 40px;
+	margin: 0 3%;
+}
+
+.social img {
+	width: 100%;
+	height: 100%;
+}
+
+.social img:nth-child(1) {
+	border-radius: 50%;
+}
+
+.wrang_box {
+	display: none;
+}
