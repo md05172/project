@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customer">
+
+	<insert id="join">
+		INSERT INTO customer
+		VALUES (SEQ_CUSTOMER.nextval, #{email}, #{name}, #{phone}, #{password}, #{role})
+	</insert>
+	
+	<select id="check" resultType="Customer">
+		SELECT * FROM customer
+		WHERE email = #{email}
+	</select>
+	
+	<insert id="address">
+		INSERT INTO address
+		VALUES (SEQ_ADDRESS.nextval, #{id}, #{address.apiId}, #{address.postcode}, #{address.roadaddress}, #{address.jibunaddress}, #{address.detailaddress}, #{address.extraaddress})
+	</insert>
+</mapper>

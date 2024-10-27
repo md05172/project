@@ -5,19 +5,17 @@
 }
 
 body {
-	height: 100vh; 
 	margin : 0;
 	padding: 0;
 	margin: 0;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
 }
 
 .container {
-	width: 40%;
-	height: 77%;
-	position: relative;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	width: 30%;
 	border: 2px solid burlywood;
 	border-radius: 5px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
@@ -68,7 +66,7 @@ body {
 	height: 40px;
 }
 
-.pw input, .ad input {
+.pw input, .ad input, .ph input, .name{
 	display: block;
 	width: 100%;
 	height: 40px;
@@ -92,22 +90,34 @@ body {
 }
 
 .foot {
-	position: relative;
-	text-align: center;	
+    position: relative;
+    height: 50px; 
+    margin-top: 12px;
 }
 
-.foot button{
-	width: 47%;
-	height: 40px;
+#join {
+    position: absolute;
+    width: 47%;
+    height: 40px;
+    left: 0;
 }
 
-.foot button:nth-child(1) {
-	position: absolute;
-	left: 0;
+#cancle {
+    position: absolute;
+    width: 47%;
+    height: 40px;
+    right: 0;
 }
 
-.foot button:nth-child(2) {
-	position: absolute;
-	right: 0;
+#cancle button {
+	width: 100%;
+	height: 100%;
 }
 
+.wrang_box {
+	display: none;
+}
+
+.pwwrang {
+	display: none;
+}

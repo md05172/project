@@ -4,14 +4,17 @@
 <configuration>
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>	
+		<setting name="jdbcTypeForNull" value="VARCHAR"/>
 	</settings>
 
 	<typeAliases>
 		<typeAlias type="kr.ac.kopo.model.Book" alias="Book"/>
+		<typeAlias type="kr.ac.kopo.model.Customer" alias="Customer"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mybatis/book.xml"/>
+		<mapper resource="mybatis/customer.xml"/>
 	</mappers>
 
 </configuration>
