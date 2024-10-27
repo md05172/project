@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,9 @@
 				<div class="wrang_box">
 					<p class="wrang"></p>
 				</div>
+				<c:if test="${sessionScope.error != null }">
+					<p class="error" style="color: red; font-size: 0.9em;">${sessionScope.error }</p>
+				</c:if>
 				<div class="id_box">
 					<input type="text" name="email" placeholder="이메일">
 				</div>

@@ -102,3 +102,7 @@ body {
 .wrang_box {
 	display: none;
 }
+
+.error {
+	color: red;
+}

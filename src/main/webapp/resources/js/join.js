@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
         if (email_regex.test(email.value)) {
             console.log("fetch 전" + email.value);
             //이메일 형식이 맞을때
-            fetch(`/customer/check/${email.value}`)
+            fetch(`/customer/check?email=${email.value}`, {method: "POST"})
                 .then(resp => resp.text())
                 .then(result => {
                     console.log(result);
