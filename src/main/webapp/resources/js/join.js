@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
         const email = document.querySelector('input[name="email"]');
         const wrang_box = document.querySelector('.wrang_box');
         const wrang = document.querySelector('.wrang');
-
+        console.log(email.value);
         if (wrang_box) {
             wrang_box.classList.remove('wrang_box');
         }
@@ -24,11 +24,12 @@ window.addEventListener('load', () => {
         email_regex = /^[a-zA-Z0-9._-]+@(naver|daum|google|nate)+\.(net|com)$/i;
 
         if (email_regex.test(email.value)) {
+            console.log("fetch 전" + email.value);
             //이메일 형식이 맞을때
-            fetch(`/customer/check/${email.value}`, { method: "POST" })
+            fetch(`/customer/check/${email.value}`)
                 .then(resp => resp.text())
                 .then(result => {
-
+                    console.log(result);
                     console.log(result === 'ok');
                     if (result === 'ok') {
                         wrang.textContent = '사용가능한 이메일입니다.';

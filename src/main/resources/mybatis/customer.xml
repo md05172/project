@@ -10,7 +10,7 @@
 	
 	<select id="check" resultType="Customer">
 		SELECT * FROM customer
-		WHERE email = #{email}
+        WHERE email = #{email}
 	</select>
 	
 	<insert id="address">
