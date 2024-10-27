@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,9 +35,12 @@ public class CustomerController {
 	@PostMapping("/login")
 	String login(HttpSession session, Customer item) {
 		Customer customer = service.check(item.getEmail());
-		System.out.println("로그인  확인" + customer);
-		
-		return "";
+		if(customer != null) {
+			return "redirect:../";
+		} else {
+			session.setAttribute("error", "아이디 비밀번호가 맞지 않습니다.");
+			return "redirect:login";
+		}
 	}
 	
 	@GetMapping("/join")
@@ -52,9 +54,9 @@ public class CustomerController {
 		return "redirect:login";
 	}
 	
-	@GetMapping("/check/{email}")
+	@PostMapping("/check")
 	@ResponseBody
-	String check(@PathVariable String email) {
+	String check(String email) {
 		System.out.println("이메일 확인" + email);
 		Customer check = service.check(email);
 		System.out.println("확인  "   + check);
