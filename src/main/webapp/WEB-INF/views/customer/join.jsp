@@ -39,7 +39,7 @@
 				</div>
 				<div class="form-group address-group address_box">
 					<input type="number" name="address.postcode" id="sample4_postcode" placeholder="우편번호" readonly="readonly">
-					<input type="button" class="find" value="우편번호 찾기">
+					<input type="button" class="find btn" value="우편번호 찾기">
 				</div>
 				<div class="form-group address-group ad">
 					<input type="text" name="address.roadaddress" id="sample4_roadAddress" placeholder="도로명주소">
@@ -52,8 +52,8 @@
 					<input type="text" name="address.extraaddress" id="sample4_extraAddress" placeholder="참고항목">
 				</div>
 				<div class="foot">
-					<button id="join" type="button">회원가입</button>
-					<a id="cancle" href="../"><button type="button">취소</button></a>
+					<button id="join" class="btn" type="button">회원가입</button>
+					<a id="cancle" href="../"><button class="btn" type="button">취소</button></a>
 				</div>
 			</div>
 		</form>

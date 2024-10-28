@@ -8,4 +8,6 @@ public interface CustomerService {
 
 	Customer check(String email);
 
+	boolean login(Customer item);
+
 }
