@@ -17,6 +17,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.ac.kopo.model.Api;
+
 @Service
 public class NaverService {
 
@@ -57,16 +59,12 @@ public class NaverService {
 		System.out.println("jacson 확인 " + jsonMap);
 		System.out.println("jacson 확인 " + jsonMap.get("access_token"));
 		accessToken = (String) jsonMap.get("access_token");
-//		JSONParser jsonParser = new JSONParser();
-//		JSONObject jsonObject = (JSONObject) jsonParser.parse(response.getBody());
-
-//		accessToken = (String) jsonObject.get("access_token");
 
 		return accessToken;
 	}
 	
 	// 네이버 토큰으로  유저 정보 가져오기
-	public void getUserInfo(String accessToken) throws JsonMappingException, JsonProcessingException {
+	public Api getUserInfo(String accessToken) throws JsonMappingException, JsonProcessingException {
 		// HttpHeader 생성
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + accessToken);
@@ -93,50 +91,57 @@ public class NaverService {
 		System.out.println("moblie = " + response2.get("mobile"));
 		System.out.println("id = " + response2.get("id"));
 		
-//		JSONParser jsonParser = new JSONParser();
-//		JSONObject jsonObject = (JSONObject) jsonParser.parse(response.getBody());
-//		JSONObject nresponse = (JSONObject) jsonObject.get("response");
+		Api api = new Api();
+		api.setName((String) response2.get("name"));
+		api.setEmail((String) response2.get("email"));
+		api.setPassword("naverApiLogin" + response2.get("id"));
+		api.setRole(1);
+		
+		return api;
 	}
-//
-//	// 네이버 로그아웃
-//	public static boolean naverLogout(String accessToken) throws ParseException {
-//		HttpHeaders headers = new HttpHeaders();
-//
-//		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-//		params.add("grant_type", "delete");
-//		params.add("client_id", NAVERAPIKEY);
-//		params.add("client_secret", NAVERSECRET);
-//		params.add("access_token", accessToken);
-//		params.add("service_provider", "NAVER");
-//
-//		HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(params, headers);
-//
-//		RestTemplate restTemplate = new RestTemplate();
-//		ResponseEntity<String> response = restTemplate.exchange("https://nid.naver.com/oauth2.0/token", HttpMethod.POST,
-//				httpEntity, String.class);
-//		System.out.println(response.getBody());
-//		JSONParser jsonParser = new JSONParser();
-//		JSONObject jsonObject = (JSONObject) jsonParser.parse(response.getBody());
-//		String result = (String) jsonObject.get("result");
-//		System.out.println("result = " + result);
-//		return result == null ? false : true;
-//	}
-//
-//	// 유니코드 한글 또는 영어로 변환
-//	public String uniToKor(String uni) {
-//		StringBuffer result = new StringBuffer();
-//
-//		for (int i = 0; i < uni.length(); i++) {
-//			if (uni.charAt(i) == '\\' && uni.charAt(i + 1) == 'u') {
-//				Character c = (char) Integer.parseInt(uni.substring(i + 2, i + 6), 16);
-//				result.append(c);
-//				i += 5;
-//			} else {
-//				result.append(uni.charAt(i));
-//			}
-//		}
-//		return result.toString();
-//	}
+
+	// 네이버 로그아웃
+	public static boolean naverLogout(String accessToken) throws JsonMappingException, JsonProcessingException {
+		HttpHeaders headers = new HttpHeaders();
+
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("grant_type", "delete");
+		params.add("client_id", NAVERAPIKEY);
+		params.add("client_secret", NAVERSECRET);
+		params.add("access_token", accessToken);
+		params.add("service_provider", "NAVER");
+
+		HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(params, headers);
+
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<String> response = restTemplate.exchange("https://nid.naver.com/oauth2.0/token", HttpMethod.POST,
+				httpEntity, String.class);
+		System.out.println(response.getBody());
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> jsonMap = mapper.readValue(response.getBody(), new TypeReference<Map<String, Object>>() {});
+		String result = (String)jsonMap.get("result");
+		
+		System.out.println("result = " + result);
+		
+		return result == null ? false : true;
+	}
+
+	// 유니코드 한글 또는 영어로 변환
+	public String uniToKor(String uni) {
+		StringBuffer result = new StringBuffer();
+
+		for (int i = 0; i < uni.length(); i++) {
+			if (uni.charAt(i) == '\\' && uni.charAt(i + 1) == 'u') {
+				Character c = (char) Integer.parseInt(uni.substring(i + 2, i + 6), 16);
+				result.append(c);
+				i += 5;
+			} else {
+				result.append(uni.charAt(i));
+			}
+		}
+		return result.toString();
+	}
 
 	
 }

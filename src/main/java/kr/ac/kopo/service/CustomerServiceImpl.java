@@ -1,5 +1,6 @@
 package kr.ac.kopo.service;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,22 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public Customer check(String email) {
 		return dao.check(email);
+	}
+
+	@Override
+	public boolean login(Customer item) {
+		Customer customer = dao.check(item.getEmail());
+		
+		if(customer != null) {
+			if(item.getPassword().equals(customer.getPassword())) {
+				// customer에 있는 값을 item에 복사한다.
+				BeanUtils.copyProperties(customer, item);
+				// 비밀번호는 보안을 위해 없애준다.
+				item.setPassword(null);
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

@@ -16,6 +16,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.ac.kopo.model.Api;
+
 @Service
 public class KakaoService {
 
@@ -67,7 +69,7 @@ public class KakaoService {
 	}
 
 	// 토큰으로 사용자 정보 가져오기
-	public void getUserInfo(String accessToken) throws JsonMappingException, JsonProcessingException {
+	public Api getUserInfo(String accessToken) throws JsonMappingException, JsonProcessingException {
 		// HttpHeader 생성
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + accessToken);
@@ -94,5 +96,39 @@ public class KakaoService {
 		System.out.println("이름: " + profile.get("nickname"));
 		System.out.println("이메일: " + account.get("email"));
 		System.out.println("아이디: " + map.get("id"));
+		
+		Api api = new Api();
+		api.setName((String) profile.get("nickname"));
+		api.setEmail((String) account.get("email"));
+		api.setPassword("kakaoApiLogin" + map.get("id"));
+		api.setRole(1);
+		
+		return api;
 	}
+	
+	// 카카오 로그아웃
+	public void kakaoLogout(String accessToken) {
+		// HttpHeader 생성
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "Bearer " + accessToken);
+		headers.add("Content-type", "application/x-www-form-urlencoded");
+		
+		// body 생성
+//		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+//		params.add("client_id", KAKAOAPIKEY);
+//		params.add("logout_redirect_uri", LOGOUT);
+		
+		// HttpHeader + body 담기
+		HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(headers);
+		// Http 요청
+		RestTemplate rt = new RestTemplate();
+		ResponseEntity<String> response = rt.exchange(
+				"https://kapi.kakao.com/v1/user/logout",
+				HttpMethod.POST,
+				httpEntity,
+				String.class
+				);
+		System.out.println("logout reponse = " + response.getBody());
+	}
+
 }

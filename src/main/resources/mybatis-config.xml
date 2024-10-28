@@ -10,11 +10,13 @@
 	<typeAliases>
 		<typeAlias type="kr.ac.kopo.model.Book" alias="Book"/>
 		<typeAlias type="kr.ac.kopo.model.Customer" alias="Customer"/>
+		<typeAlias type="kr.ac.kopo.model.Api" alias="Api"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mybatis/book.xml"/>
 		<mapper resource="mybatis/customer.xml"/>
+		<mapper resource="mybatis/api.xml"/>
 	</mappers>
 
 </configuration>

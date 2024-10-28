@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import kr.ac.kopo.service.BookService;
+import kr.ac.kopo.service.KakaoService;
 
 @Controller
 public class RootController {
@@ -15,6 +16,7 @@ public class RootController {
 	
 	@GetMapping("/")
 	String index(Model model) {
+		model.addAttribute("kakao_logout", KakaoService.KAKAOLOGOUT);
 		return "index";
 	}
 }

@@ -5,52 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<jsp:include page="deco.jsp"></jsp:include>
 <title>Insert title here</title>
 </head>
 <body>
 	<div>
-		<header>
-			<!-- 로고 -->
-			<div>
-				<a href="#"><img src="" alt=""></a>
-			</div>
-			
-			<!-- 검색 -->
-			<div>
-				<input>
-				<div>
-					<a href="#"><img src="" alt=""></a>
-				</div>
-			</div>
-			
-			<c:if test="${sessionScope.accessToken == null && sessionScope.kaccessToken == null && sessionScope.naceessToken == null }">
-				<ul>  
-					<li><a href="customer/login">로그인</a></li>
-					<li><a href="customer/join">회원가입</a></li>
-				</ul>
-			</c:if>
-			
-			<c:if test="${sessionScope.kaccessToken != null }">
-				<a href="#">카카오 로그아웃</a>
-			</c:if>
-			
-			<c:if test="${sessionScope.naccessToken != null }">
-				<a href="#">네이버 로그아웃</a>
-			</c:if>
-		</header>
+		<jsp:include page="header.jsp"></jsp:include>
 		
-		<!-- 메뉴 -->
-		<nav>
-			<ul>
-				<li><a href="">베스트</a></li>
-				<li><a href="book/list">국내도서</a></li>
-				<li><a href="">외국도서</a></li>
-				<li><a href="">이벤트</a></li>
-				<li><a href="">고객센터</a></li>
-				<li><a href="book/dummy">더미데이터</a></li>
-				<li><a href="book/init">초기화</a></li>
-			</ul>
-		</nav>   
+		<jsp:include page="nav.jsp"></jsp:include>
 		
 		<!-- 이벤트 -->
 		<div>

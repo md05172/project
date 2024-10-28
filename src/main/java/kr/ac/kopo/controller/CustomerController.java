@@ -25,7 +25,7 @@ public class CustomerController {
 	CustomerService service;
 	
 	@GetMapping("/login") 
-	String login(Model model) {
+	String login(HttpSession session, Model model) {
 		model.addAttribute("naver", NaverService.NAVERURL);
 		model.addAttribute("kakao", KakaoService.KAKAOURL);
 		
@@ -34,13 +34,22 @@ public class CustomerController {
 	
 	@PostMapping("/login")
 	String login(HttpSession session, Customer item) {
-		Customer customer = service.check(item.getEmail());
-		if(customer != null) {
+		if(service.login(item)) {
+			session.setAttribute("customer", item);
+			session.removeAttribute("error");
+			
 			return "redirect:../";
 		} else {
 			session.setAttribute("error", "아이디 비밀번호가 맞지 않습니다.");
 			return "redirect:login";
 		}
+	}
+	
+	@GetMapping("/logout")
+	String logout(HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:../";
 	}
 	
 	@GetMapping("/join")
@@ -49,7 +58,8 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/join")
-	String join(Customer item) {
+	String join(HttpSession session, Customer item) {
+		session.removeAttribute("error");
 		service.join(item);
 		return "redirect:login";
 	}
