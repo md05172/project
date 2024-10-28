@@ -9,7 +9,6 @@ public class Book {
 	private String info;
 	private String writer;
 	private String writerInfo;
-	private int good;
 	private String category;
 
 	public Long getId() {
@@ -76,20 +75,23 @@ public class Book {
 		this.writerInfo = writerInfo;
 	}
 
-	public int getGood() {
-		return good;
-	}
-
-	public void setGood(int good) {
-		this.good = good;
-	}
-
 	public String getCategory() {
 		return category;
 	}
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", name=" + name + ", publisher=" + publisher + ", price=" + price + ", path=" + path
+				+ ", info=" + info + ", writer=" + writer + ", writerInfo=" + writerInfo + ", category=" + category
+				+ ", getId()=" + getId() + ", getName()=" + getName() + ", getPublisher()=" + getPublisher()
+				+ ", getPrice()=" + getPrice() + ", getPath()=" + getPath() + ", getInfo()=" + getInfo()
+				+ ", getWriter()=" + getWriter() + ", getWriterInfo()=" + getWriterInfo() + ", getCategory()="
+				+ getCategory() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
 
 }

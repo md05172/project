@@ -48,8 +48,12 @@ public class NaverService {
 
 		// http요청
 		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<String> response = restTemplate.exchange("https://nid.naver.com/oauth2.0/token", HttpMethod.POST,
-				httpEntity, String.class);
+		ResponseEntity<String> response = restTemplate.exchange(
+				"https://nid.naver.com/oauth2.0/token", 
+				HttpMethod.POST,
+				httpEntity, 
+				String.class
+				);
 
 		System.out.println("naver response = " + response.getBody());
 
@@ -114,8 +118,12 @@ public class NaverService {
 		HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(params, headers);
 
 		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<String> response = restTemplate.exchange("https://nid.naver.com/oauth2.0/token", HttpMethod.POST,
-				httpEntity, String.class);
+		ResponseEntity<String> response = restTemplate.exchange(
+				"https://nid.naver.com/oauth2.0/token", 
+				HttpMethod.POST,
+				httpEntity, 
+				String.class
+				);
 		System.out.println(response.getBody());
 		
 		ObjectMapper mapper = new ObjectMapper();

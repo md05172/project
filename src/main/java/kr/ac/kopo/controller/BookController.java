@@ -40,7 +40,7 @@ public class BookController {
 	
 	@PostMapping("/add")
 	String add(Book item, List<MultipartFile> uploadFile) {
-		
+		System.out.println(item);
 		for (MultipartFile file : uploadFile) {
 			if(file != null && !file.isEmpty()) {
 				// 파일 원본 이름을 가져온다.

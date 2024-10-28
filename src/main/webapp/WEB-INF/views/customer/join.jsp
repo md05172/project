@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/resources/css/join.css">
 <script type="text/javascript" src="/resources/js/j	oin.js"></script>
+<title></title>
 </head>
 <body>
 	<div class="container">
