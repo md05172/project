@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <jsp:include page="../deco.jsp"></jsp:include>
-<link rel="stylesheet" href="/resources/css/list.css">
+<link rel="stylesheet" href="/resources/css/book/list.css">
 <title></title>
 </head>
 <body>
