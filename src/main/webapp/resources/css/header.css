@@ -14,12 +14,12 @@ body {
 	display: flex;
 	width: 1060px;
 	margin: 0 auto;
+	padding: 25px 0;
 }
 
 .logo {
-	flex: 2;
 	display: flex;
-    width: 10%;
+    width: 15%;
     height: 90px;
     justify-content: center;
 }
@@ -35,7 +35,7 @@ body {
 }
 
 .search_box {
-	flex: 8;
+	flex: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -59,8 +59,8 @@ body {
 .search_img_container {
 	max-width: 100%;
 	position: absolute;
-	top: 50%;
-	right: 8%;
+	top: 51%;
+	right: 9%;
     transform: translateY(-50%);
 }
 
@@ -69,11 +69,11 @@ body {
 }
 
 .search_img_container img {
+	width: 25px;
 	filter: opacity(0.5);
 }
 
 .login_out {
-	flex: 2;	
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -89,4 +89,5 @@ body {
 .login_out li a {
 	text-decoration: none;
 	color: #80888a;
+    margin: 0 8px;
 }

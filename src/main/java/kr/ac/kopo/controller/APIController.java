@@ -65,6 +65,7 @@ public class ApiController {
 		String naccessToken = (String) session.getAttribute("naceessToken");
 		boolean result = NaverService.naverLogout(naccessToken);
 		if(result) {
+			session.removeAttribute("api");
 			session.removeAttribute("naceessToken");
 		}
 		return "redirect:../";

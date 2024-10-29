@@ -5,18 +5,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<jsp:include page="../deco.jsp"></jsp:include>
+<link rel="stylesheet" href="/resources/css/book/list.css">
 <title></title>
 </head>
 <body>
-
+	<jsp:include page="../header.jsp"></jsp:include>
+	<jsp:include page="../nav.jsp"></jsp:include>
 	<c:forEach var="item" items="${list }">
-		<div>${item.name }</div>
-		<div>${item.publisher }</div>
-		<div>${item.price }</div>
-		<div>${item.writer }</div>
-		<div>${item.info }</div>
-		<div>${item.writerInfo }</div>
-		<hr>
+		<div class="item">
+			<div class="item_img">
+				<div><img src="/upload/book/${item.path }"></div>
+			</div>
+			<div class="item_info">
+				<div>${item.name }</div>
+				<div>${item.publisher }</div>
+				<div>${item.price }</div>
+				<div>${item.writer }</div>
+				<div>${item.info }</div>
+				<div>${item.writerInfo }</div>
+			</div>
+		</div>
 	</c:forEach>
 	<div><a href="?page=1">처음</a></div>
 	<div><a href="?page=${pager.prev }">이전</a></div>

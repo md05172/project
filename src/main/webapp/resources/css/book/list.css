@@ -1,0 +1,23 @@
+@charset "UTF-8";
+* {
+	box-sizing: border-box;
+}
+
+.item {
+	display: flex;
+	height: 234px;
+}
+
+.item_img {
+	height: 100%;
+	width: 20%;
+}
+
+.item_img img {
+	width: 100%;
+	height: 100%;
+}
+
+.item_info {
+	margin-left: 16px;
+}

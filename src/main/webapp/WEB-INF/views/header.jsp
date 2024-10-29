@@ -5,7 +5,7 @@
 	<div class="head_container">
 		<!-- 로고 -->
 		<div class="logo">
-			<a href="#"><img src="/resources/images/logo.png" alt="로고"></a>
+			<a href="/"><img src="/resources/images/logo.png" alt="로고"></a>
 		</div>
 		
 		<!-- 검색 -->
@@ -18,8 +18,8 @@
 		
 		<c:if test="${sessionScope.customer == null && sessionScope.kaccessToken == null && sessionScope.naceessToken == null }">
 			<ul class="login_out">  
-				<li><a href="customer/login">로그인</a></li>
-				<li><a href="customer/join">회원가입</a></li>
+				<li><a href="${pageContext.request.contextPath }/customer/login">로그인</a></li>
+				<li><a href="${pageContext.request.contextPath }/customer/join">회원가입</a></li>
 			</ul>
 		</c:if>
 		

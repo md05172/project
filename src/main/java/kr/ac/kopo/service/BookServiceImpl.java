@@ -41,7 +41,6 @@ public class BookServiceImpl implements BookService{
 			item.setInfo("info" + i);
 			item.setWriter("저자" + i);
 			item.setWriterInfo("저자소개" + i);
-			item.setGood(i.intValue());
 			item.setCategory("ko");
 			dao.add(item);
 		}

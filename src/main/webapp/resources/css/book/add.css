@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin:0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.container {
+	width: 40%;
+	border-radius: 5px;
+	border: 2px solid burlywood;
+	box-shadow: 0px 0px 5px #b5b4b6;
+}
+
+.imgContainer {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 12px;
+}
+
+.imgContainer label {
+	height: 30px;
+	font-size: 24px;
+	font-weight: bold;
+	display: block;
+}
+
+.file-preview {
+	width: 68%;
+    height: 600px;
+    margin: 0 auto;	
+    padding: 30px;
+}
+
+.file-preview label {
+	display: block;
+    height: 100%;
+}
+
+.file-preview img {
+	max-width: 100%;
+	height: 100%;
+	border: 1.5px solid #b5b4b6;
+	box-shadow: 0px 0px 5px #b5b4b6;
+}
+
+input[type="file"] {
+	display: none; /* 기본 파일 입력 숨김 */
+}
+
+.book_info_box {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.dataContainer {
+	display: flex;
+	margin-bottom: 12px;
+}
+
+.dataContainer select {
+	width: 22%;
+	border-radius: 5px;
+	border: 1.5px solid #b5b4b6;
+	margin-left: 2%;
+	padding: 10px 20px;
+	font-size: 14px;
+}
+
+.dataContainer select:focus {
+	outline: none;
+}
+
+.dataContainer p, input {
+	display: inline-block;
+}
+
+.dataContainer p {
+	width: 22%;
+	border-radius: 5px;
+	margin-top: 0;
+	padding-left: 3%;
+	color: #333;
+	font-weight: 600;
+}
+
+.dataContainer input, .dataContainer textarea {
+	width: 78%;
+	border-radius: 5px;
+	border: 1.5px solid #b5b4b6;
+	padding: 13px 52px 13px 13px;
+}
+
+.dataContainer input {
+	height: 40px;
+}
+
+.dataContainer textarea {
+	height: 80px;
+	resize: none;
+}
+
+/* input[type="number"] 올리고 줄이는 버튼 없애기 */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.button {
+	display: flex;
+	justify-content: space-around;
+}
+
+.button div {
+	width: 35%;
+	height: 40px;
+}
+
+.button button {
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	border: 1.5px solid #b5b4b6;
+}
