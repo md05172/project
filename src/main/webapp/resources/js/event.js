@@ -72,17 +72,18 @@ window.addEventListener('load', () => {
     const moveSlide = num => {
         slides.style.left = -num * (slideWidth + slideMargin) + 318.5 + 'px';
         current = num;
+
         changeBackgroundColor(current);
         // 현재페이지가 slide마지막 번호랑 같다면
-        if (current == slideCount || current == -slideCount) {
+        if (current === slideCount || current === -slideCount) {
             setTimeout(() => {
+                current = 0;
+                changeBackgroundColor(index);
                 slides.classList.remove('animated');
                 slides.style.left = '318.5px';
-                current = 0;
-                changeBackgroundColor(current);
-            }, 500);
-            setTimeout(() => { slides.classList.add('animated'); }, 550);
-        }
+            }, 1000);
+            setTimeout(() => { slides.classList.add('animated'); }, 1500);
+        } 
     };
 
     const autoSlide = () => {
@@ -107,13 +108,13 @@ window.addEventListener('load', () => {
         stopAutoSlide();
     });
 
-    nextBtn.addEventListener('mouseover', stopAutoSlide());
+    nextBtn.addEventListener('mouseover', stopAutoSlide);
 
-    prevBtn.addEventListener('mouseover', stopAutoSlide());
+    prevBtn.addEventListener('mouseover', stopAutoSlide);
 
-    nextBtn.addEventListener('mouseout', autoSlide());
+    nextBtn.addEventListener('mouseout', autoSlide);
 
-    prevBtn.addEventListener('mouseout', autoSlide());
+    prevBtn.addEventListener('mouseout', autoSlide);
 
-    window.addEventListener('resize', stopAutoSlide());
+    window.addEventListener('resize', stopAutoSlide);
 });

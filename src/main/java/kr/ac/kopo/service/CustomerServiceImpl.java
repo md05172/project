@@ -34,7 +34,7 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public boolean login(Customer item) {
 		Customer customer = dao.check(item.getEmail());
-		
+		System.out.println("로그인 정보 확인 service " + customer);
 		if(customer != null) {
 			if(item.getPassword().equals(customer.getPassword())) {
 				// customer에 있는 값을 item에 복사한다.
