@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,7 +54,7 @@
 						<div class="buycart">
 							<div class="heart">
 								<img class="wish" data-bookid="${item.id }" data-custid="${sessionScope.customer.id != null ? sessionScope.customer.id : 'false' }"
-									alt="" src="/resources/images/heart.png">
+									alt="" src="${fn:contains(sessionScope.customer.wish, item.id) == true ? '/resources/images/heart.png' : '/resources/images/fullheart.png'}">
 							</div>
 							<div class="btn">
 								<button class="cart" data-bookId="${item.id }">장바구니</button>

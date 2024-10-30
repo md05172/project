@@ -87,8 +87,8 @@ section {
 	margin-left: 16px;
 	position: relative;
     width: 71%;
-    min-width: 732px;
-    max-width: 732px;
+	min-width: 642px;
+    max-width: 642px;
     height: 206px;
 }
 

@@ -9,5 +9,7 @@ public interface CustomerDao {
 	Customer check(String email);
 
 	void address(Customer item);
+
+	Customer wishList(Customer item);
 	
 }

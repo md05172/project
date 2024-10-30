@@ -34,11 +34,12 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public boolean login(Customer item) {
 		Customer customer = dao.check(item.getEmail());
-		System.out.println("로그인 정보 확인 service " + customer);
+		Customer wishList = dao.wishList(item);
+		
 		if(customer != null) {
 			if(item.getPassword().equals(customer.getPassword())) {
 				// customer에 있는 값을 item에 복사한다.
-				BeanUtils.copyProperties(customer, item);
+				BeanUtils.copyProperties(wishList, item);
 				// 비밀번호는 보안을 위해 없애준다.
 				item.setPassword(null);
 				return true;

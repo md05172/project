@@ -70,11 +70,6 @@ public class Customer {
 		this.address = address;
 	}
 
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", password="
-				+ password + ", role=" + role + ", address=" + address + "]";
-	}
 
 	public List<Wish> getWish() {
 		return wish;
@@ -82,6 +77,12 @@ public class Customer {
 
 	public void setWish(List<Wish> wish) {
 		this.wish = wish;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", password="
+				+ password + ", role=" + role + ", address=" + address + ", wish=" + wish + "]";
 	}
 
 }

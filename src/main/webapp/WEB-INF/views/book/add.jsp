@@ -16,7 +16,7 @@
 				<div class="imgContainer">
 					<label>사진</label>
 					<div class="file-preview">
-						<label for="img" class="file-label"><img id="file-preview" src="/upload/default-image.png" alt="이미지 미리보기"></label>
+						<label for="img" class="file-label"><img id="file-preview" src="/resources/images/default.png" alt="이미지 미리보기"></label>
 					</div>
 					<input type="file" id="img" class="file-input" name="uploadFile">
 				</div>

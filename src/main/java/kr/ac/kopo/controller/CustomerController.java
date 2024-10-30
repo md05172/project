@@ -59,6 +59,7 @@ public class CustomerController {
 	
 	@PostMapping("/join")
 	String join(HttpSession session, Customer item) {
+		System.out.println(item);
 		session.removeAttribute("error");
 		service.join(item);
 		return "redirect:login";
@@ -67,9 +68,7 @@ public class CustomerController {
 	@PostMapping("/check")
 	@ResponseBody
 	String check(String email) {
-		System.out.println("이메일 확인" + email);
 		Customer check = service.check(email);
-		System.out.println("확인  "   + check);
 		if(check == null) return "ok";
 		else return "no";
 	}
