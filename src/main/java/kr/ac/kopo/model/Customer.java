@@ -1,5 +1,7 @@
 package kr.ac.kopo.model;
 
+import java.util.List;
+
 public class Customer {
 	private Long id;
 	private String name;
@@ -9,6 +11,8 @@ public class Customer {
 	private int role;
 
 	private Address address;
+
+	private List<Wish> wish;
 
 	public Long getId() {
 		return id;
@@ -70,6 +74,14 @@ public class Customer {
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", password="
 				+ password + ", role=" + role + ", address=" + address + "]";
+	}
+
+	public List<Wish> getWish() {
+		return wish;
+	}
+
+	public void setWish(List<Wish> wish) {
+		this.wish = wish;
 	}
 
 }
