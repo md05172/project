@@ -107,23 +107,13 @@ window.addEventListener('load', () => {
         stopAutoSlide();
     });
 
-    nextBtn.addEventListener('mouseover', () => {
-        stopAutoSlide();
-    });
+    nextBtn.addEventListener('mouseover', stopAutoSlide());
 
-    prevBtn.addEventListener('mouseover', () => {
-        stopAutoSlide();
-    });
+    prevBtn.addEventListener('mouseover', stopAutoSlide());
 
-    nextBtn.addEventListener('mouseout', () => {
-        autoSlide();
-    });
+    nextBtn.addEventListener('mouseout', autoSlide());
 
-    prevBtn.addEventListener('mouseout', () => {
-        autoSlide();
-    });
+    prevBtn.addEventListener('mouseout', autoSlide());
 
-    window.addEventListener('resize', () => {
-        stopAutoSlide();
-    });
+    window.addEventListener('resize', stopAutoSlide());
 });
