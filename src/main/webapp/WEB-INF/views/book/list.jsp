@@ -13,21 +13,46 @@
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
 	<jsp:include page="../nav.jsp"></jsp:include>
-	<c:forEach var="item" items="${list }">
-		<div class="item">
-			<div class="item_img">
-				<div><img src="/upload/book/${item.path }"></div>
-			</div>
-			<div class="item_info">
-				<div>${item.name }</div>
-				<div>${item.publisher }</div>
-				<div>${item.price }</div>
-				<div>${item.writer }</div>
-				<div>${item.info }</div>
-				<div>${item.writerInfo }</div>
-			</div>
-		</div>
-	</c:forEach>
+	
+	<section>
+	<div class="sidemenu_box">
+		<ul class="sidemenu">
+			<li>사이드메뉴</li>
+			<li>사이드메뉴</li>
+			<li>사이드메뉴</li>
+		</ul>
+	</div>
+	<ul class="item_list">
+		<c:forEach var="item" items="${list }">
+			<li>
+				<div class="item">
+					<div class="item_img">
+						<div class="img_box">
+							<a href="#"><img src="/upload/book/${item.path }"></a>
+						</div>
+					</div>
+					<div class="item_info">
+						<p class="item_name">${item.name }</p>
+						<span class="item_publisher">${item.publisher }</span>
+						<span class="item_writer">${item.writer }</span>
+						<p class="item_price">${item.price }원</p>
+						<p class="item_writerInfo">${item.writerInfo }</p>
+						<p class="info">${item.info }</p>
+					</div>
+					<div class="buycart">
+						<div class="heart">
+							<i class="fa fa-heart-o" aria-hidden="true"></i>
+						</div>
+						<div>
+							<button>장바구니</button>
+							<button>구매하기</button>
+						</div>
+					</div>
+				</div>
+			</li>
+		</c:forEach>
+	</ul>
+	</section>
 	<div><a href="?page=1">처음</a></div>
 	<div><a href="?page=${pager.prev }">이전</a></div>
 	<c:forEach var="page" items="${pager.list }">

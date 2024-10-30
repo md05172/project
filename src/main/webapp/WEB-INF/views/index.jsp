@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 <link rel="stylesheet" href="/resources/css/event.css">
 <script type="text/javascript" src="/resources/js/event.js"></script>
 <jsp:include page="deco.jsp"></jsp:include>

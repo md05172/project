@@ -12,7 +12,8 @@ body {
 
 .head_container {
 	display: flex;
-	width: 1060px;
+	min-width: 1200px;
+	max-width: 1200px;
 	margin: 0 auto;
 	padding: 25px 0;
 }
