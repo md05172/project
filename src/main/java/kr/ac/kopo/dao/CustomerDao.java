@@ -10,6 +10,4 @@ public interface CustomerDao {
 
 	void address(Customer item);
 
-	Customer wishList(Customer item);
-	
 }

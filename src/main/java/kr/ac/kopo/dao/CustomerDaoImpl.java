@@ -27,9 +27,4 @@ public class CustomerDaoImpl implements CustomerDao{
 		sql.insert("customer.address", item);
 	}
 
-	@Override
-	public Customer wishList(Customer item) {
-		return sql.selectOne("customer.wishList", item);
-	}
-
 }

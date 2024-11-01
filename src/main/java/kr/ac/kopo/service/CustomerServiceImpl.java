@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.dao.CustomerDao;
+import kr.ac.kopo.dao.WishDao;
 import kr.ac.kopo.model.Customer;
 
 @Service
@@ -12,6 +13,9 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Autowired
 	CustomerDao dao;
+	
+	@Autowired
+	WishDao wishdao;
 	
 	@Override
 	public void join(Customer item) {
@@ -34,7 +38,7 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public boolean login(Customer item) {
 		Customer customer = dao.check(item.getEmail());
-		Customer wishList = dao.wishList(item);
+		Customer wishList = wishdao.wishList(item);
 		
 		if(customer != null) {
 			if(item.getPassword().equals(customer.getPassword())) {

@@ -7,4 +7,16 @@
 		VALUES (SEQ_WISH.nextval, #{bookId}, #{custId})
 	</insert>
 
+	<select id="list" resultMap="customerMap">
+		select customer.*, 
+			wishlist.id wish_id,
+			wishlist.book_id,
+			wishlist.cust_id cust_id
+		from customer
+		JOIN wishlist 
+		ON customer.id = wishlist.cust_id
+		where customer.id = (SELECT id FROM customer
+        WHERE email = #{email})
+	</select>
+
 </mapper>
