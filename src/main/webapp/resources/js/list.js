@@ -89,7 +89,6 @@ window.addEventListener('load', () => {
         check_box_list.forEach(c => {
             // 체그 된 상태라면 Map에 담는다.
             if(c.checked) {
-                console.log(c.dataset);
                 const {bookid} = c.dataset;
                 items[bookid] = 1;
             }

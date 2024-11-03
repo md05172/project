@@ -42,7 +42,6 @@ public class CartController {
 	@ResponseBody
 	@PostMapping("/add")
 	Cart add(@RequestBody Map<Long, Integer> items, @SessionAttribute(required = false) Cart cart, HttpSession session) {
-		System.out.println("장밥구니 들어옴 + " + items);
 		if(cart == null) {
 			cart = new Cart();
 			session.setAttribute("cart", cart);
