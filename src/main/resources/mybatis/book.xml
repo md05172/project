@@ -21,6 +21,17 @@
 		</if>	
 	</select>
 	
+	<select id="list_keyset" resultType="Book">
+		SELECT * FROM book
+		
+		<where>
+			id IN
+			<foreach collection="keySet" item="key" open="(" close=")" separator=",">
+				#{key}
+			</foreach>
+		</where>
+	</select>
+	
 	<insert id="add">
 		INSERT INTO book
 		VALUES (SEQ_BOOK.nextval, #{name}, #{publisher}, #{price}, #{path}, #{info}, #{writer}, #{writerInfo}, #{category})

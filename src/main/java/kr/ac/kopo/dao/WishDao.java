@@ -9,4 +9,6 @@ public interface WishDao {
 
 	Customer wishList(Customer item);
 
+	int delete(Long id);
+
 }

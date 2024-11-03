@@ -78,7 +78,7 @@ window.addEventListener('load', () => {
         if (current === slideCount || current === -slideCount) {
             setTimeout(() => {
                 current = 0;
-                changeBackgroundColor(index);
+                changeBackgroundColor(0);
                 slides.classList.remove('animated');
                 slides.style.left = '318.5px';
             }, 1000);
@@ -108,13 +108,13 @@ window.addEventListener('load', () => {
         stopAutoSlide();
     });
 
-    nextBtn.addEventListener('mouseover', stopAutoSlide);
+    nextBtn.addEventListener('mouseover', stopAutoSlide());
 
-    prevBtn.addEventListener('mouseover', stopAutoSlide);
+    prevBtn.addEventListener('mouseover', stopAutoSlide());
 
-    nextBtn.addEventListener('mouseout', autoSlide);
+    nextBtn.addEventListener('mouseout', autoSlide());
 
-    prevBtn.addEventListener('mouseout', autoSlide);
+    prevBtn.addEventListener('mouseout', autoSlide());
 
-    window.addEventListener('resize', stopAutoSlide);
+    window.addEventListener('resize', stopAutoSlide());
 });

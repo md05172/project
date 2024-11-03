@@ -40,10 +40,16 @@ public class CustomerServiceImpl implements CustomerService{
 		Customer customer = dao.check(item.getEmail());
 		Customer wishList = wishdao.wishList(item);
 		
+		System.out.println("찜 목록 " + wishList);
+		
 		if(customer != null) {
 			if(item.getPassword().equals(customer.getPassword())) {
 				// customer에 있는 값을 item에 복사한다.
-				BeanUtils.copyProperties(wishList, item);
+				if(wishList == null)
+					BeanUtils.copyProperties(customer, item);
+				else 
+					BeanUtils.copyProperties(wishList, item);
+					
 				// 비밀번호는 보안을 위해 없애준다.
 				item.setPassword(null);
 				return true;

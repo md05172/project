@@ -6,6 +6,17 @@
 		INSERT INTO wishlist
 		VALUES (SEQ_WISH.nextval, #{bookId}, #{custId})
 	</insert>
+	
+	<resultMap type="Customer" id="customerMap" autoMapping="true">
+		<id column="id" property="id" javaType="Long"/>
+		
+		<!-- javaType은 List처럼 interface가 아니면 안적어줘도 된다 ofType은 제너릭 타입을 적는다 -->
+		<!-- collection에 column은 기준점을 적는다 -->
+		<collection column="cust_id" property="wish" ofType="Wish" javaType="ArrayList" autoMapping="true">
+			<id column="wish_id" property="id" javaType="Long"/>
+			<result column="book_id" property="bookId" javaType="Long"/>
+		</collection>		
+	</resultMap>
 
 	<select id="list" resultMap="customerMap">
 		select customer.*, 
@@ -18,5 +29,10 @@
 		where customer.id = (SELECT id FROM customer
         WHERE email = #{email})
 	</select>
+
+	<delete id="delete">
+		DELETE FROM wishlist
+		WHERE id = #{id}
+	</delete>
 
 </mapper>

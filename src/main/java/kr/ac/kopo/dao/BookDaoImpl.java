@@ -1,6 +1,8 @@
 package kr.ac.kopo.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,20 @@ public class BookDaoImpl implements BookDao {
 	@Override
 	public int total(Pager pager) {
 		return sql.selectOne("book.total", pager);
+	}
+
+	@Override
+	public Book item(Long id) {
+		return sql.selectOne("book.item", id);
+	}
+
+	@Override
+	public List<Book> list(Set<Long> keySet) {
+		HashMap<String, Set<Long>> map = new HashMap<String, Set<Long>>(); 
+
+		map.put("keySet", keySet);
+		
+		return sql.selectList("book.list_keyset", map);
 	}
 
 }

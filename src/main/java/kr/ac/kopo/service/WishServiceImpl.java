@@ -16,5 +16,10 @@ public class WishServiceImpl implements WishService{
 	public int add(Wish wish) {
 		return dao.add(wish);
 	}
+
+	@Override
+	public int delete(Long id) {
+		return dao.delete(id);
+	}
 	
 }

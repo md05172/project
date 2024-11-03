@@ -1,0 +1,167 @@
+@charset "UTF-8";
+* {
+	box-sizing: border-box;
+}
+
+.main_container {
+ 	width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detail_container {
+	display: flex;
+    padding-top: 56px;
+}
+
+.left_box {
+	flex: 0 0 500px;
+}
+
+.inner_box {
+    padding: 50px 0;
+    background: rgba(248, 248, 248, 0.5);
+}
+
+.img_box {
+	width: 400px;
+	height: 600px;
+	margin: 0 auto;
+}
+
+.img_box img {
+	width: 100%;
+	height: 100%;
+}
+
+.right_box {
+    margin-left: 50px;
+    width: 100%;
+} 
+
+.name {
+	font-size: 28px;
+    font-weight: 700;
+}
+
+.writer, .publisher {
+	font-size: 13px;
+    color: #80888a;
+}
+
+.price_box {
+	margin-top: 32px;
+    border-bottom: 1px solid black;
+}
+
+.price {
+	color: #ee293b;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.won {
+    color: #ee293b;
+    font-size: 16px;
+    font-weight: 500;
+}
+.amount, .plus_minus {
+	display: flex;
+}
+
+.amount {
+	padding: 0 20px;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;	
+    background-color: #f8f8f8;
+}
+
+.plus_minus button {
+	width: 30px;
+    height: 30px;
+    background: white;
+    border: 1px solid;
+    border-color: #eee;
+    color: #333;
+}
+
+.plus_minus input {
+    padding: 0 6px;
+    vertical-align: middle;
+    width: 40px;
+    height: 30px;
+    outline: none;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: #eee;
+    border-width: 1px 0;
+}
+
+.cart_price_box span:nth-child(1) {
+	color: #ee293b;
+	font-size: 20px;
+    font-weight: 700;
+}
+
+.cart_price_box span:nth-child(2) {
+	color: #ee293b;
+    margin-left: 1px;
+    font-size: 13px;
+}
+
+.btn_box {
+	display: flex;
+	justify-content: space-around;
+}
+
+.cart, .buy {
+	flex: 1;
+	height: 48px;
+    border: 1px solid #d2d8d9;
+    border-radius: 5px;
+}
+
+.detail_nav {
+	height: 72px;
+	border-bottom: 1px solid #d5d5d5;
+}
+
+.nav_box {
+	max-width: 1200px;
+	width: 1200px;
+	margin: 0 auto;
+	height: 100%;
+}
+
+.nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav li {
+	display: inline-block;
+}
+
+.nav li a {
+	display: block;
+	text-decoration: none;
+	color: black;
+	padding: 20px;
+}
+
+.nav li a:first-child {
+	padding-left: 0px;
+}
+
+.book_detail_box {
+	width: 1200px;
+	margin: 0 auto;
+}
