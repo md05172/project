@@ -26,7 +26,7 @@
 		<c:if test="${sessionScope.customer != null}">
 			<ul class="login_out">
 				<li>${sessionScope.customer.name }</li>
-				<li><a href="customer/logout">로그아웃</a></li>
+				<li><a href="${pageContext.request.contextPath }/customer/logout">로그아웃</a></li>
 			</ul> 
 		</c:if>
 		
@@ -40,7 +40,7 @@
 		<c:if test="${sessionScope.naceessToken != null }">
 			<ul class="login_out">
 				<li>${sessionScope.api.name }</li>
-				<li><a href="naver/logout">네이버 로그아웃</a></li>
+				<li><a href="${pageContext.request.contextPath }/naver/logout">네이버 로그아웃</a></li>
 			</ul> 
 		</c:if>
 	</div>

@@ -12,6 +12,25 @@ section {
 .container_box {
 	display: flex;
 	flex-direction: column;
+	padding-left: 40px;
+}
+
+.all_box {
+	margin-left: auto;
+}
+
+.all_box input {
+	width: 22px;
+    height: 15px;
+}
+
+.all_box button {
+	width: 70px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1.5px solid #b5b4b6;
+    margin-top: 12px;
+    margin-right: 12px;
 }
 
 .sidemenu {
@@ -36,18 +55,23 @@ section {
 	font-weight: 700;
 }
 
-.check {
+.menu_check {
     text-decoration: underline;
+}
+
+.check_box {
+	width: 22px;
+    height: 15px;
 }
 
 .item_list {
 	list-style: none;
 	width: 100%;
+	padding: 0px;
 }
 
 .item_list li {
 	border-top: 1px solid #adb5bd;
-	padding: 0 20px;
 }
 .item_list li:last-child {
 	border-bottom: 1.5px solid #adb5bd;
@@ -92,6 +116,11 @@ section {
     height: 206px;
 }
 
+.item_info a {
+	text-decoration: none;
+	color: black;
+}
+
 .buycart {
     max-width: 150px;
     min-width: 150px;
@@ -122,13 +151,14 @@ section {
 .buycart {
 	position: relative;
     height: 100%;
+    text-align: center;
 }
 
 .heart {
     width: 25px;
     position: absolute;
     height: 25px;
-    right: 11px;
+    right: 45px;
     top: 21%;
 }
 
@@ -194,3 +224,55 @@ section {
 	transform: rotate(180deg);
 }
 
+.check {
+	flex: 0 0 32px;
+	height: 206px;
+}
+
+.check input {
+	position: absolute;
+}
+
+.hide {
+	display: none;
+}
+
+.modal {
+    z-index: 1;
+    position: absolute;
+    height: 179px;
+    width: 360px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0px 32px 32px 32px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.disc {
+    height: 45px;
+    margin-top: 24px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.btn_group {
+	margin-top: 34px;
+	display: flex;
+}
+
+.btn_group button{
+	flex: 1;
+    margin: 0 3px;
+    height: 44px;
+    border-radius: 5px;
+    border: 1.5px solid #b5b4b6;
+    text-align: center;
+}
+
+.modal_background {
+  position: fixed;
+  top:0; left: 0; bottom: 0; right: 0;
+  background: rgba(0, 0, 0, 0.8);
+}

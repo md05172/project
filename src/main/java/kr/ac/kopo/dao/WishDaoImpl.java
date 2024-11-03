@@ -23,4 +23,9 @@ public class WishDaoImpl implements WishDao{
 	return sql.selectOne("wish.list", item);
 	}
 
+	@Override
+	public int delete(Long id) {
+		return sql.delete("wish.delete", id);
+	}
+
 }

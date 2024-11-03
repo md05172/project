@@ -1,6 +1,8 @@
 package kr.ac.kopo.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,6 +56,21 @@ public class BookServiceImpl implements BookService{
 			item.setName("name" + i);
 			dao.delete(item.getName());
 		}
+	}
+
+	@Override
+	public Book item(Long id) {
+		return dao.item(id);
+	}
+
+	@Override
+	public List<Book> list(Set<Long> keySet) {
+		// cart에 아무것도 없다면 비어있는 리스트를 전달
+		if(keySet.isEmpty()) {
+			return new ArrayList<Book>();
+		}
+		
+		return dao.list(keySet);
 	}
 
 }
