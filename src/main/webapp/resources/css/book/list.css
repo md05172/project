@@ -236,9 +236,12 @@ section {
 .hide {
 	display: none;
 }
+#modal {
+    z-index: 1;
+}
 
 .modal {
-    z-index: 1;
+
     position: absolute;
     height: 179px;
     width: 360px;

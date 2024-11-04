@@ -36,13 +36,15 @@ body {
 }
 
 .search_box {
-	flex: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	position: relative;
 	margin-top: 10px;
 	margin-left: -10px;
+    width: 50%;
+    margin: 0 auto;
+
 }
 
 .search_box input {
@@ -81,14 +83,28 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	margin-left: auto;
+    margin-right: 52px;
 }
 
 .login_out li {
 	display: inline-block;
+	height: 32px;
+	display: flex;
+	align-items: center;
 }
 
 .login_out li a {
 	text-decoration: none;
 	color: #80888a;
     margin: 0 8px;
+}
+
+.cart_img {
+	background-image: url(/resources/images/cart.png); 
+	background-repeat: no-repeat;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-size: 32px;
 }

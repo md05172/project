@@ -72,8 +72,7 @@
 									alt="" src="${fn:contains(sessionScope.customer.wish, item.id) == true ? '/resources/images/fullheart.png' : '/resources/images/heart.png'}"
 									 <c:if test="${fn:contains(sessionScope.customer.wish, item.id)}">
 								        data-wishid="${wishId}"
-								    </c:if>
-									>
+								    </c:if> >
 							</div>
 							<div class="btn">
 								<button class="cart" data-bookid="${item.id }">장바구니</button>

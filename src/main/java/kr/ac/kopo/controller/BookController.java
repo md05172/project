@@ -22,8 +22,8 @@ import kr.ac.kopo.service.BookService;
 public class BookController {
 	
 	final String path = "book/";
-//	final String uploadPath = "d:/upload/book/";
-	final String uploadPath = "c:/upload/book/";
+	final String uploadPath = "d:/upload/book/";
+//	final String uploadPath = "c:/upload/book/";
 	
 	@Autowired
 	BookService service;
