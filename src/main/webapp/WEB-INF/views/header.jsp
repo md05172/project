@@ -20,6 +20,7 @@
 			<ul class="login_out">  
 				<li><a href="${pageContext.request.contextPath }/customer/login">로그인</a></li>
 				<li><a href="${pageContext.request.contextPath }/customer/join">회원가입</a></li>
+				<li><a class="cart_img" href="${pageContext.request.contextPath }/cart"></a></li>
 			</ul>
 		</c:if>
 		
@@ -27,6 +28,7 @@
 			<ul class="login_out">
 				<li>${sessionScope.customer.name }</li>
 				<li><a href="${pageContext.request.contextPath }/customer/logout">로그아웃</a></li>
+				<li><a class="cart_img" href="${pageContext.request.contextPath }/cart"></a></li>
 			</ul> 
 		</c:if>
 		
@@ -34,6 +36,7 @@
 			<ul class="login_out">
 				<li>${sessionScope.api.name }</li>
 				<li><a href="${kakao_logout }">카카오 로그아웃</a></li>
+				<li><a class="cart_img" href="${pageContext.request.contextPath }/cart"></a></li>
 			</ul> 
 		</c:if>
 		
