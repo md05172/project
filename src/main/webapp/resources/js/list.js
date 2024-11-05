@@ -8,6 +8,7 @@ window.addEventListener('load', () => {
     // 찜하기 눌렀을때
     wish.forEach(e => {
         e.addEventListener('click', b => {
+
             const { bookid, custid } = b.target.dataset;
             const item = {
                 bookId: bookid,
@@ -161,6 +162,7 @@ window.addEventListener('load', () => {
     // 장바구니
     cart.forEach(e => {
         e.addEventListener('click', b => {
+
             const { bookid } = b.target.dataset;
 
             const items = {
