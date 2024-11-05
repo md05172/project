@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-* {
-	box-sizing: border-box;
-}
-
 body {
 	margin:0;
 	padding: 0;
@@ -16,8 +12,8 @@ body {
 .container {
 	width: 60%;
 	border-radius: 5px;
-	border: 2px solid burlywood;
-	box-shadow: 0px 0px 5px #b5b4b6;
+	border: 2px solid var(--main-color);
+	box-shadow: 0px 0px 5px var(--main-color);
 }
 
 .inner_container {
@@ -28,7 +24,7 @@ body {
 	width: 50%;
 	text-align: center;
 	margin: 12px 0;
-	border-right: 2px solid burlywood;
+	border-right: 1.5px solid var(--main-color);
 }
 
 .imgContainer label {
@@ -53,8 +49,8 @@ body {
 .file-preview img {
 	max-width: 100%;
 	height: 100%;
-	border: 1.5px solid #b5b4b6;
-	box-shadow: 0px 0px 5px #b5b4b6;
+	border: 1.5px solid var(--main-color);
+	box-shadow: 0px 0px 5px var(--main-color);
 }
 
 input[type="file"] {
@@ -74,7 +70,7 @@ input[type="file"] {
 .dataContainer select {
 	width: 22%;
 	border-radius: 5px;
-	border: 1.5px solid #b5b4b6;
+	border: 1.5px solid var(--main-color);
 	margin-left: 2%;
 	padding: 10px 20px;
 	font-size: 14px;
@@ -100,7 +96,7 @@ input[type="file"] {
 .dataContainer input, .dataContainer textarea {
 	width: 78%;
 	border-radius: 5px;
-	border: 1.5px solid #b5b4b6;
+	border: 1.5px solid var(--main-color);
 	padding: 13px 52px 13px 13px;
 }
 
@@ -134,5 +130,10 @@ input[type=number]::-webkit-outer-spin-button {
 	width: 100%;
 	height: 100%;
 	border-radius: 5px;
-	border: 1.5px solid #b5b4b6;
+	border: 1.5px solid var(--main-color);
+}
+
+.add {
+	color: white;
+	background: var(--main-color);
 }

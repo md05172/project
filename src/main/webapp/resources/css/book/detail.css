@@ -1,7 +1,4 @@
 @charset "UTF-8";
-* {
-	box-sizing: border-box;
-}
 
 .main_container {
  	width: 1200px;

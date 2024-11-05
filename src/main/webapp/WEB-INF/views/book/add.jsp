@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<jsp:include page="../deco.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/book/add.css">
 <script type="text/javascript" src="/resources/js/add.js"></script>
 <title></title>
