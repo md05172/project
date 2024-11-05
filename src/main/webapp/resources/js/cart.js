@@ -228,7 +228,29 @@ window.addEventListener('load', () => {
             }
         }); // end forEach
         
-        
+        fetch(`/cart/delete`, {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json; charset=utf-8"
+            },
+            body: JSON.stringify(items)
+        })
+        .then(resp => resp.json())
+        .then(result => {
+            document.querySelector('.body .item_cnt').textContent = '0개';
+            document.querySelector('.body .item_sum').textContent = '0원';
+            document.querySelector('.price').textContent = '0원';
+
+            // 체크된 도서들의 부모tr을 삭제
+            Object.keys(items).forEach(e => {
+                let input = document.querySelector(`input[data-bookid="${items[e]}"]`);
+
+                if(input) {
+                    input.closest('tr').remove();
+                }
+            })
+            
+        })
 
     }); // end delete click event
 
