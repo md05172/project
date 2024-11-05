@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<jsp:include page="../deco.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/customer/join.css">
 <script type="text/javascript" src="/resources/js/j	oin.js"></script>
 <title></title>
@@ -12,7 +13,7 @@
 <body>
 	<div class="container">
 		<form method="post">
-			<div class="logo">
+			<div class="join_logo">
 				<a href=""><img src="/resources/images/logo.png" alt="로고"></a>
 			</div>
 			<div class="info_box">

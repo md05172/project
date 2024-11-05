@@ -103,8 +103,9 @@
 		<div class="modal hide">
 			<div class="tip">
 				<div class="disc">
-					찜하기는 로그인 후 이용할 수 있어요
-				</div>
+					<p class="firs">찜하기는 로그인 후 이용할 수 있어요</p>
+					<p class="secon">로그인으로 이동하시겠습니까?</p>
+				</div> 
 				<div class="btn_group">
 					<button class="cancle">취소</button>
 					<button class="move">이동하기</button>
@@ -112,5 +113,6 @@
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>

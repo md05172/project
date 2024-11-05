@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<jsp:include page="../deco.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/customer/login.css">
 <script type="text/javascript" src="/resources/js/login.js"></script>
 <title></title>
@@ -13,7 +14,7 @@
 <body>
 	<div class="container">
 		<form method="post">
-			<div class="logo">
+			<div class="login_logo">
 				<a href="../"><img src="/resources/images/logo.png" alt="로고"></a>
 			</div>
 			<div class="login_box">
@@ -31,13 +32,15 @@
 				</div>
 				<div class="btn_box">
 					<button id="login" type="button">로그인</button>
-					<a href="join">회원가입</a>
+					<a href="join"><button id="join" type="button">회원가입</button></a>
 				</div>
 				<hr>
 				<p>소셜로그인</p>
 				<div class="social">
-					<a href="${kakao }"><img src="/resources/images/kakao_logo.png" alt="카카오로그인"></a>
-					<a href="${naver }"><img src="/resources/images/naver_logo.png" alt="네이버로그인"></a>
+					<div class="social_box">
+						<a href="${kakao }"><img src="/resources/images/kakao_logo.png" alt="카카오로그인"></a>
+						<a href="${naver }"><img src="/resources/images/naver_logo.png" alt="네이버로그인"></a>
+					</div>
 				</div>
 			</div>
 		</form>

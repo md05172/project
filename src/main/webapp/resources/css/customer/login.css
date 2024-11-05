@@ -1,12 +1,6 @@
 @charset "UTF-8";
 
-* {
-	box-sizing: border-box;
-}
-
 body {
-	margin: 0;
-	padding: 0;
 	height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -15,22 +9,22 @@ body {
 
 .container {
 	width: 30%;
-	border: 2px solid burlywood;
+	border: 2px solid var(--main-color);
 	border-radius: 5px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.logo {
+.login_logo {
 	height: 120px;
 	text-align: center;
 }
 
-.logo a {
+.login_logo a {
 	display: inline-block;
 	height: 100%;
 }
 
-.logo img {
+.login_logo img {
 	max-width: 100%;
 	height: 100%;
 }
@@ -38,7 +32,7 @@ body {
 .login_box {
 	width: 60%;
 	margin: 0 auto;
-	margin-bottom: 12px;
+	margin-bottom: 30px;
 }
 
 .login_box input {
@@ -56,16 +50,13 @@ body {
 }
 
 .btn_box button {
-	display: block;
 	width: 100%;
 	height: 40px;
 	border-radius: 5px;
-	border: 1.5px solid #b5b4b6;
+	background: var(--main-color);
+	color: var(--white-color);
 	margin-bottom: 12px;
-}
-
-.btn_box button:hover {
-	cursor: pointer;
+	border: none;
 }
 
 .btn_box a {
@@ -75,29 +66,39 @@ body {
 }
 
 .login_box > p {
-	font-size: 0.3em;
+	font-size: var(--font-to-small);
 	text-align: center;
 	color: gray;
 	margin-bottom: 12px;
 }
 
-.social {
-	text-align: center;
+.social_box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.social a {
-	display: inline-block;
+.social_box a {
+	display: block;
 	height: 40px;
-	margin: 0 3%;
+	width: 100%;
+	border-radius: 5px;
+	overflow: hidden;
 }
 
-.social img {
+.social_box a:first-child {
+	margin-right: 6px;
+}
+
+.social_box a:last-child {
+	margin-left: 6px;
+}
+
+.social_box a img {
 	width: 100%;
 	height: 100%;
-}
-
-.social img:nth-child(1) {
-	border-radius: 50%;
+	object-fit: fill;
 }
 
 .wrang_box {

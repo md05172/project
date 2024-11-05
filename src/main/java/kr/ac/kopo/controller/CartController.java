@@ -39,6 +39,15 @@ public class CartController {
 		return "cart";
 	}
 	
+	@GetMapping("/list")
+	@ResponseBody
+	Cart cart(@SessionAttribute(required = false) Cart cart) {
+		System.out.println("들어옴");
+		if(cart == null) cart = new Cart();
+		
+		return cart;
+	}
+	
 	@ResponseBody
 	@PostMapping("/add")
 	Cart add(@RequestBody Map<Long, Integer> items, @SessionAttribute(required = false) Cart cart, HttpSession session) {
@@ -50,9 +59,9 @@ public class CartController {
 		for (Map.Entry<Long, Integer> entry : items.entrySet()) {
 	        Long bookid = entry.getKey();
 	        Integer amount = entry.getValue();
-	        cart.setCart(bookid, amount);
+	        
+        	cart.setCart(bookid, amount);
 	    }
-		
 		return cart;
 	}
 	
