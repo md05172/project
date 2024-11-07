@@ -11,10 +11,8 @@ window.addEventListener('load', () => {
             body: JSON.stringify(items)
         })
             .then(resp => resp.json())
-            .then(result => {
-                console.log(result);
-            })
-    }
+            .then(result => {})
+    };
 
     // 개별 선택
     check_box_list.forEach(c => {
@@ -52,11 +50,7 @@ window.addEventListener('load', () => {
             }
 
             // 값이 계산 됐다면 보여준다.
-            console.log(document.querySelector('.body .item_cnt').textContent = guide_cnt + '개');
-            console.log(document.querySelector('.body .item_sum').textContent = guide_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원');
-            document.querySelector('.body .item_cnt').textContent = guide_cnt + '개';
-            document.querySelector('.body .item_sum').textContent = guide_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
-            document.querySelector('.price').textContent = guide_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+            showGuide(guide_cnt, guide_sum);
 
         }); // end click event
         
@@ -71,8 +65,8 @@ window.addEventListener('load', () => {
             c.checked = bool;
         });
 
-        let cnt2 = 0; // 상품수
-        let sum2 = 0; // 상품총합
+        let cnt = 0; // 상품수
+        let sum = 0; // 상품총합
 
         // 체크된 애들만 표시해준다
         check_box_list.forEach(c => {
@@ -80,24 +74,22 @@ window.addEventListener('load', () => {
                 // 체크박스의 부모 tr 요소 찾기
                 const row = c.closest('tr');
 
-                // 가격 수량 가져오기
-                const priceText = row.querySelector('td:nth-child(4) div').textContent.replace('원', '').trim();
+                // 가격 수량 가져오기parseInt(row.querySelector('td:nth-child(4) div').textContent.replace(/[^\d]/g, '', '').trim())
+                const priceText = row.querySelector('td:nth-child(4) div').textContent.replace(/[^\d]/g, '', '').trim();
+
                 const amountText = row.querySelector('.cnt').value;
 
-                cnt2 += Number(amountText);
-                sum2 += Number(priceText) * Number(amountText);
-
+                cnt += Number(amountText);
+                sum += Number(priceText) * Number(amountText);
+            
+            // 체크 해제 하면 0원으로 초기화
             } else {
-                document.querySelector('.body .item_cnt').textContent = '0개';
-                document.querySelector('.body .item_sum').textContent = '0원';
-                document.querySelector('.price').textContent = '0원';
+                showGuide(0, 0, 0);
             }
             
         }) // end forEach
         
-        document.querySelector('.body .item_cnt').textContent = cnt2 + '개';
-        document.querySelector('.body .item_sum').textContent = sum2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
-        document.querySelector('.price').textContent = sum2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+        showGuide(cnt, sum);
 
     }); //전체 선택
 
@@ -145,11 +137,7 @@ window.addEventListener('load', () => {
                     guide_sum = guide_price;
                 }
                 // 값이 계산 됐다면 보여준다.
-                console.log(document.querySelector('.body .item_cnt').textContent = guide_cnt + '개');
-                console.log(document.querySelector('.body .item_sum').textContent = guide_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원');
-                document.querySelector('.body .item_cnt').textContent = guide_cnt + '개';
-                document.querySelector('.body .item_sum').textContent = guide_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
-                document.querySelector('.price').textContent = guide_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+                showGuide(guide_cnt, guide_sum);
             } else {
                 document.querySelector('input.cnt').value = 99;
             }
@@ -167,13 +155,13 @@ window.addEventListener('load', () => {
             // 1보다 클때
             if (cnt > 1) {
 
-                // session의 값도 바껴야하기 때문에 서버로 값을 보낸다
                 let {bookid} = e.target.dataset;
-
+                
                 let items = {
                     [bookid]: -1
                 }
-
+                
+                // session의 값도 바껴야하기 때문에 서버로 값을 보낸다
                 addCart(items);
 
                 // input 값을 내려준다.
@@ -201,11 +189,7 @@ window.addEventListener('load', () => {
                     guide_sum = guide_price;
                 }
                 // 값이 계산 됐다면 보여준다.
-                console.log(document.querySelector('.body .item_cnt').textContent = guide_cnt + '개');
-                console.log(document.querySelector('.body .item_sum').textContent = guide_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원');
-                document.querySelector('.body .item_cnt').textContent = guide_cnt + '개';
-                document.querySelector('.body .item_sum').textContent = guide_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
-                document.querySelector('.price').textContent = guide_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+                showGuide(guide_cnt, guide_sum);
             
             // 1보다 작을때
             } else {
@@ -237,9 +221,7 @@ window.addEventListener('load', () => {
         })
         .then(resp => resp.json())
         .then(result => {
-            document.querySelector('.body .item_cnt').textContent = '0개';
-            document.querySelector('.body .item_sum').textContent = '0원';
-            document.querySelector('.price').textContent = '0원';
+            showGuide(0, 0, 0);
 
             // 체크된 도서들의 부모tr을 삭제
             Object.keys(items).forEach(e => {
@@ -248,10 +230,21 @@ window.addEventListener('load', () => {
                 if(input) {
                     input.closest('tr').remove();
                 }
+
+                if(document.querySelector('tbody').childElementCount < 1) {
+                    document.querySelector('.empty.hide').classList.remove('hide');
+                }
             })
             
         })
 
     }); // end delete click event
+
+    // 값 보여주기
+    const showGuide = (guide_amount, guide_sum) => {
+        document.querySelector('.body .item_cnt').textContent = guide_amount + '개';
+        document.querySelector('.body .item_sum').textContent = guide_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+        document.querySelector('.price').textContent = guide_sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+    };
 
 }); // end window load event

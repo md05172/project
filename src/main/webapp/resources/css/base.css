@@ -2,9 +2,13 @@
 
 :root {
 	--main-color: #45486b;
+	--cart-color: #77789f;
+	--buy-color: #cfa716;
 	--font-small: 14px;
 	--font-to-small: 11px;
 	--font-color-gray: #535353;
+	--font-color: #595959;
+	--font-color-light-gray: #767676;
 	--border-color: #80888a;
 	--white-color: #fff;
 	--black-color: #000;
@@ -29,5 +33,5 @@ button:hover, img:hover, input[type="checkbox"]:hover, label:hover {
 }
 
 input[type="checkbox"] {
-    accent-color: var(--main-color);
+    accent-color: var(--cart-color);
 }

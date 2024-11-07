@@ -1,5 +1,6 @@
 package kr.ac.kopo.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
@@ -12,7 +13,7 @@ public class Customer {
 
 	private Address address;
 
-	private List<Wish> wish;
+	private List<Wish> wish = new ArrayList<Wish>();
 
 	public Long getId() {
 		return id;
@@ -74,6 +75,7 @@ public class Customer {
 	public List<Wish> getWish() {
 		return wish;
 	}
+
 
 	public void setWish(List<Wish> wish) {
 		this.wish = wish;

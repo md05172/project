@@ -52,6 +52,7 @@ public class CustomerServiceImpl implements CustomerService{
 					
 				// 비밀번호는 보안을 위해 없애준다.
 				item.setPassword(null);
+				System.out.println("화긴함 " + item);
 				return true;
 			}
 		}
