@@ -3,11 +3,53 @@ window.addEventListener('load', () => {
     document.querySelector('.review_submit').addEventListener('click', e => {
         
         // 로그인이 안되면 알려준다
-        console.log(e.target.dataset.bookid)
-        console.log(e.target.dataset.custid)
-        
-        const review = document.querySelector('.review_write textarea').value;
+        if(e.target.dataset.custid === 'false') {
+            // hide class를 없애서 보여준다.
+            document.querySelector('#modal .modal').classList.remove('hide');
 
+            // modal_bacground class를 추가해서 미리 작성한 css가 적용되도록 한다.
+            document.querySelector('#modal').classList.add('modal_background');
+
+            // 취소버튼을 누르면 모달이 닫힌다.
+            document.querySelector('.cancle').addEventListener('click', () => {
+                document.querySelector('.modal').classList.add('hide');
+                document.querySelector('#modal').classList.remove('modal_background');
+            });
+
+            // 모달의 뒷배경을 누르면 닫히고 모달을 누를땐 닫히지 않는다.
+            document.querySelector('#modal').addEventListener('click', e => {
+                if (e.target === document.querySelector('#modal')) {
+                    document.querySelector('.modal').classList.add('hide');
+                    document.querySelector('#modal').classList.remove('modal_background');
+                }
+            });
+
+            // 이동하기의 주소를 설정한다.
+            document.querySelector('.move').addEventListener('click', () => {
+                location.href = '/customer/login';
+            });
+        }
+        
+        const text = document.querySelector('.text').value;
+        const {bookid, custid} = e.target.dataset;
+
+        const item = {
+            comments: text,
+            bookId: bookid,
+            custId: custid
+        };
+
+        fetch(`/review`, {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json; charset=utf-8"
+            },
+            body: JSON.stringify(item)
+        })
+        .then(resp => resp.json())
+        .then(result => {
+            console.log(result);
+        })
 
     })
 
@@ -98,4 +140,5 @@ window.addEventListener('load', () => {
     }
 
     updateStars(currentRating);
+
 });

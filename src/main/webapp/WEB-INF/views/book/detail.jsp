@@ -29,14 +29,21 @@
 				<span class="writer">${item.writer }</span>
 				<span class="publisher">${item.publisher }</span>
 				<div class="heart">
-					<c:if test="${wish.bookId ==  item.id}">
-						<c:set var="wishId" value="${wish.id }"/>
-					</c:if>
+					<c:forEach var="wishs" items="${sessionScope.customer.wish }">
+						<c:if test="${wishs.bookId == item.id }">
+							<c:set var="wishId" value="${wishs.id }"></c:set>
+							<c:set var="wishbookId" value="${wishs.bookId }"></c:set>
+						</c:if>
+					</c:forEach>
 					<img class="wish" data-bookid="${item.id }" data-custid="${sessionScope.customer.id != null ? sessionScope.customer.id : 'false' }"
-						alt="" src="${fn:contains(sessionScope.customer.wish, item.id) ? '/resources/images/fullheart.png' : '/resources/images/heart.png'}"
-						 <c:if test="${fn:contains(sessionScope.customer.wish, item.id)}">
-					        data-wishid="${wishId}"
-					    </c:if> >
+						alt="" 
+						src="${wishbookId != '' && wishbookId == item.id ? '/resources/images/fullheart.png' : '/resources/images/heart.png'}"
+						<c:if test="${wishbookId != '' && wishbookId == item.id }">
+							data-wishid="${wishId }"
+						</c:if>
+						>
+					<c:set var="wishId" value=""></c:set>
+					<c:set var="wishbookId" value=""></c:set>
 				</div>
 				<div class="price_box">
 					<span class="price">${item.price }</span>
@@ -173,7 +180,7 @@
                 		</div>
 					</div>
 					<div class="review_write">
-						<textarea placeholder="이 책을 읽고 어떤 느낌을 받으셨나요? 리뷰를 남기고 다른 독자들과 함께 공유해보세요."></textarea>
+						<textarea class="text" placeholder="이 책을 읽고 어떤 느낌을 받으셨나요? 리뷰를 남기고 다른 독자들과 함께 공유해보세요."></textarea>
 						<button class="review_submit" data-bookid="${item.id }" data-custid="${sessionScope.customer != null ? sessionScope.customer.id : 'false' }">작성</button>
 					</div>
 				</div>
@@ -251,6 +258,21 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+		</div>
+	</div>
+	
+	<div id="modal">
+		<div class="modal hide">
+			<div class="tip">
+				<div class="disc">
+					<p class="firs">리뷰는 로그인 후 이용할 수 있어요</p>
+					<p class="secon">로그인으로 이동하시겠습니까?</p>
+				</div> 
+				<div class="btn_group">
+					<button class="cancle">취소</button>
+					<button class="move">이동하기</button>
+				</div>
 			</div>
 		</div>
 	</div>

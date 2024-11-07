@@ -1,5 +1,7 @@
 package kr.ac.kopo.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +23,13 @@ public class WishController {
 	WishService service;
 	
 	@PostMapping
-	Customer wish(@RequestBody Wish wish, @SessionAttribute Customer customer) {
+	Customer wish(@RequestBody Wish wish, @SessionAttribute Customer customer, HttpSession session) {
 		service.add(wish); // 등록하고
 		customer = service.wishList(customer); // 다시 목록을 가져와서 customer에 넣어준다
-		customer.getWish();
+		
+		System.out.println("찜등록 " + customer);
+		
+		session.setAttribute("customer", customer);
 		return customer;
 	}
 	
