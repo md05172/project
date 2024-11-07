@@ -1,6 +1,7 @@
 package kr.ac.kopo.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.kopo.model.Book;
+import kr.ac.kopo.model.Customer;
 import kr.ac.kopo.page.Pager;
 import kr.ac.kopo.service.BookService;
 
@@ -29,8 +32,14 @@ public class BookController {
 	BookService service;
 	
 	@GetMapping("/list")
-	String list(Model model, Pager pager) {
+	String list(Model model, Pager pager, @SessionAttribute(required = false) Customer customer) {
 		model.addAttribute("list", service.list(pager));
+		if(customer != null) {
+			model.addAttribute("wish", customer.getWish());
+			System.out.println("list 들어감 " + customer.getWish());
+		} else {
+			model.addAttribute("wish", new ArrayList<>());
+		}
 		
 		return path + "list";
 	}

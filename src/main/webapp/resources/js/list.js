@@ -52,11 +52,15 @@ window.addEventListener('load', () => {
                     console.log(typeof result);
                     console.log(typeof result.wish);
 
-                    result.wish.forEach(() => {
-                        if(result.wish.bookid == bookid) {
-                            console.log(result.wish.id);
-                            b.target.setAttribute('data-wishid', result.wish.id);
-                            b.target.dataset.wishid = result.wish.id;
+                    result.wish.forEach(item => {
+                        console.log(item);
+                        console.log(typeof item.bookId);
+                        console.log(typeof bookid);
+                        console.log(item.bookId == bookid);
+                        if(item.bookId == bookid) {
+                            console.log(item.id);
+                            b.target.setAttribute('data-wishid', item.id);
+                            b.target.dataset.wishid = item.id;
                             console.log(b.target.dataset.wishid);
                         }
                     })

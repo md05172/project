@@ -42,13 +42,8 @@
 			<button class="all_cart">장바구니</button>
 		</div>
 		<ul class="item_list">
-			<c:forEach var="item" items="${list }">
-				<c:forEach var="wish" items="${sessionScope.customer.wish }">
-					<c:if test="${wish.bookId == item.id }">
-						<c:set var="findwish" value="${wish }"></c:set>
-					</c:if>
-				</c:forEach>
 			
+			<c:forEach var="item" items="${list }">
 				<li>
 					<div class="item">
 						<div class="check">
@@ -69,10 +64,21 @@
 						</div>
 						<div class="buycart">
 							<div class="heart">
-								<img class="wish" data-bookid="${item.id }" data-custid="${sessionScope.customer.id != null ? sessionScope.customer.id : 'false' }"
-									alt="" 
-									src="${findwish.bookId == item.id ? '/resources/images/fullheart.png' : '/resources/images/heart.png'}"
-									data-wishid="${findwish.id }">
+								<c:forEach var="wishs" items="${wish }">
+									<c:if test="${wishs.bookId == item.id }">
+										<c:set var="wishId" value="${wishs.id }"></c:set>
+										<c:set var="wishbookId" value="${wishs.bookId }"></c:set>
+									</c:if>
+								</c:forEach>
+									<img class="wish" data-bookid="${item.id }" data-custid="${sessionScope.customer.id != null ? sessionScope.customer.id : 'false' }"
+										alt="" 
+										src="${wishbookId != '' && wishbookId == item.id ? '/resources/images/fullheart.png' : '/resources/images/heart.png'}"
+										<c:if test="${wishbookId != '' && wishbookId == item.id }">
+											data-wishid="${wishId }"
+										</c:if>
+										>
+								<c:set var="wishId" value=""></c:set>
+								<c:set var="wishbookId" value=""></c:set>
 							</div>
 							<div class="btn">
 								<button class="cart" data-bookid="${item.id }">장바구니</button>
