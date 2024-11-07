@@ -21,9 +21,7 @@
 				<div class="wrang_box">
 					<p class="wrang"></p>
 				</div>
-				<c:if test="${sessionScope.error != null }">
-					<p class="error" style="color: red; font-size: 0.9em;">${sessionScope.error }</p>
-				</c:if>
+				<p class="error" style="color: red; font-size: 0.9em;"></p>
 				<div class="id_box">
 					<input type="text" name="email" placeholder="이메일">
 				</div>

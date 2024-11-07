@@ -14,6 +14,7 @@ import kr.ac.kopo.model.Customer;
 import kr.ac.kopo.service.CustomerService;
 import kr.ac.kopo.service.KakaoService;
 import kr.ac.kopo.service.NaverService;
+import kr.ac.kopo.service.WishService;
 
 @Controller
 @RequestMapping("/customer")
@@ -23,24 +24,24 @@ public class CustomerController {
 	
 	@Autowired
 	CustomerService service;
+	@Autowired
+	WishService wishService;
 	
 	@GetMapping("/login") 
 	String login(HttpSession session, Model model) {
 		model.addAttribute("naver", NaverService.NAVERURL);
 		model.addAttribute("kakao", KakaoService.KAKAOURL);
-		
+	
 		return path + "login";
 	}
 	
 	@PostMapping("/login")
 	String login(HttpSession session, Customer item) {
 		if(service.login(item)) {
+			System.out.println("담겼나 ? " + item);
 			session.setAttribute("customer", item);
-			session.removeAttribute("error");
-			
 			return "redirect:../";
 		} else {
-			session.setAttribute("error", "아이디 비밀번호가 맞지 않습니다.");
 			return "redirect:login";
 		}
 	}
@@ -60,7 +61,6 @@ public class CustomerController {
 	@PostMapping("/join")
 	String join(HttpSession session, Customer item) {
 		System.out.println(item);
-		session.removeAttribute("error");
 		service.join(item);
 		return "redirect:login";
 	}

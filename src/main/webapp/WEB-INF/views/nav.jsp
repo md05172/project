@@ -2,14 +2,21 @@
     pageEncoding="UTF-8"%>
 <!-- 메뉴 -->
 <nav>
-	<ul>
-		<li><a href="">베스트</a></li>
-		<li><a href="${pageContext.request.contextPath }/book/list">국내도서</a></li>
-		<li><a href="">외국도서</a></li>
-		<li><a href="">이벤트</a></li>
-		<li><a href="">고객센터</a></li>
-		<li><a href="${pageContext.request.contextPath }/book/dummy">더미데이터</a></li>
-		<li><a href="${pageContext.request.contextPath }/book/init">초기화</a></li>
-		<li><a href="${pageContext.request.contextPath }/book/add">도서등록</a></li>
-	</ul>
+	<div class="menu_box">
+		<ul class="left">
+			<li><a href="${pageContext.request.contextPath }/book/list">국내도서</a></li>
+			<li><a href="">베스트</a></li>
+			<li><a href="">신상품</a></li>
+			<li><a href="">추천</a></li>
+			<li><a href="${pageContext.request.contextPath }/book/add">도서등록</a></li>
+		</ul>
+		
+		<ul class="right">
+			<li><a href="">사은픔</a></li>
+			<li><a href="">문화행사</a></li>
+			<li><a href="">이벤트</a></li>
+			<li><a href="">출석체크</a></li>
+			<li><a href="">노벨문학상</a></li>
+		</ul>
+	</div>
 </nav>   

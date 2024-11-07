@@ -1,14 +1,22 @@
 window.addEventListener('load', () => {
-
     const wish = document.querySelectorAll('.wish');
     const cart = document.querySelectorAll('.cart');
-    const buy = document.querySelector('buy');
     const check_box_list = document.querySelectorAll('.check_box');
+    const allCheck = document.querySelector('.all_check');
+    const allCartBtn = document.querySelector('.all_cart');
+
+    const login_message = '찜하기는 로그인 후 이용할 수 있어요';
+    const login_message2 = '로그인으로 이동하시겠습니까?';
+    const login_src = '/customer/login';
+    
+    const cart_message = '장바구니에 상품이 담겼습니다.';
+    const cart_message2 = '장바구니에 상품이 있어 수량이 추가되었습니다.';
+    const cart_message3 = '장바구니로 이동하시겠습니까?';
+    const cart_src = '/cart'
 
     // 찜하기 눌렀을때
     wish.forEach(e => {
         e.addEventListener('click', b => {
-
             const { bookid, custid } = b.target.dataset;
             const item = {
                 bookId: bookid,
@@ -18,33 +26,17 @@ window.addEventListener('load', () => {
             // 로그인 안했으면 보내버리기
             if (custid === 'false') {
                 // 모달 보이기
-                document.querySelector('#modal .modal').classList.remove('hide');
-                // modal 뒷 배경
-                document.querySelector('#modal').classList.add('modal_background');
-
-                // 취소 버튼
-                document.querySelector('.cancle').addEventListener('click', () => {
-                    document.querySelector('.modal').classList.add('hide');
-                    document.querySelector('#modal').classList.remove('modal_background');
-                });
-
-                // 뒷 배경 클릭
-                document.querySelector('#modal').addEventListener('click', e => {
-                    if (e.target === document.querySelector('#modal')) {
-                        document.querySelector('.modal').classList.add('hide');
-                        document.querySelector('#modal').classList.remove('modal_background');
-                    }
-                });
-
-                document.querySelector('.move').addEventListener('click', () => {
-                    location.href = '/customer/login';
-                });
+                document.querySelector('.disc .secon').style.marginTop = '22px';
+                showCartModal(login_message, login_message2, login_src);
 
                 return;
-            };
+            }
 
-            // 빈 하트라면 찜하기
-            if (b.target.src.substr(b.target.src.lastIndexOf("/") + 1) === 'heart.png') {
+            // 하트 버튼 클릭 시
+            const currentImgSrc = b.target.src.substr(b.target.src.lastIndexOf("/") + 1);
+            
+            // 빈 하트라면
+            if (currentImgSrc === 'heart.png') {
                 fetch('/wish', {
                     method: "POST",
                     body: JSON.stringify(item),
@@ -52,195 +44,151 @@ window.addEventListener('load', () => {
                         "Content-Type": "application/json; charset=utf-8"
                     }
                 })
-                    .then(resp => resp.text())
-                    .then(result => {
-                        // 등록 성공이면 빨간 하트로 바꾸기
-                        if (result === 'ok') {
-                            b.target.src = '/resources/images/fullheart.png';
-                        }
-                    });
+                .then(resp => resp.json())
+                .then(result => {
+                    // customer의 wish에 있는 bookid랑 찜하기누른 booki랑 같으면 wishid에 id를 넣어준다
+                    // key값으로 꺼낼때 만약 id랑 bookid가 같을수도있으니까 key를 무시하고 반복을 돌면서 bookid만비교한다
+                    console.log(result);
+                    console.log(typeof result);
+                    console.log(typeof result.wish);
 
-                // 찜한 상태라면 찜 취소
+                    result.wish.forEach(() => {
+                        if(result.wish.bookid == bookid) {
+                            console.log(result.wish.id);
+                            b.target.setAttribute('data-wishid', result.wish.id);
+                            b.target.dataset.wishid = result.wish.id;
+                            console.log(b.target.dataset.wishid);
+                        }
+                    })
+                    b.target.src = '/resources/images/fullheart.png';
+                });
+            // 꽉찬 하트하면    
             } else {
                 const { wishid } = b.target.dataset;
 
+                console.log(wishid);
+                
                 fetch(`/wish/${wishid}`, {
-                    method: "DELETE"
+                method: "DELETE"
                 })
-                    .then(resp => resp.text())
-                    .then(result => {
-                        console.log("delete" + result);
-                        b.target.src = '/resources/images/heart.png';
-                    })
-            };
-
+                .then(resp => resp.text())
+                .then(result => {
+                    b.target.src = '/resources/images/heart.png';
+                });
+            }
         });
-    }); // 찜하기  
+    });
 
     // 전체 선택 클릭시
-    document.querySelector('.all_check').addEventListener('click', e => {
+    allCheck.addEventListener('click', e => {
         let bool = e.target.checked;
         check_box_list.forEach(c => {
             c.checked = bool;
         });
-    }); //전체 선택
+    });
 
-    // 전체담기 버튼
-    document.querySelector('.all_cart').addEventListener('click', () => {
+    // 전체 담기 버튼
+    allCartBtn.addEventListener('click', () => {
         const items = {};
-        // 상품을 다 가져온다.
+
+        // 체크박스를 돌면서 체크된 상품을 담는다.
         check_box_list.forEach(c => {
-            // 체그 된 상태라면 Map에 담는다.
             if (c.checked) {
                 const { bookid } = c.dataset;
                 items[bookid] = 1;
             }
-        }); // 반복해서 체크된 아이템 다 가져옴
+        });
 
-        console.log(items); // 담긴거 확인
-
-        // 담긴 아이템 서버로보내기
-        fetch(`/cart/add`, {
+        // 체크된 상품이 1개 이상일때 서버로 보낸다.
+        if (Object.keys(items).length > 0) {
+            fetch(`/cart/add`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
             },
             body: JSON.stringify(items)
-        })
-        .then(resp => resp.json())
-        .then(result => {
-
-            // 체크된 체크박스 해제
-            check_box_list.forEach(c => {
-                c.checked = false;
-            });
-
-            // 모달 보이기
-            document.querySelector('#modal .modal').classList.remove('hide');
-            // modal 뒷 배경
-            document.querySelector('#modal').classList.add('modal_background');
-
-            // 글씨 바꿔주기
-            document.querySelector('.disc .firs').textContent = '장바구니에 상품이 담겼습니다.';
-            document.querySelector('.disc .secon').textContent = '장바구니로 이동하시겠습니까?';
-
-            // 취소 버튼
-            document.querySelector('.cancle').addEventListener('click', () => {
-                document.querySelector('.modal').classList.add('hide');
-                document.querySelector('#modal').classList.remove('modal_background');
-            });
-
-            // 뒷 배경 클릭
-            document.querySelector('#modal').addEventListener('click', e => {
-                if (e.target === document.querySelector('#modal')) {
-                    document.querySelector('.modal').classList.add('hide');
-                    document.querySelector('#modal').classList.remove('modal_background');
-                }
-            });
-
-            document.querySelector('.move').addEventListener('click', e => {
-                location.href = '/cart';
-            });
-        }) // end fetch
-    }); // end click
-
-    // 카트에 담기
-    const addCart = items => {
-        fetch(`/cart/add`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-            body: JSON.stringify(items)
-        })
+            })
             .then(resp => resp.json())
             .then(result => {
-                console.log(result);
-            })
-    }
+                check_box_list.forEach(c => {
+                    c.checked = false;
+                });
 
-    // 장바구니
+                document.querySelector('.disc .secon').style.marginTop = '22px';
+                showCartModal(cart_message, cart_message3, cart_src);
+            });
+        }
+    });
+
+    // 장바구니 버튼 클릭
     cart.forEach(e => {
         e.addEventListener('click', b => {
-
             const { bookid } = b.target.dataset;
-
             const items = {
                 [bookid]: 1
             };
 
             fetch(`/cart/list`)
-                .then(resp => resp.json())
-                .then(result => {
+            .then(resp => resp.json())
+            .then(result => {
+                // 이미 있는 카트에 담긴 상품일때
+                if (Object.keys(result.cart).includes(bookid)) {
+                    addCart(items);
+                    document.querySelector('.disc .secon').style.marginTop = '0px';
+                    showCartModal(cart_message2, cart_message3, cart_src);
 
-                    // 상품이 있을때
-                    if (Object.keys(result.cart).includes(bookid)) {
+                // 새로 담긴 상품일때
+                } else {
+                    addCart(items);
+                    document.querySelector('.disc .secon').style.marginTop = '22px';
+                    showCartModal(cart_message, cart_message3, cart_src);
+                }
+            });
+        });
+    });
 
-                        addCart(items);
+    // 장바구니 추가
+    const addCart = (items) => {
+        fetch(`/cart/add`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8"
+        },
+        body: JSON.stringify(items)
+        })
+        .then(resp => resp.json())
+        .then(result => {});
+    }
 
-                        document.querySelector('.btn_group').style.marginTop = '45px';
+    // 장바구니 모달 표시
+    const showCartModal = (message, message2, src) => {
+        // hide class를 없애서 보여준다.
+        document.querySelector('#modal .modal').classList.remove('hide');
 
-                        // 모달 보이기
-                        document.querySelector('#modal .modal').classList.remove('hide');
-                        // modal 뒷 배경
-                        document.querySelector('#modal').classList.add('modal_background');
+        // modal_bacground class를 추가해서 미리 작성한 css가 적용되도록 한다.
+        document.querySelector('#modal').classList.add('modal_background');
 
-                        // 글씨 바꿔주기
-                        document.querySelector('.disc .firs').textContent = '장바구니에 상품이 있어 수량이 추가되었습니다.';
-                        document.querySelector('.disc .secon').textContent = '장바구니로 이동하시겠습니까?';
+        // 들어온 값으로 text값을 대체한다.
+        document.querySelector('.disc .firs').textContent = message;
+        document.querySelector('.disc .secon').textContent = message2;
 
-                        // 취소 버튼
-                        document.querySelector('.cancle').addEventListener('click', () => {
-                            document.querySelector('.modal').classList.add('hide');
-                            document.querySelector('#modal').classList.remove('modal_background');
-                        });
+        // 취소버튼을 누르면 모달이 닫힌다.
+        document.querySelector('.cancle').addEventListener('click', () => {
+            document.querySelector('.modal').classList.add('hide');
+            document.querySelector('#modal').classList.remove('modal_background');
+        });
 
-                        // 뒷 배경 클릭
-                        document.querySelector('#modal').addEventListener('click', e => {
-                            if (e.target === document.querySelector('#modal')) {
-                                document.querySelector('.modal').classList.add('hide');
-                                document.querySelector('#modal').classList.remove('modal_background');
-                            }
-                        });
+        // 모달의 뒷배경을 누르면 닫히고 모달을 누를땐 닫히지 않는다.
+        document.querySelector('#modal').addEventListener('click', e => {
+            if (e.target === document.querySelector('#modal')) {
+                document.querySelector('.modal').classList.add('hide');
+                document.querySelector('#modal').classList.remove('modal_background');
+            }
+        });
 
-                        document.querySelector('.move').addEventListener('click', e => {
-                            location.href = '/cart';
-                        });
-
-                        // 상품이 없을때
-                    } else {
-
-                        addCart(items);
-
-                        // 모달 보이기
-                        document.querySelector('#modal .modal').classList.remove('hide');
-                        // modal 뒷 배경
-                        document.querySelector('#modal').classList.add('modal_background');
-
-                        // 글씨 바꿔주기
-                        document.querySelector('.disc .firs').textContent = '장바구니에 상품이 담겼습니다.';
-                        document.querySelector('.disc .secon').textContent = '장바구니로 이동하시겠습니까?';
-
-                        // 취소 버튼
-                        document.querySelector('.cancle').addEventListener('click', () => {
-                            document.querySelector('.modal').classList.add('hide');
-                            document.querySelector('#modal').classList.remove('modal_background');
-                        });
-
-                        // 뒷 배경 클릭
-                        document.querySelector('#modal').addEventListener('click', e => {
-                            if (e.target === document.querySelector('#modal')) {
-                                document.querySelector('.modal').classList.add('hide');
-                                document.querySelector('#modal').classList.remove('modal_background');
-                            }
-                        });
-
-                        document.querySelector('.move').addEventListener('click', e => {
-                            location.href = '/cart';
-                        });
-                    }
-                }) // end fetch
-        }); // end click event
-    }); // end forEach
-
+        // 이동하기의 주소를 설정한다.
+        document.querySelector('.move').addEventListener('click', () => {
+            location.href = src;
+        });
+    };
 });

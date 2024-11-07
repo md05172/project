@@ -228,7 +228,12 @@ td:last-child {
 
 .item_info p:nth-child(2){
    font-size: 14px;
-    color: #3d3c3f;
+ 
+}
+
+.item_info p:nth-child(2) > a{
+	color: #3d3c3f;
+	text-decoration: none; 
 }
 
 .item_info p:nth-child(3){
@@ -260,4 +265,8 @@ td:last-child {
     background: var(--main-color);
     color: var(--white-color);
     margin-left: 12px;
+}
+
+.hide {
+	display: none;
 }

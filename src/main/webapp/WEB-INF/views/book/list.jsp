@@ -43,6 +43,12 @@
 		</div>
 		<ul class="item_list">
 			<c:forEach var="item" items="${list }">
+				<c:forEach var="wish" items="${sessionScope.customer.wish }">
+					<c:if test="${wish.bookId == item.id }">
+						<c:set var="findwish" value="${wish }"></c:set>
+					</c:if>
+				</c:forEach>
+			
 				<li>
 					<div class="item">
 						<div class="check">
@@ -63,16 +69,10 @@
 						</div>
 						<div class="buycart">
 							<div class="heart">
-								<c:forEach var="wish" items="${sessionScope.customer.wish }">
-									<c:if test="${wish.bookId ==  item.id}">
-										<c:set var="wishId" value="${wish.id }"/>
-									</c:if>
-								</c:forEach>
 								<img class="wish" data-bookid="${item.id }" data-custid="${sessionScope.customer.id != null ? sessionScope.customer.id : 'false' }"
-									alt="" src="${fn:contains(sessionScope.customer.wish, item.id) == true ? '/resources/images/fullheart.png' : '/resources/images/heart.png'}"
-									 <c:if test="${fn:contains(sessionScope.customer.wish, item.id)}">
-								        data-wishid="${wishId}"
-								    </c:if> >
+									alt="" 
+									src="${findwish.bookId == item.id ? '/resources/images/fullheart.png' : '/resources/images/heart.png'}"
+									data-wishid="${findwish.id }">
 							</div>
 							<div class="btn">
 								<button class="cart" data-bookid="${item.id }">장바구니</button>

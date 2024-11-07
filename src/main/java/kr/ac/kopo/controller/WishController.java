@@ -21,16 +21,19 @@ public class WishController {
 	WishService service;
 	
 	@PostMapping
-	String wish(@RequestBody Wish wish) {
-		int success = service.add(wish);
-		if(success > 0) return "ok";
-		 else return "no";
+	Customer wish(@RequestBody Wish wish, @SessionAttribute Customer customer) {
+		service.add(wish); // 등록하고
+		customer = service.wishList(customer); // 다시 목록을 가져와서 customer에 넣어준다
+		customer.getWish();
+		return customer;
 	}
 	
 	@DeleteMapping("/{id}")
 	String delete(@PathVariable Long id, @SessionAttribute Customer customer) {
-		System.out.println(customer);
+		System.out.println("삭제전 " + customer);
 		customer.getWish().removeIf(e -> e.getId() == id);
+		
+		System.out.println("삭제후 " + customer);
 		int delete = service.delete(id);
 		
 		if(delete > 0) return "ok";

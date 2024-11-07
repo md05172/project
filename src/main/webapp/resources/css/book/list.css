@@ -11,6 +11,7 @@ section {
 	display: flex;
 	flex-direction: column;
 	padding-left: 40px;
+	width: 100%;
 }
 
 .all_box {
@@ -27,12 +28,16 @@ section {
 }
 
 .all_box button {
-	width: 70px;
+    width: 100px;
+    text-align: right;
     height: 40px;
     border-radius: 5px;
     border: 1.5px solid var(--main-color);
     margin-left: 20px;
-    margin-right: 20px;
+    background-image: url(/resources/images/cart.png);
+    background-size: 23px;
+    background-repeat: no-repeat;
+    background-position: 4px 6px;
 }
 
 .sidemenu {
@@ -160,8 +165,13 @@ section {
     width: 25px;
     position: absolute;
     height: 25px;
-    right: 45px;
+    right: 47px;
     top: 19%;
+}
+
+.heart img {
+	width: 100%;
+	height: 100%;
 }
 
 .btn {
@@ -171,16 +181,14 @@ section {
 
 .btn .cart{
 	color: var(--white-color);
-	background: var(--main-color);
+	background: var(--cart-color);
+	border: none;
 }
 
-.heart img {
-	width: 100%;
-	height: 100%;
-}
-
-.heart i {
-    color: #333;
+.btn .buy {
+	color: var(--white-color);
+	background: var(--buy-color);
+	border: none;
 }
 
 .item_name {
@@ -272,7 +280,7 @@ section {
 }
 
 .btn_group {
-	margin-top: 34px;
+	margin-top: 45px;
 	display: flex;
 }
 
@@ -283,6 +291,11 @@ section {
     border-radius: 5px;
     border: 1.5px solid var(--main-color);
     text-align: center;
+}
+
+.move {
+	background: var(--main-color);
+	color: var(--white-color);
 }
 
 .modal_background {
