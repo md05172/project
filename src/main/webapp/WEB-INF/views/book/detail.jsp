@@ -184,6 +184,15 @@
 						<button class="review_submit" data-bookid="${item.id }" data-custid="${sessionScope.customer != null ? sessionScope.customer.id : 'false' }">작성</button>
 					</div>
 				</div>
+				<div class="review_list_box">
+					<div class="review_list_empty">
+					
+					</div>
+					
+					<div class="review_list">
+					
+					</div>
+				</div>
 			</div>
 			
 			<div class="claim_box">

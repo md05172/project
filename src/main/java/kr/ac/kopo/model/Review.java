@@ -8,6 +8,7 @@ public class Review {
 	private Long custId;
 	private String comments;
 	private Date writeDate;
+	private Float star;
 
 	public Long getId() {
 		return id;
@@ -47,6 +48,14 @@ public class Review {
 
 	public void setWriteDate(Date writeDate) {
 		this.writeDate = writeDate;
+	}
+
+	protected Float getStar() {
+		return star;
+	}
+
+	protected void setStar(Float star) {
+		this.star = star;
 	}
 
 	@Override
