@@ -8,7 +8,9 @@ public class Review {
 	private Long custId;
 	private String comments;
 	private Date writeDate;
-	private Float star;
+	private Double star;
+
+	private Integer select;
 
 	public Long getId() {
 		return id;
@@ -50,12 +52,20 @@ public class Review {
 		this.writeDate = writeDate;
 	}
 
-	protected Float getStar() {
+	public Double getStar() {
 		return star;
 	}
 
-	protected void setStar(Float star) {
+	public void setStar(Double star) {
 		this.star = star;
+	}
+
+	public Integer getSelect() {
+		return select;
+	}
+
+	public void setSelect(Integer select) {
+		this.select = select;
 	}
 
 	@Override

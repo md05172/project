@@ -21,8 +21,8 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public List<Review> list() {
-		return dao.list();
+	public List<Review> list(Review review) {
+		return dao.list(review);
 	}
 
 	@Override

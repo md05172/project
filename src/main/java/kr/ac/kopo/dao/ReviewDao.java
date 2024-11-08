@@ -8,7 +8,7 @@ public interface ReviewDao {
 
 	void add(Review review);
 
-	List<Review> list();
+	List<Review> list(Review review);
 
 	Review item(Long id);
 	

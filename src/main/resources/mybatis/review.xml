@@ -15,7 +15,15 @@
 	
 	<select id="list" resultType="Review">
 		SELECT * FROM review
-		ORDER BY write_date DESC
+		
+		WHERE book_id = #{bookId}
+		<if test="select == 1">
+			ORDER BY write_date ASC
+		</if>
+		
+		<if test="select == 2">
+			ORDER BY star ASC
+		</if>
 	</select>
 	
 	<select id="item" resultType="Review">

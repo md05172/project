@@ -20,8 +20,8 @@ public class ReviewDaoImpl implements ReviewDao{
 	}
 
 	@Override
-	public List<Review> list() {
-		return sql.selectList("review.list");
+	public List<Review> list(Review review) {
+		return sql.selectList("review.list", review);
 	}
 
 	@Override
