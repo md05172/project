@@ -13,9 +13,48 @@
 		
 	</insert>
 	
-	<select id="list" resultType="Review">
-		SELECT * FROM review
+	<!-- 로그인시 해당 유저가 등록한 리뷰를 가져오기 -->
+	<resultMap type="Customer" id="customerReview" autoMapping="true">
+		<id column="id" property="id" javaType="Long"/>
 		
+		<collection column="cust_id" property="review" ofType="Review" javaType="ArrayList" autoMapping="true">
+			<id column="review_id" property="id" javaType="Long"/>
+		</collection>
+	</resultMap>
+	
+	<select id="customer_review" resultMap="customerReview">
+		SELECT customer.*,
+			review.id review_id,
+			review.book_id,
+			review.cust_id cust_id,
+			review.comments,
+			review.write_date,
+			review.star
+		FROM customer
+		LEFT JOIN review
+		ON customer.id = review.cust_id
+		WHERE customer.id = #{id}
+	</select>
+	
+	<resultMap type="Review" id="ReviewMap" autoMapping="true">
+		<id column="id" property="id" javaType="Long"/>
+		
+		<association property="customer" javaType="Customer" autoMapping="true">
+			<id column="cust_id" property="id" javaType="Long"/>
+		</association>
+	</resultMap>
+	
+	<!-- 해당도서에 등록된 리뷰를 가져온다 유저와 같이. -->
+	<select id="list" resultMap="ReviewMap">
+		SELECT review.*, 
+			customer.id cust_id,
+			customer.email,
+			customer.name,
+			customer.phone,
+			customer.role
+		FROM review
+		JOIN customer
+		ON review.cust_id = customer.id
 		WHERE book_id = #{bookId}
 		<if test="select == 1">
 			ORDER BY write_date ASC
@@ -26,9 +65,26 @@
 		</if>
 	</select>
 	
-	<select id="item" resultType="Review">
-		SELECT * FROM review
-		WHERE id = #{id}
+	<select id="item" resultMap="ReviewMap">
+		SELECT review.*, 
+			customer.id cust_id,
+			customer.email,
+			customer.name,
+			customer.phone,
+			customer.role
+		FROM review
+		JOIN customer
+		ON review.cust_id = customer.id
+		WHERE review.id = #{id}
 	</select>
 	
+	<select id="avg" resultType="Double">
+		SELECT AVG(star) FROM review
+		WHERE book_id = #{id}
+	</select>
+	
+	<select id="count" resultType="Integer">
+		SELECT COUNT(*) FROM review
+		WHERE book_id = #{id}
+	</select>
 </mapper>

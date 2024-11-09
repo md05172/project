@@ -61,6 +61,24 @@
 	height: 100%;
 }
 
+.review {
+	margin-top: 8px;
+}
+
+.review img {
+	max-width: 12px;
+}
+
+.review .review_text {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.review .side {
+    font-size: 14px;
+    color: var(--border-color);
+}
+
 .price_box {
 	margin-top: 32px;
     border-bottom: 1px solid var(--line-color);
@@ -531,10 +549,15 @@ div > h3 {
   background: rgba(0, 0, 0, 0.8);
 }
 
+.review_list_box {
+    border-bottom: 1px solid var(--line-color);
+}
+
 .review_content {
 	border-top: 1px solid var(--line-color);
     position: relative;
     padding: 20px 10px;
+    display: none;
 }
 
 .review_header {
@@ -664,3 +687,13 @@ div > h3 {
     color: #333;
 }
 
+.more_button {
+    margin: 10px 0;
+    cursor: pointer;
+    height: 40px;
+    background: var(--line-color);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -38,7 +38,6 @@ public class CustomerController {
 	@PostMapping("/login")
 	String login(HttpSession session, Customer item) {
 		if(service.login(item)) {
-			System.out.println("담겼나 ? " + item);
 			session.setAttribute("customer", item);
 			return "redirect:../";
 		} else {

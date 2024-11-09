@@ -92,7 +92,6 @@ section {
 }
 
 .item_img {
-    height: 100%;
     min-width: 141px;
     max-width: 142px;
     min-height: 206px;
@@ -123,6 +122,15 @@ section {
     height: 206px;
 }
 
+.wrap {
+	display: flex;
+}
+
+.item_info p {
+	margin: 0px;
+	margin-top: 8px;
+}
+
 .item_info a {
 	text-decoration: none;
 	color: black;
@@ -150,23 +158,40 @@ section {
     -webkit-line-clamp: 2;
     display: -webkit-box;
     overflow: hidden;
-   	position: absolute;
-	bottom: 0;
 	font-size: 14px;
 	color: var(--font-color-gray);
 }
+
+.review {
+	margin-top: 8px;
+}
+
+.review img {
+	max-width: 12px;
+}
+
+.review .review_text {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.review .side {
+    font-size: 14px;
+    color: var(--border-color);
+}
+
 .buycart {
-	position: relative;
-    height: 100%;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4%;
 }
 
 .heart {
     width: 25px;
-    position: absolute;
     height: 25px;
     right: 47px;
     top: 19%;
+    align-self: flex-end;
 }
 
 .heart img {
@@ -175,7 +200,6 @@ section {
 }
 
 .btn {
-    position: absolute;
     bottom: 25%;
 }
 
@@ -226,13 +250,21 @@ section {
 }
 
 .page_box > div {
-	padding: 10px;
+	width: 25px;
+    text-align: center;
 }
 
 .page_box > div > a {
 	text-decoration: none;
 	color: gray;
-	
+    display: block;
+    width: 100%;
+}
+
+.page_box > div > a:hover, .page_box > div > a.active{
+	background: var(--main-color);
+	color: var(--white-color);
+	border-radius: 10px;
 }
 
 .first i, .prev i {
@@ -256,7 +288,6 @@ section {
 }
 
 .modal {
-
     position: absolute;
     height: 179px;
     width: 360px;

@@ -193,6 +193,8 @@ window.addEventListener('load', () => {
         // 이동하기의 주소를 설정한다.
         document.querySelector('.move').addEventListener('click', () => {
             location.href = src;
+            document.querySelector('.modal').classList.add('hide');
+            document.querySelector('#modal').classList.remove('modal_background');
         });
     };
 });

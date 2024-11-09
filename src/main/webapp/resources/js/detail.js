@@ -1,5 +1,150 @@
 window.addEventListener('load', () => {
 
+    const wish = document.querySelector('.wish');
+
+    // 장바구니 추가
+    const addCart = (items) => {
+        fetch(`/cart/add`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8"
+        },
+        body: JSON.stringify(items)
+        })
+        .then(resp => resp.json())
+        .then(result => {});
+    }
+
+    // 장바구니 버튼 클릭
+    document.querySelector('.cart').addEventListener('click', b => {
+        const { bookid } = b.target.dataset;
+        const items = {
+            [bookid]: 1
+        };
+
+        fetch(`/cart/list`)
+        .then(resp => resp.json())
+        .then(result => {
+            // 이미 있는 카트에 담긴 상품일때
+            if (Object.keys(result.cart).includes(bookid)) {
+                addCart(items);
+                document.querySelector('.disc .secon').style.marginTop = '0px';
+                showCartModal('장바구니에 상품이 있어 수량이 추가되었습니다.', '장바구니로 이동하시겠습니까?', '/cart');
+
+            // 새로 담긴 상품일때
+            } else {
+                addCart(items);
+                document.querySelector('.disc .secon').style.marginTop = '22px';
+                showCartModal('장바구니에 상품이 담겼습니다.', '장바구니로 이동하시겠습니까?', '/cart');
+            }
+        });
+    }); // end add cart
+       
+    wish.addEventListener('click', b => {
+        const { bookid, custid } = b.target.dataset;
+        const item = {
+            bookId: bookid,
+            custId: custid
+        };
+
+        // 로그인 안했으면 보내버리기
+        if (custid === 'false') {
+            // 모달 보이기
+            document.querySelector('.disc .secon').style.marginTop = '22px';
+            showCartModal('찜하기는 로그인 후 이용할 수 있어요', '로그인으로 이동하히겠습니까?', '/customer/login');
+
+            return;
+        }
+
+        // 하트 버튼 클릭 시
+        const currentImgSrc = b.target.src.substr(b.target.src.lastIndexOf("/") + 1);
+        
+        // 빈 하트라면
+        if (currentImgSrc === 'heart.png') {
+            fetch('/wish', {
+                method: "POST",
+                body: JSON.stringify(item),
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                }
+            })
+            .then(resp => resp.json())
+            .then(result => {
+                // customer의 wish에 있는 bookid랑 찜하기누른 booki랑 같으면 wishid에 id를 넣어준다
+                // key값으로 꺼낼때 만약 id랑 bookid가 같을수도있으니까 key를 무시하고 반복을 돌면서 bookid만비교한다
+                console.log(result);
+                console.log(typeof result);
+                console.log(typeof result.wish);
+
+                result.wish.forEach(item => {
+                    console.log(item);
+                    console.log(typeof item.bookId);
+                    console.log(typeof bookid);
+                    console.log(item.bookId == bookid);
+                    if(item.bookId == bookid) {
+                        console.log(item.id);
+                        b.target.setAttribute('data-wishid', item.id);
+                        b.target.dataset.wishid = item.id;
+                        console.log(b.target.dataset.wishid);
+                    }
+                })
+                b.target.src = '/resources/images/fullheart.png';
+            });
+        // 꽉찬 하트하면    
+        } else {
+            const { wishid } = b.target.dataset;
+
+            console.log(wishid);
+            
+            fetch(`/wish/${wishid}`, {
+            method: "DELETE"
+            })
+            .then(resp => resp.text())
+            .then(result => {
+                b.target.src = '/resources/images/heart.png';
+            });
+        }
+    });
+
+    // 장바구니 모달 표시
+    const showCartModal = (message, message2, src) => {
+        // hide class를 없애서 보여준다.
+        document.querySelector('#modal .modal').classList.remove('hide');
+
+        // modal_bacground class를 추가해서 미리 작성한 css가 적용되도록 한다.
+        document.querySelector('#modal').classList.add('modal_background');
+
+        // 들어온 값으로 text값을 대체한다.
+        document.querySelector('.disc .firs').textContent = message;
+        document.querySelector('.disc .secon').textContent = message2;
+
+        // 취소버튼을 누르면 모달이 닫힌다.
+        document.querySelector('.cancle').addEventListener('click', () => {
+            document.querySelector('.modal').classList.add('hide');
+            document.querySelector('#modal').classList.remove('modal_background');
+        });
+
+        // 모달의 뒷배경을 누르면 닫히고 모달을 누를땐 닫히지 않는다.
+        document.querySelector('#modal').addEventListener('click', e => {
+            if (e.target === document.querySelector('#modal')) {
+                document.querySelector('.modal').classList.add('hide');
+                document.querySelector('#modal').classList.remove('modal_background');
+            }
+        });
+
+        // 이동하기의 주소를 설정한다.
+        document.querySelector('.move').addEventListener('click', () => {
+            location.href = src;
+            document.querySelector('.modal').classList.add('hide');
+            document.querySelector('#modal').classList.remove('modal_background');
+        });
+    };
+
+    // 리뷰평점과 개수 보여주기
+    const showAvgCount = (avg, count) => {
+        document.querySelector('.review_text').textContent = avg.toFixed(2);
+        document.querySelector('.side').textContent = `(${count}개)`;
+    };
 
     const popup = document.querySelector('.popup');
 
@@ -147,7 +292,7 @@ window.addEventListener('load', () => {
         // 리뷰 작성자의 이름
         const email = document.createElement('span');
         email.className = 'info_item';
-        email.textContent = list.custId;
+        email.textContent = list.customer.email;
 
         const gap = document.createElement('span');
         gap.className = 'gap';
@@ -243,30 +388,7 @@ window.addEventListener('load', () => {
 
         // 로그인이 안되면 알려준다.
         if(e.target.dataset.custid === 'false') {
-            // hide class를 없애서 보여준다.
-            document.querySelector('#modal .modal').classList.remove('hide');
-
-            // modal_bacground class를 추가해서 미리 작성한 css가 적용되도록 한다.
-            document.querySelector('#modal').classList.add('modal_background');
-
-            // 취소버튼을 누르면 모달이 닫힌다.
-            document.querySelector('.cancle').addEventListener('click', () => {
-                document.querySelector('.modal').classList.add('hide');
-                document.querySelector('#modal').classList.remove('modal_background');
-            });
-
-            // 모달의 뒷배경을 누르면 닫히고 모달을 누를땐 닫히지 않는다.
-            document.querySelector('#modal').addEventListener('click', e => {
-                if (e.target === document.querySelector('#modal')) {
-                    document.querySelector('.modal').classList.add('hide');
-                    document.querySelector('#modal').classList.remove('modal_background');
-                }
-            });
-
-            // 이동하기의 주소를 설정한다.
-            document.querySelector('.move').addEventListener('click', () => {
-                location.href = '/customer/login';
-            });
+            showCartModal('리뷰는 로그인 후 이용할 수 있어요', '로그인으로 이동하시겠습니까?', '/customer/login');
             return;
         } // end if
         
@@ -302,6 +424,7 @@ window.addEventListener('load', () => {
         })
         .then(resp => resp.json())
         .then(list => {
+            console.log('들어오나');
             // 비어있습니다를 없애준다.
             document.querySelector('.review_list_empty').classList.add('hide');
             
@@ -324,8 +447,15 @@ window.addEventListener('load', () => {
      .then(resp => resp.json())
      .then(list => {
          console.log(list);
-         if(list.length > 0) makeReviewList(list);
-         else document.querySelector('.review_list_empty').classList.remove('hide');
+         console.log(list);
+
+         if(list.length > 0) {
+            showAvgCount(list[0].avg, list[0].count);
+            makeReviewList(list);
+            makeButtonEvent();
+         } else {
+            document.querySelector('.review_list_empty').classList.remove('hide');
+         }
      })
 
      // 최신순 별점순 기본: 최신순
@@ -342,5 +472,35 @@ window.addEventListener('load', () => {
             else document.querySelector('.review_list_empty').classList.remove('hide');
         })
      });
+    
+    const makeButtonEvent = () => {
+        // 리뷰를 처음 3개만 보여주고, 나머지는 숨긴다.
+      const allReviewContents = Array.from(document.querySelectorAll('.review_content'));
+      const moreButton = document.querySelector('.more_button');
+
+      allReviewContents.slice(0, 3).forEach(el => {
+          el.style.display = 'block'; // 처음 3개는 보이게 설정
+      });
+  
+      // 더보기 버튼 클릭 이벤트 처리
+      let reviewsToShow = 3; // 보여줄 리뷰의 수
+      
+      document.querySelector('.more_button').addEventListener('click', e => {
+          e.preventDefault();
+  
+          // 다음 3개의 리뷰를 보이게 설정
+          const hiddenReviews = allReviewContents.slice(reviewsToShow, reviewsToShow + 3);
+          hiddenReviews.forEach(el => {
+              el.style.display = 'block';
+          });
+  
+          reviewsToShow += 3; // 다음 3개를 보여주기 위해 인덱스 업데이트
+  
+          // 더 이상 숨겨진 리뷰가 없으면 버튼 숨기기
+          if (reviewsToShow >= allReviewContents.length) {
+              moreButton.style.display = 'none'; // 더보기 버튼 숨기기
+          }
+      });
+    }
 
 });

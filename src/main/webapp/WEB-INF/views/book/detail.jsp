@@ -44,7 +44,14 @@
 						</c:if>>
 					<c:set var="wishId" value=""></c:set>
 					<c:set var="wishbookId" value=""></c:set>
-				</div>
+					</div>
+						<div class="review">
+						<img alt="" src="/resources/images/full_star.png"> 
+						<span class="review_text">
+						</span>
+						<span class="side"></span>
+					</div> 
+				
 				<div class="price_box">
 					<span class="price">${item.price }</span> <span class="won">원</span>
 				</div>
@@ -72,7 +79,7 @@
 							</div>
 						</div>
 						<div class="btn_box">
-							<button class="cart">장바구니</button>
+							<button class="cart" data-bookid="${item.id }">장바구니</button>
 							<button class="buy">구매하기</button>
 						</div>
 					</div>
@@ -218,6 +225,11 @@
 								</div>
 							</div> -->
 						</div>
+					</div>
+				</div>
+				<div class="more_box">
+					<div class="more_button">
+						더보기
 					</div>
 				</div>
 

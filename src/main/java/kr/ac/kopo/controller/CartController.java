@@ -40,7 +40,6 @@ public class CartController {
 	@GetMapping("/list")
 	@ResponseBody
 	Cart cart(@SessionAttribute(required = false) Cart cart) {
-		System.out.println("들어옴");
 		if(cart == null) cart = new Cart();
 		
 		return cart;

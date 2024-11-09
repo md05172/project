@@ -2,6 +2,7 @@ package kr.ac.kopo.dao;
 
 import java.util.List;
 
+import kr.ac.kopo.model.Customer;
 import kr.ac.kopo.model.Review;
 
 public interface ReviewDao {
@@ -11,5 +12,11 @@ public interface ReviewDao {
 	List<Review> list(Review review);
 
 	Review item(Long id);
-	
+
+	Customer customerReview(Customer customer);
+
+	Double avg(Long bookId);
+
+	Integer count(Long bookId);
+
 }
