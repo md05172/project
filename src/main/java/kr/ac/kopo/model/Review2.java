@@ -2,7 +2,7 @@ package kr.ac.kopo.model;
 
 import java.util.Date;
 
-public class Review {
+public class Review2 {
 	private Long id;
 	private Long bookId;
 	private Long custId;
@@ -10,28 +10,17 @@ public class Review {
 	private Date writeDate;
 	private Double star;
 
-	private Integer select = 1;
-
-	private Double avg;
-	private Integer count;
-
 	private Customer customer;
 
-	public Integer getCount() {
-		return count;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCount(Integer count) {
-		this.count = count;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
-	public Double getAvg() {
-		return avg;
-	}
-
-	public void setAvg(Double avg) {
-		this.avg = avg;
-	}
+	private Integer select = 1;
 
 	public Long getId() {
 		return id;
@@ -89,19 +78,10 @@ public class Review {
 		this.select = select;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
 	@Override
 	public String toString() {
-		return "Review [id=" + id + ", bookId=" + bookId + ", custId=" + custId + ", comments=" + comments
-				+ ", writeDate=" + writeDate + ", star=" + star + ", select=" + select + ", avg=" + avg + ", customer="
-				+ customer + "]";
+		return "Review2 [id=" + id + ", bookId=" + bookId + ", custId=" + custId + ", comments=" + comments
+				+ ", writeDate=" + writeDate + ", star=" + star + ", customer=" + customer + ", select=" + select + "]";
 	}
 
 }

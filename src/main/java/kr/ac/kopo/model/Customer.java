@@ -15,6 +15,8 @@ public class Customer {
 
 	private List<Wish> wish = new ArrayList<Wish>();
 
+	private List<Review> review = new ArrayList<Review>();
+
 	public Long getId() {
 		return id;
 	}
@@ -71,20 +73,26 @@ public class Customer {
 		this.address = address;
 	}
 
-
 	public List<Wish> getWish() {
 		return wish;
 	}
-
 
 	public void setWish(List<Wish> wish) {
 		this.wish = wish;
 	}
 
+	public List<Review> getReview() {
+		return review;
+	}
+
+	public void setReview(List<Review> review) {
+		this.review = review;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", password="
-				+ password + ", role=" + role + ", address=" + address + ", wish=" + wish + "]";
+				+ password + ", role=" + role + ", address=" + address + ", wish=" + wish + ", review=" + review + "]";
 	}
 
 }

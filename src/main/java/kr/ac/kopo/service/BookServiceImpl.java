@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.ac.kopo.dao.BookDao;
+import kr.ac.kopo.dao.ReviewDao;
 import kr.ac.kopo.model.Book;
 import kr.ac.kopo.page.Pager;
 
@@ -17,13 +18,23 @@ public class BookServiceImpl implements BookService{
 	
 	@Autowired
 	BookDao dao;
+	
+	@Autowired
+	ReviewDao reviewDao;
 
 	@Override
 	public List<Book> list(Pager pager) {
 		// 도서의 총 개수를 pager total에 저장한다.
 		pager.setTotal(dao.total(pager));
 		
-		return dao.list(pager);
+		List<Book> list = dao.list(pager);
+		list.forEach(book -> {
+			// 책에 대한 평균을 가져와서 Book객체에 있는 avg에 값을 넣어준다.
+			book.setAvg(reviewDao.avg(book.getId()));	
+			book.setCount(reviewDao.count(book.getId()));
+		});
+		
+		return list;
 	}
 
 	@Override

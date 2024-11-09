@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.model.Customer;
 import kr.ac.kopo.model.Review;
 
 @Repository
@@ -20,14 +21,28 @@ public class ReviewDaoImpl implements ReviewDao{
 	}
 
 	@Override
-	public List<Review> list() {
-		return sql.selectList("review.list");
+	public List<Review> list(Review review) {
+		return sql.selectList("review.list", review);
 	}
 
 	@Override
 	public Review item(Long id) {
 		return sql.selectOne("review.item", id);
 	}
-	
+
+	@Override
+	public Customer customerReview(Customer customer) {
+		return sql.selectOne("review.customer_review", customer);
+	}
+
+	@Override
+	public Double avg(Long bookId) {
+		return sql.selectOne("review.avg", bookId);
+	}
+
+	@Override
+	public Integer count(Long bookId) {
+		return sql.selectOne("review.count", bookId);
+	}
 
 }

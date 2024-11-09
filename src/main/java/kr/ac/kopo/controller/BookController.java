@@ -36,7 +36,6 @@ public class BookController {
 		model.addAttribute("list", service.list(pager));
 		if(customer != null) {
 			model.addAttribute("wish", customer.getWish());
-			System.out.println("list 들어감 " + customer.getWish());
 		} else {
 			model.addAttribute("wish", new ArrayList<>());
 		}

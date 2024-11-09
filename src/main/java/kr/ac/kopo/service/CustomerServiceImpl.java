@@ -3,8 +3,10 @@ package kr.ac.kopo.service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.ac.kopo.dao.CustomerDao;
+import kr.ac.kopo.dao.ReviewDao;
 import kr.ac.kopo.dao.WishDao;
 import kr.ac.kopo.model.Customer;
 
@@ -17,6 +19,11 @@ public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	WishDao wishdao;
 	
+	
+	@Autowired
+	ReviewDao reviewdao;
+	
+	@Transactional
 	@Override
 	public void join(Customer item) {
 		item.setRole(1);
@@ -38,21 +45,22 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public boolean login(Customer item) {
 		Customer customer = dao.check(item.getEmail());
-		Customer wishList = wishdao.wishList(item);
-		
-		System.out.println("찜 목록 " + wishList);
+		Customer wishList = wishdao.wishList(customer);
+		Customer customerReview = reviewdao.customerReview(customer);
 		
 		if(customer != null) {
 			if(item.getPassword().equals(customer.getPassword())) {
-				// customer에 있는 값을 item에 복사한다.
-				if(wishList == null)
-					BeanUtils.copyProperties(customer, item);
-				else 
-					BeanUtils.copyProperties(wishList, item);
+				// 찾은 customer 정보를 item에 복사해준다
+				BeanUtils.copyProperties(customer, item);
+				
+				// 값이 담긴 item에 찜한 목록을 추가한다
+				item.setWish(wishList.getWish());
+		
+				// 값이 담긴 item에 리뷰 목록을 추가한다
+				item.setReview(customerReview.getReview());
 					
-				// 비밀번호는 보안을 위해 없애준다.
+				// 비밀번호는 null로
 				item.setPassword(null);
-				System.out.println("화긴함 " + item);
 				return true;
 			}
 		}

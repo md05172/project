@@ -11,6 +11,9 @@ public class Book {
 	private String writerInfo;
 	private String category;
 
+	private Double avg;
+	private Integer count;
+
 	public Long getId() {
 		return id;
 	}
@@ -83,15 +86,27 @@ public class Book {
 		this.category = category;
 	}
 
+	public Double getAvg() {
+		return avg;
+	}
+
+	public void setAvg(Double avg) {
+		this.avg = avg;
+	}
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", name=" + name + ", publisher=" + publisher + ", price=" + price + ", path=" + path
 				+ ", info=" + info + ", writer=" + writer + ", writerInfo=" + writerInfo + ", category=" + category
-				+ ", getId()=" + getId() + ", getName()=" + getName() + ", getPublisher()=" + getPublisher()
-				+ ", getPrice()=" + getPrice() + ", getPath()=" + getPath() + ", getInfo()=" + getInfo()
-				+ ", getWriter()=" + getWriter() + ", getWriterInfo()=" + getWriterInfo() + ", getCategory()="
-				+ getCategory() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+				+ ", avg=" + avg + "]";
 	}
 
 }
