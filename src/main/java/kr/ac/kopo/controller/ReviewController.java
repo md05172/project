@@ -40,8 +40,11 @@ public class ReviewController {
 		// 최신순인지 별점순인지
 		review.setSelect(select);
 		List<Review> list = service.list(review);
-		list.get(0).setAvg(service.avg(bookId));
-		list.get(0).setCount(service.count(bookId));
+		if(list != null && list.size() > 0) {
+			list.get(0).setAvg(service.avg(bookId));
+			list.get(0).setCount(service.count(bookId));
+		}
+		System.out.println("리부 담겼음 " + list);
 		return list;
 	}
 }

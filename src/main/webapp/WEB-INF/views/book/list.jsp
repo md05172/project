@@ -53,11 +53,11 @@
 							</div>
 							<div class="item_img">
 								<div class="img_box">
-									<a href="detail/${item.id }"><img src="/upload/book/${item.path }"></a>
+									<a href="../detail/${item.id }"><img src="/upload/book/${item.path }"></a>
 								</div>
 							</div>
 							<div class="item_info">
-								<p class="item_name"><a href="detail/${item.id }">${item.name }</a></p>
+								<p class="item_name"><a href="../detail/${item.id }">${item.name }</a></p>
 								<span class="item_publisher">${item.publisher }</span>
 								<span class="item_writer">${item.writer }</span>
 								<p class="item_price">${item.price }원</p>
@@ -120,20 +120,7 @@
 	</div>
 	</section>
 	
-	<div id="modal">
-		<div class="modal hide">
-			<div class="tip">
-				<div class="disc">
-					<p class="firs">찜하기는 로그인 후 이용할 수 있어요</p>
-					<p class="secon">로그인으로 이동하시겠습니까?</p>
-				</div> 
-				<div class="btn_group">
-					<button class="cancle">취소</button>
-					<button class="move">이동하기</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	<jsp:include page="../modal.jsp"/>
 
 </body>
 </html>

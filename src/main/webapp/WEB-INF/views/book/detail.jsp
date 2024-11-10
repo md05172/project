@@ -93,7 +93,7 @@
 					<ul class="nav">
 						<li><a href="#writer_info">작가 소개</a></li>
 						<li><a href="#info">책 소개</a></li>
-						<li><a href="#review">리뷰</a></li>
+						<li><a href="#review">리뷰(<span class="review_count"></span>)</a></li>
 					</ul>
 				</div>
 			</div>
@@ -112,17 +112,39 @@
 
 			<div class="related_books">
 				<h3>이 책을 좋아하셨다면, 이런 책도 추천드립니다!</h3>
-				<ul>
-					<li><a href="/book/detail/123"> <img
-							src="/upload/book/related_book_1.jpg" alt="관련도서">
-							<p>책 제목</p>
-					</a></li>
-					<li><a href="/book/detail/124"> <img
-							src="/upload/book/related_book_2.jpg" alt="관련도서">
-							<p>책 제목</p>
-					</a></li>
-					<!-- 다른 추천 도서들 -->
-				</ul>
+
+			<div class="related_box">
+				<c:forEach var="relate" items="${relatedList }">
+					<div class="relate">
+						<div class="relate_img_box">
+							<a href="../detail/${relate.id }">
+								<img alt="" src="/upload/book/${relate.path }">
+							</a>
+						</div>
+						<div class="relate_name">
+							<a href="../detail/${relate.id }">${relate.name }</a>
+						</div>
+						<div class="relate_wr_pu">
+							<span class="r_writer">${relate.writer }</span>
+							<span class="r_publisher">${relate.publisher }</span>
+						</div>
+						<div class="relate_price">
+							<p>${relate.price }원</p>
+						</div>
+						<div class="relate_review">
+							<span class="relate_star"><img alt="" src="/resources/images/full_star.png"></span>
+							<c:if test="${relate.avg > 0 }">
+								<span class="r_review"><fmt:formatNumber value="${relate.avg }" pattern=".00" /></span>
+							</c:if>
+							<c:if test="${relate.avg == null }">
+								<span class="r_review">0</span>
+							</c:if>
+							
+							<span class="r_count">(${relate.count })</span>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
 			</div>
 
 			<div class="book_info">
@@ -189,17 +211,17 @@
 							data-custid="${sessionScope.customer != null ? sessionScope.customer.id : 'false' }">작성</button>
 					</div>
 				</div>
+				<div class="select_box">
+					<select class="select" name="select">
+						<option value="1" selected>최신순</option>
+						<option value="2">별점순</option>
+					</select>
+				</div>
 				<div class="review_list_box">
 					<div class="review_list_empty hide">
 						<span class="empty">작성된 리뷰가 없습니다.</span>
 					</div>
 					<div>
-						<div class="select_box">
-							<select class="select" name="select">
-								<option value="1" selected>최신순</option>
-								<option value="2">별점순</option>
-							</select>
-						</div>
 						<div class="review_list">
 							<!-- <div class="review_content">
 								<div class="review_header">
@@ -317,19 +339,7 @@
 		</div>
 	</div>
 
-	<div id="modal">
-		<div class="modal hide">
-			<div class="tip">
-				<div class="disc">
-					<p class="firs">리뷰는 로그인 후 이용할 수 있어요</p>
-					<p class="secon">로그인으로 이동하시겠습니까?</p>
-				</div>
-				<div class="btn_group">
-					<button class="cancle">취소</button>
-					<button class="move">이동하기</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	<jsp:include page="../modal.jsp"/>
+	
 </body>
 </html>

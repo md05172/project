@@ -4,9 +4,9 @@
 <nav>
 	<div class="menu_box">
 		<ul class="left">
-			<li><a href="${pageContext.request.contextPath }/book/list">국내도서</a></li>
+			<li><a href="${pageContext.request.contextPath }/book/list/ko">국내도서</a></li>
 			<li><a href="">베스트</a></li>
-			<li><a href="">신상품</a></li>
+			<li><a href="${pageContext.request.contextPath }/book/list/nko">외국도서</a></li>
 			<li><a href="">추천</a></li>
 			<li><a href="${pageContext.request.contextPath }/book/add">도서등록</a></li>
 		</ul>

@@ -65,24 +65,41 @@ window.addEventListener('load', () => {
     makeClone();
 
     const changeBackgroundColor = (index) => {
-        document.querySelector('.hidden').style.background = backgrounds[index];
-        document.querySelector('nav').style.background = backgrounds[index];
+        if(index == -1) {
+            document.querySelector('.hidden').style.background = backgrounds[4];
+            document.querySelector('nav').style.background = backgrounds[4];
+        } else if(index == -2) {
+            document.querySelector('.hidden').style.background = backgrounds[3];
+            document.querySelector('nav').style.background = backgrounds[3];
+        } else if(index == -3) {
+            document.querySelector('.hidden').style.background = backgrounds[2];
+            document.querySelector('nav').style.background = backgrounds[2];
+        } else if(index == -4) {
+            document.querySelector('.hidden').style.background = backgrounds[1];
+            document.querySelector('nav').style.background = backgrounds[1];
+        } else if(index == 0) {
+            document.querySelector('.hidden').style.background = backgrounds[0];
+            document.querySelector('nav').style.background = backgrounds[0];
+        } else {
+            document.querySelector('.hidden').style.background = backgrounds[index];
+            document.querySelector('nav').style.background = backgrounds[index];
+        }
     };
 
     const moveSlide = num => {
-        slides.style.left = -num * (slideWidth + slideMargin) + 318.5 + 'px';
+        slides.style.left = -num * (slideWidth + slideMargin) - 78 + 'px';
         current = num;
-
+        
         changeBackgroundColor(current);
         // 현재페이지가 slide마지막 번호랑 같다면
         if (current === slideCount || current === -slideCount) {
+            current = 0;
+            changeBackgroundColor(0);
             setTimeout(() => {
-                current = 0;
-                changeBackgroundColor(0);
                 slides.classList.remove('animated');
-                slides.style.left = '318.5px';
+                slides.style.left = '-78px';
             }, 1000);
-            setTimeout(() => { slides.classList.add('animated'); }, 1500);
+            setTimeout(() => { slides.classList.add('animated');}, 1500);
         } 
     };
 
@@ -108,13 +125,13 @@ window.addEventListener('load', () => {
         stopAutoSlide();
     });
 
-    nextBtn.addEventListener('mouseover', stopAutoSlide());
+    nextBtn.addEventListener('mouseover', stopAutoSlide);
 
-    prevBtn.addEventListener('mouseover', stopAutoSlide());
+    prevBtn.addEventListener('mouseover', stopAutoSlide);
 
-    nextBtn.addEventListener('mouseout', autoSlide());
+    nextBtn.addEventListener('mouseout', autoSlide);
 
-    prevBtn.addEventListener('mouseout', autoSlide());
+    prevBtn.addEventListener('mouseout', autoSlide);
 
-    window.addEventListener('resize', stopAutoSlide());
+    window.addEventListener('resize', stopAutoSlide);
 });

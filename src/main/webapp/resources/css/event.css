@@ -3,6 +3,10 @@ li {
 	list-style: none;
 }
 
+.event {
+	position: relative;
+}
+
 .hidden {
 	background: rgb(254,236,224);
 	background: linear-gradient(90deg, rgba(254,236,224,1) 35%, rgba(252,178,128,1) 100%);
@@ -17,16 +21,30 @@ li {
 }
 
 .slide_wrapper {
+	max-width: 1200px;
+    margin: 0 auto;
+    overflow: visible;
 	position: relative;
-	width: 100%;
 	height: 480px;
-	overflow: hidden;
+}
+
+.button_box {
+    position: absolute;
+    height: 100px;
+    width: 100%;
+    min-width: 1200px;
+    display: block;
+    margin: 0 auto;
+    top: 35%;
 }
 
 .slides {
 	position: absolute;
-	left: 319px;
+	left: -78px;
 	top: 35px;
+	overflow: hidden;
+    display: block;
+    height: 430px;
 }
 
 .slides.animated {
@@ -68,7 +86,7 @@ li {
     width: 50px;
     height: 50px;
     z-index: 99;
-    left: calc(50% - 380px);
+    left: calc(50% - 430px);
     top: 50%;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
@@ -81,7 +99,7 @@ li {
     display: flex;
     width: 50px;
     height: 50px;
-    right: calc(50% - 450px);
+    right: calc(50% - 430px);
     top: 50%;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;

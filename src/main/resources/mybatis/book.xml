@@ -5,20 +5,27 @@
 
 	<sql id="search">
 		SELECT * FROM book
-		ORDER BY id		
+		ORDER BY id
 	</sql>
 	
 	<select id="total" resultType="Integer">
 		SELECT COUNT(*) FROM (<include refid="search"></include>)
+		WHERE category = #{category}
 	</select>
 
 	<select id="list" resultType="Book">
 		SELECT * FROM
 	    	(SELECT sub.*, ROWNUM rnum FROM
-	        	(<include refid="search"></include>) sub)
+	        	(<include refid="search"></include>) sub
+	        	WHERE category = #{category}
+	        	)
 		<if test="perPage != 0">
 			WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
 		</if>	
+	</select>
+	
+	<select id="best" resultType="Book">
+		
 	</select>
 	
 	<select id="list_keyset" resultType="Book">
