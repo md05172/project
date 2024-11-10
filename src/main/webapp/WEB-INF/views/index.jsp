@@ -18,18 +18,22 @@
 		<jsp:include page="nav.jsp"></jsp:include>
 
 		<!-- 이벤트 -->
-		<div class="slide_wrapper">
-			<div class="innder_box">
-				<div class="hidden"></div>
-				<ul class="slides">
-					<li><a href=""><img src="/resources/images/event/event01.jpg" alt=""></a></li>
-					<li><a href=""><img src="/resources/images/event/event02.jpg" alt=""></a></li>
-					<li><a href=""><img src="/resources/images/event/event03.jpg" alt=""></a></li>
-					<li><a href=""><img src="/resources/images/event/event04.jpg" alt=""></a></li>
-					<li><a href=""><img src="/resources/images/event/event05.jpg" alt=""></a></li>
-				</ul>
-				<div class="prev"><i class="fa fa-angle-right" aria-hidden="true"></i></div> 
-				<div class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+		<div class="event">
+			<div class="hidden"></div>
+			<div class="slide_wrapper">
+				<div class="innder_box">
+					<ul class="slides">
+						<li><a href=""><img src="/resources/images/event/event01.jpg" alt=""></a></li>
+						<li><a href=""><img src="/resources/images/event/event02.jpg" alt=""></a></li>
+						<li><a href=""><img src="/resources/images/event/event03.jpg" alt=""></a></li>
+						<li><a href=""><img src="/resources/images/event/event04.jpg" alt=""></a></li>
+						<li><a href=""><img src="/resources/images/event/event05.jpg" alt=""></a></li>
+					</ul>
+				</div>
+				<div class="button_box">
+					<div class="prev"><i class="fa fa-angle-right" aria-hidden="true"></i></div> 
+					<div class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+				</div>
 			</div>
 		</div>
 	

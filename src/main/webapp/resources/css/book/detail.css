@@ -493,61 +493,7 @@ div > h3 {
 	color: var(--white-color);
 }
 
-.hide {
-	display: none;
-}
-#modal, #modal2 {
-    z-index: 1;
-}
 
-.modal {
-
-    position: absolute;
-    height: 179px;
-    width: 360px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 0px 32px 32px 32px;
-    background: #fff;
-    border-radius: 5px;
-}
-
-.disc {
-    height: 45px;
-    margin-top: 24px;
-    text-align: center;
-}
-
-.secon {
-	font-size: 14px;
-	color: var(--font-color-gray);
-}
-
-.btn_group {
-	margin-top: 45px;
-	display: flex;
-}
-
-.btn_group button{
-	flex: 1;
-    margin: 0 3px;
-    height: 44px;
-    border-radius: 5px;
-    border: 1.5px solid var(--main-color);
-    text-align: center;
-}
-
-.move {
-	background: var(--main-color);
-	color: var(--white-color);
-}
-
-.modal_background {
-  position: fixed;
-  top:0; left: 0; bottom: 0; right: 0;
-  background: rgba(0, 0, 0, 0.8);
-}
 
 .review_list_box {
     border-bottom: 1px solid var(--line-color);
@@ -696,4 +642,71 @@ div > h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.related_box {
+	display: flex;
+	justify-content: space-between;
+}
+
+.relate {
+    max-width: 180px;
+	display: flex;
+    flex-direction: column;
+}
+
+.relate_img_box {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 257px;
+}
+
+.relate_img_box a {
+	display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.relate_img_box img {
+    width: 100%;
+    height: 100%;
+}
+
+.relate_star img {
+	max-width: 12px;
+}
+
+.relate_name {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    overflow: hidden;
+	font-weight: 600;
+    margin-top: 25px;
+}
+
+.relate_name a {
+	text-decoration: none;
+	color: #333;
+}
+
+.relate_name a:hover {
+	text-decoration: underline;
+}
+
+.relate_wr_pu {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--border-color);
+}
+
+.relate_price {
+	font-weight: 600;
+}
+
+.relate_review {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
 }

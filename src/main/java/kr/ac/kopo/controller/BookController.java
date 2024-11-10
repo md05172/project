@@ -2,6 +2,7 @@ package kr.ac.kopo.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,6 +20,7 @@ import kr.ac.kopo.model.Book;
 import kr.ac.kopo.model.Customer;
 import kr.ac.kopo.page.Pager;
 import kr.ac.kopo.service.BookService;
+import kr.ac.kopo.service.ReviewService;
 
 @Controller
 @RequestMapping("/book")
@@ -31,8 +33,13 @@ public class BookController {
 	@Autowired
 	BookService service;
 	
-	@GetMapping("/list")
-	String list(Model model, Pager pager, @SessionAttribute(required = false) Customer customer) {
+	@Autowired
+	ReviewService reviewService;
+	
+	@GetMapping("/list/{category}")
+	String list(@PathVariable String category, Model model, Pager pager, @SessionAttribute(required = false) Customer customer) {
+		pager.setCategory(category);
+		
 		model.addAttribute("list", service.list(pager));
 		if(customer != null) {
 			model.addAttribute("wish", customer.getWish());
@@ -47,7 +54,24 @@ public class BookController {
 	String detail(@PathVariable Long id, Model model) {
 		Book item = service.item(id);
 		
+		Pager pager = new Pager();
+		pager.setPerPage(40);
+		pager.setCategory(item.getCategory());
+		List<Book> list = service.list(pager);
+		
+		Collections.shuffle(list); // 섞어준다.
+		
+		// 거기서 5개만 가지고 온다
+		list = list.size() > 5 ? list.subList(0, 5) : list;
+		
+		list.forEach(book -> {
+			// 책에 대한 평균을 가져와서 Book객체에 있는 avg에 값을 넣어준다.
+			book.setAvg(reviewService.avg(book.getId()));	
+			book.setCount(reviewService.count(book.getId()));
+		});
+		
 		model.addAttribute("item", item);
+		model.addAttribute("relatedList", list);
 	
 		return path + "detail";
 	}
