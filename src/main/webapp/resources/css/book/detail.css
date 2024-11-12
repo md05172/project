@@ -67,6 +67,7 @@
 
 .review img {
 	max-width: 12px;
+	cursor: default;
 }
 
 .review .review_text {

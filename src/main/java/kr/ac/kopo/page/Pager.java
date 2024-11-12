@@ -14,7 +14,8 @@ public class Pager {
 	private int perGroup = 5; // 표시될 버튼 개수 ex: < << 1 2 3 4 5 >> >
 
 	private String category;
-
+	private String bookName;
+	
 	public int getPage() {
 		return page;
 	}
@@ -101,6 +102,14 @@ public class Pager {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	
+	public String getBookName() {
+		return bookName;
+	}
+	
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
 	}
 
 }

@@ -4,6 +4,7 @@ public class Wish {
 	private Long id;
 	private Long bookId;
 	private Long custId;
+	private Long apiId;
 
 	public Long getId() {
 		return id;
@@ -29,9 +30,17 @@ public class Wish {
 		this.custId = custId;
 	}
 
+	public Long getApiId() {
+		return apiId;
+	}
+
+	public void setApiId(Long apiId) {
+		this.apiId = apiId;
+	}
+
 	@Override
 	public String toString() {
-		return "Wish [id=" + id + ", bookId=" + bookId + ", custId=" + custId + "]";
+		return "Wish [id=" + id + ", bookId=" + bookId + ", custId=" + custId + ", apiId=" + apiId + "]";
 	}
 
 }

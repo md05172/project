@@ -84,4 +84,25 @@ public class BookServiceImpl implements BookService{
 		return dao.list(keySet);
 	}
 
+	@Override
+	public List<Book> best() {
+		return dao.best();
+	}
+
+	@Override
+	public List<Book> novel(String wrtier) {
+		return dao.novel(wrtier);
+	}
+
+	@Override
+	public List<Book> koBookList() {
+		return dao.koBookList();
+	}
+
+	@Override
+	public List<Book> nkoBookList() {
+		// TODO Auto-generated method stub
+		return dao.nkoBookList();
+	}
+
 }

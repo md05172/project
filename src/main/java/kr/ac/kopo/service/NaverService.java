@@ -17,7 +17,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.ac.kopo.model.Api;
+import kr.ac.kopo.model.Customer;
 
 @Service
 public class NaverService {
@@ -68,7 +68,7 @@ public class NaverService {
 	}
 	
 	// 네이버 토큰으로  유저 정보 가져오기
-	public Api getUserInfo(String accessToken) throws JsonMappingException, JsonProcessingException {
+	public Customer getUserInfo(String accessToken) throws JsonMappingException, JsonProcessingException {
 		// HttpHeader 생성
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + accessToken);
@@ -95,13 +95,13 @@ public class NaverService {
 		System.out.println("moblie = " + response2.get("mobile"));
 		System.out.println("id = " + response2.get("id"));
 		
-		Api api = new Api();
-		api.setName((String) response2.get("name"));
-		api.setEmail((String) response2.get("email"));
-		api.setPassword("naverApiLogin" + response2.get("id"));
-		api.setRole(1);
+		Customer cust = new Customer();
+		cust.setName((String) response2.get("name"));
+		cust.setEmail((String) response2.get("email"));
+		cust.setPassword("naverApiLogin" + response2.get("id"));
+		cust.setRole(1);
 		
-		return api;
+		return cust;
 	}
 
 	// 네이버 로그아웃

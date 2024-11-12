@@ -20,4 +20,12 @@ public interface BookService {
 
 	List<Book> list(Set<Long> keySet);
 
+	List<Book> best();
+
+	List<Book> novel(String writer);
+	
+	List<Book> koBookList();
+	
+	List<Book> nkoBookList();
+
 }

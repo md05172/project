@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-.hide {
-	display: none;
-}
 
 #modal, #modal2 {
 	z-index: 1;
@@ -14,10 +11,15 @@
 	width: 360px;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(0);
 	padding: 0px 32px 32px 32px;
 	background: #fff;
 	border-radius: 5px;
+	transition: transform 0.3s ease-out;
+}
+
+.modal.show {
+    transform: translate(-50%, -50%) scale(1);  /* 'show' 클래스가 추가되면 보이도록 설정 */
 }
 
 .disc {

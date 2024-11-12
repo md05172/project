@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -123,6 +124,21 @@ public class BookController {
 		service.init();
 		
 		return "redirect:..";
+	}
+	
+	@GetMapping("/search/{bookName}")
+	@ResponseBody
+	List<Book> searchKeyword (@PathVariable String bookName) {
+		System.out.println("들어옴");
+		Pager pager = new Pager();
+		pager.setPerPage(0);
+		pager.setBookName(bookName);
+		
+		List<Book> list = service.list(pager);
+		
+		System.out.println(list);
+		
+		return list;
 	}
 	
 }
