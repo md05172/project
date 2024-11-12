@@ -4,7 +4,7 @@
 
 	<insert id="add">
 		INSERT INTO wishlist
-		VALUES (SEQ_WISH.nextval, #{bookId}, #{custId})
+		VALUES (SEQ_WISH.nextval, #{bookId}, #{custId}, #{apiId})
 	</insert>
 	
 	<resultMap type="Customer" id="customerMap" autoMapping="true">

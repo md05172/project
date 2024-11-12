@@ -274,6 +274,8 @@ section {
 .check {
 	flex: 0 0 32px;
 	height: 206px;
+    display: flex;
+    align-items: center;
 }
 
 .check input {

@@ -20,7 +20,6 @@ body {
 
 .inner {
    width: 1200px;
-   max-width: 1200px;
    min-width: 1200px;
    margin: 0 auto;
    width: 70%;
@@ -35,7 +34,6 @@ body {
 .innershow {
    display: flex;
    min-height: 400px;
-   min-width: 878px;
    max-width: 878px;
    flex-direction: column;
    flex: 1;
@@ -260,13 +258,17 @@ td:last-child {
 
 .delete {
     height: 40px;
+    border: 1px solid var(--main-color);
     border-radius: 5px;
-    border: none;
-    background: var(--main-color);
-    color: var(--white-color);
     margin-left: 12px;
 }
 
 .hide {
 	display: none;
+}
+
+.order button {
+	background: var(--main-color);
+	border: none;
+	color: var(--white-color);
 }

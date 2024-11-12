@@ -5,7 +5,14 @@
 
 	<sql id="search">
 		SELECT * FROM book
+		
+		<if test="bookName != null">
+			WHERE name LIKE CONCAT(CONCAT('%', #{bookName}), '%')
+			OR writer LIKE CONCAT(CONCAT('%', #{bookName}), '%')
+		</if>
+			
 		ORDER BY id
+		
 	</sql>
 	
 	<select id="total" resultType="Integer">
@@ -17,15 +24,33 @@
 		SELECT * FROM
 	    	(SELECT sub.*, ROWNUM rnum FROM
 	        	(<include refid="search"></include>) sub
-	        	WHERE category = #{category}
+	        	<if test="category != null">
+	        		WHERE category = #{category}
+	        	</if>
 	        	)
 		<if test="perPage != 0">
 			WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
 		</if>	
 	</select>
 	
+	<select id="novel" resultType="Book">
+		SELECT * FROM book
+		WHERE writer = #{wrtier}
+	</select>
+	
 	<select id="best" resultType="Book">
-		
+		SELECT book.id,
+		    book.name,
+		    book.publisher,
+		    book.price,
+		    book.path,
+		    book.writer,
+		    book.category,
+		    AVG(review.STAR) avg FROM book
+		JOIN review
+		ON book.id = review.book_id
+		GROUP BY book.id, book.name, book.publisher, book.price, book.path, book.writer, book.category
+		ORDER BY avg DESC
 	</select>
 	
 	<select id="list_keyset" resultType="Book">
@@ -59,5 +84,15 @@
 		SET name = #{name}, publisher = #{publisher}, price = #{price}
 		WHERE id = #{id}
 	</update>
+	
+	<select id="ko" resultType="Book">
+		SELECT * FROM book
+		WHERE category = 'ko'
+	</select>
+	
+	<select id="nko" resultType="Book">
+		SELECT * FROM book
+		WHERE category = 'nko'
+	</select>
 	
 </mapper>

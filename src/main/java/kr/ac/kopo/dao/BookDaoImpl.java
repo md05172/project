@@ -51,4 +51,24 @@ public class BookDaoImpl implements BookDao {
 		return sql.selectList("book.list_keyset", map);
 	}
 
+	@Override
+	public List<Book> best() {
+		return sql.selectList("book.best");
+	}
+
+	@Override
+	public List<Book> novel(String writer) {
+		return sql.selectList("book.novel", writer);
+	}
+
+	@Override
+	public List<Book> koBookList() {
+		return sql.selectList("book.ko");
+	}
+
+	@Override
+	public List<Book> nkoBookList() {
+		return sql.selectList("book.nko");
+	}
+
 }

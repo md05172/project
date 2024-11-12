@@ -44,7 +44,7 @@ public class ReviewController {
 			list.get(0).setAvg(service.avg(bookId));
 			list.get(0).setCount(service.count(bookId));
 		}
-		System.out.println("리부 담겼음 " + list);
+		
 		return list;
 	}
 }

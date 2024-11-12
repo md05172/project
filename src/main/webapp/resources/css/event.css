@@ -1,10 +1,11 @@
-@charset "UTF-8";
+/* @charset "UTF-8"; */
 li {
 	list-style: none;
 }
 
 .event {
 	position: relative;
+	overflow: hidden;
 }
 
 .hidden {
@@ -21,7 +22,7 @@ li {
 }
 
 .slide_wrapper {
-	max-width: 1200px;
+	width: 1200px;
     margin: 0 auto;
     overflow: visible;
 	position: relative;
@@ -35,7 +36,7 @@ li {
     min-width: 1200px;
     display: block;
     margin: 0 auto;
-    top: 35%;
+    top: 40%;
 }
 
 .slides {

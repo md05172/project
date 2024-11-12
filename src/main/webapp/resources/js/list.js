@@ -166,35 +166,36 @@ window.addEventListener('load', () => {
 
     // 장바구니 모달 표시
     const showCartModal = (message, message2, src) => {
-        // hide class를 없애서 보여준다.
-        document.querySelector('#modal .modal').classList.remove('hide');
-
-        // modal_bacground class를 추가해서 미리 작성한 css가 적용되도록 한다.
-        document.querySelector('#modal').classList.add('modal_background');
-
-        // 들어온 값으로 text값을 대체한다.
+        const modal = document.querySelector('#modal .modal');
+        const modalBackground = document.querySelector('#modal');
+        
+        // 모달을 보여주기
+        modal.classList.add('show');  // 'show' 클래스를 추가하여 보이게 함
+        modalBackground.classList.add('modal_background');
+        
+        // 들어온 값으로 text값을 대체
         document.querySelector('.disc .firs').textContent = message;
         document.querySelector('.disc .secon').textContent = message2;
-
-        // 취소버튼을 누르면 모달이 닫힌다.
-        document.querySelector('.cancle').addEventListener('click', () => {
-            document.querySelector('.modal').classList.add('hide');
-            document.querySelector('#modal').classList.remove('modal_background');
+    
+        // 취소 버튼 클릭 시 모달 닫기
+        document.querySelector('.cancle').addEventListener('click', e => {
+            modal.classList.remove('show');  // 'show' 클래스를 제거하여 숨기기
+            modalBackground.classList.remove('modal_background');
         });
-
-        // 모달의 뒷배경을 누르면 닫히고 모달을 누를땐 닫히지 않는다.
-        document.querySelector('#modal').addEventListener('click', e => {
-            if (e.target === document.querySelector('#modal')) {
-                document.querySelector('.modal').classList.add('hide');
-                document.querySelector('#modal').classList.remove('modal_background');
+        
+        // 모달 배경을 클릭 시 닫히기
+        modalBackground.addEventListener('click', e => {
+            if (e.target === modalBackground) {
+                modal.classList.remove('show');  // 'show' 클래스를 제거하여 숨기기
+                modalBackground.classList.remove('modal_background');
             }
         });
-
-        // 이동하기의 주소를 설정한다.
+    
+        // 이동 버튼 클릭 시 이동하기
         document.querySelector('.move').addEventListener('click', () => {
             location.href = src;
-            document.querySelector('.modal').classList.add('hide');
-            document.querySelector('#modal').classList.remove('modal_background');
-        });
+            modal.classList.remove('show');
+            modalBackground.classList.remove('modal_background');
+        });;
     };
 });

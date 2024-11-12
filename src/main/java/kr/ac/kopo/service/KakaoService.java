@@ -16,7 +16,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.ac.kopo.model.Api;
+import kr.ac.kopo.model.Customer;
 
 @Service
 public class KakaoService {
@@ -69,7 +69,7 @@ public class KakaoService {
 	}
 
 	// 토큰으로 사용자 정보 가져오기
-	public Api getUserInfo(String accessToken) throws JsonMappingException, JsonProcessingException {
+	public Customer getUserInfo(String accessToken) throws JsonMappingException, JsonProcessingException {
 		// HttpHeader 생성
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + accessToken);
@@ -97,13 +97,13 @@ public class KakaoService {
 		System.out.println("이메일: " + account.get("email"));
 		System.out.println("아이디: " + map.get("id"));
 		
-		Api api = new Api();
-		api.setName((String) profile.get("nickname"));
-		api.setEmail((String) account.get("email"));
-		api.setPassword("kakaoApiLogin" + map.get("id"));
-		api.setRole(1);
+		Customer cust = new Customer();
+		cust.setName((String) profile.get("nickname"));
+		cust.setEmail((String) account.get("email"));
+		cust.setPassword("kakaoApiLogin" + map.get("id"));
+		cust.setRole(1);
 		
-		return api;
+		return cust;
 	}
 	
 	// 카카오 로그아웃

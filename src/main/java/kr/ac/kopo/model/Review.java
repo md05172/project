@@ -6,6 +6,7 @@ public class Review {
 	private Long id;
 	private Long bookId;
 	private Long custId;
+	private Long apiId;
 	private String comments;
 	private Date writeDate;
 	private Double star;
@@ -97,11 +98,19 @@ public class Review {
 		this.customer = customer;
 	}
 
+	public Long getApiId() {
+		return apiId;
+	}
+
+	public void setApiId(Long apiId) {
+		this.apiId = apiId;
+	}
+
 	@Override
 	public String toString() {
-		return "Review [id=" + id + ", bookId=" + bookId + ", custId=" + custId + ", comments=" + comments
-				+ ", writeDate=" + writeDate + ", star=" + star + ", select=" + select + ", avg=" + avg + ", customer="
-				+ customer + "]";
+		return "Review [id=" + id + ", bookId=" + bookId + ", custId=" + custId + ", apiId=" + apiId + ", comments="
+				+ comments + ", writeDate=" + writeDate + ", star=" + star + ", select=" + select + ", avg=" + avg
+				+ ", count=" + count + ", customer=" + customer + "]";
 	}
 
 }

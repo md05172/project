@@ -9,13 +9,28 @@
 		</div>
 		
 		<!-- 검색 -->
-		<div class="search_box">
-			<input>
-			<div class="search_img_container">
-				<a href="#"><img src="/resources/images/search.png" alt="검색버튼"></a>
+		<div class="search_container">
+			<div class="search_wrap">
+				<div class="search_box">
+						<input id="keyword">
+						<div class="search_img_container">
+							<a href="#"><img src="/resources/images/search.png" alt="검색버튼"></a>
+						</div>			
+				</div>
+				<div class="show_search">
+
+				</div>
+				<div class="keyword">
+					<ul>
+						<li>한강</li>
+						<li>한강 노벨</li>
+						<li>채식주의자</li>
+						<li>노벨문학상</li>
+						<li>바람이 분다 가라</li>
+					</ul>
+				</div>
 			</div>
 		</div>
-		
 		<c:if test="${sessionScope.customer == null && sessionScope.kaccessToken == null && sessionScope.naceessToken == null }">
 			<ul class="login_out">  
 				<li><a href="${pageContext.request.contextPath }/customer/login">로그인</a></li>

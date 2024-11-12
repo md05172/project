@@ -7,16 +7,16 @@ import kr.ac.kopo.model.Review;
 
 public interface ReviewDao {
 
-	void add(Review review);
+	public void add(Review review);
 
-	List<Review> list(Review review);
+	public List<Review> list(Review review);
 
-	Review item(Long id);
+	public Review item(Long id);
 
-	Customer customerReview(Customer customer);
+	public Customer customerReview(Customer customer);
 
-	Double avg(Long bookId);
+	public Double avg(Long bookId);
 
-	Integer count(Long bookId);
+	public Integer count(Long bookId);
 
 }

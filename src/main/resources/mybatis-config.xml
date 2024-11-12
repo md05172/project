@@ -10,16 +10,13 @@
 	<typeAliases>
 		<typeAlias type="kr.ac.kopo.model.Book" alias="Book"/>
 		<typeAlias type="kr.ac.kopo.model.Customer" alias="Customer"/>
-		<typeAlias type="kr.ac.kopo.model.Api" alias="Api"/>
 		<typeAlias type="kr.ac.kopo.model.Wish" alias="Wish"/>
 		<typeAlias type="kr.ac.kopo.model.Review" alias="Review"/>
-		<typeAlias type="kr.ac.kopo.model.Review2" alias="Review2"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mybatis/book.xml"/>
 		<mapper resource="mybatis/customer.xml"/>
-		<mapper resource="mybatis/api.xml"/>
 		<mapper resource="mybatis/wish.xml"/>
 		<mapper resource="mybatis/review.xml"/>
 	</mappers>
