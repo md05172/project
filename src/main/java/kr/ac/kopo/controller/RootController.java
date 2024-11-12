@@ -66,7 +66,7 @@ public class RootController {
 		Customer api = kakaoService.getUserInfo(accessToken);
 		System.out.println("api 확인 " + api);
 
-		Customer item = custService.item(api.getEmail());
+		Customer item = custService.login(api.getEmail());
 		if (item != null) {
 			session.setAttribute("api", item);
 			session.setAttribute("kaccessToken", accessToken);
