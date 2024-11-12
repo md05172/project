@@ -22,4 +22,9 @@ public class Cart {
 		cart.remove(id);
 	}
 
+	@Override
+	public String toString() {
+		return "Cart [cart=" + cart + "]";
+	}
+
 }

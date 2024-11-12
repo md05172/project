@@ -48,7 +48,7 @@
 					<c:forEach var="item" items="${novel }">
 						<div class="best_item_box">
 							<div class="best_img_box">
-								<a>
+								<a href="/book/detail/${item.id }">
 									<img alt="" src="/upload/book/${item.path }">
 								</a>
 							</div>
@@ -74,7 +74,7 @@
 					<c:forEach var="item" items="${best }">
 						<div class="best_item_box">
 							<div class="best_img_box">
-								<a>
+								<a href="/book/detail/${item.id }">
 									<img alt="" src="/upload/book/${item.path }">
 								</a>
 							</div>

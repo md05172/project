@@ -43,7 +43,7 @@
 			<ul class="login_out">
 				<li>${sessionScope.customer.name }</li>
 				<li><a href="${pageContext.request.contextPath }/customer/logout">로그아웃</a></li>
-				<li><a class="cart_img" href="${pageContext.request.contextPath }/cart"></a></li>
+				<li><a class="cart_img" href="/cart"></a></li>
 			</ul> 
 		</c:if>
 		
@@ -51,7 +51,7 @@
 			<ul class="login_out">
 				<li>${sessionScope.api.name }</li>
 				<li><a href="${kakao_logout }">카카오 로그아웃</a></li>
-				<li><a class="cart_img" href="${pageContext.request.contextPath }/cart"></a></li>
+				<li><a class="cart_img" href="/cart"></a></li>
 			</ul> 
 		</c:if>
 		
@@ -59,6 +59,7 @@
 			<ul class="login_out">
 				<li>${sessionScope.api.name }</li>
 				<li><a href="${pageContext.request.contextPath }/naver/logout">네이버 로그아웃</a></li>
+				<li><a class="cart_img" href="/cart"></a></li>
 			</ul> 
 		</c:if>
 	</div>

@@ -80,7 +80,7 @@ window.addEventListener('load', () => {
         };
     });
 
-    document.querySelector('.big_container').addEventListener('click', e => {        
+    document.querySelector('body').addEventListener('click', e => {        
         document.querySelector('.show_search').classList.remove('show');
     })
 
