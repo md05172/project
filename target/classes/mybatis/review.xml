@@ -4,8 +4,8 @@
 <mapper namespace="review">
 	
 	<insert id="add">
-		INSERT INTO review (id, book_id, cust_id, comments, write_date, star, api_id)
-		VALUES (SEQ_REVIEW.nextval, #{bookId}, #{custId}, #{comments}, SYSDATE, #{star}, #{apiId})
+		INSERT INTO review (id, book_id, cust_id, comments, write_date, star)
+		VALUES (SEQ_REVIEW.nextval, #{bookId}, #{custId}, #{comments}, SYSDATE, #{star})
 		
 		<selectKey keyProperty="id"  resultType="Long" order="AFTER">
 			SELECT SEQ_REVIEW.currval FROM dual

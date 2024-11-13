@@ -29,10 +29,10 @@ public class CartController {
 	@GetMapping
 	String cart(@SessionAttribute(required = false) Cart cart, Model model) {
 		if(cart == null) cart = new Cart();
-		System.out.println("흠.. " + cart);
+		
 		// cart에 담긴 key값 (bookId값만 넘겨준다)
 		List<Book> list = service.list(cart.getCart().keySet());
-		System.out.println("출력" + list);
+		
 		model.addAttribute("list", list);
 		return "cart";
 	}
@@ -48,7 +48,6 @@ public class CartController {
 	@ResponseBody
 	@PostMapping("/add")
 	Cart add(@RequestBody Map<Long, Integer> items, @SessionAttribute(required = false) Cart cart, HttpSession session) {
-		System.out.println("cart 가져와바" + cart);
 		if(cart == null) {
 			cart = new Cart();
 			session.setAttribute("cart", cart);
@@ -60,17 +59,18 @@ public class CartController {
 
 			cart.setCart(bookid, amount);
 		}
-		System.out.println("담기는데.. " + cart);
 		return cart;
 	}
 	
 	@PostMapping("/delete")
 	@ResponseBody
 	Cart delete(@RequestBody Map<Long, Integer> items, @SessionAttribute Cart cart) {
+		
 		for (Map.Entry<Long, Integer> entry : items.entrySet()) {
 			Long bookid = entry.getKey();
 			cart.delete(bookid);
 		}
+		
 		return cart;
 	}
 

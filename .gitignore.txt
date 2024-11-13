@@ -106,6 +106,10 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
+# Ignore Maven build artifacts
+target/m2e-wtp/web-resources/META-INF/maven/kr.ac/kopo/pom.properties
+target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+
 # Eclipse m2e generated files
 # Eclipse Core
 .project

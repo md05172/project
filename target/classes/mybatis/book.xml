@@ -39,18 +39,22 @@
 	</select>
 	
 	<select id="best" resultType="Book">
-		SELECT book.id,
-		    book.name,
-		    book.publisher,
-		    book.price,
-		    book.path,
-		    book.writer,
-		    book.category,
-		    AVG(review.STAR) avg FROM book
-		JOIN review
-		ON book.id = review.book_id
-		GROUP BY book.id, book.name, book.publisher, book.price, book.path, book.writer, book.category
-		ORDER BY avg DESC
+		SELECT * FROM (
+		    SELECT 
+		        book.id,
+		        book.name,
+		        book.publisher,
+		        book.price,
+		        book.path,
+		        book.writer,
+		        book.category,
+		        AVG(review.STAR) AS avgm
+		    FROM book
+		    JOIN review ON book.id = review.book_id
+		    GROUP BY book.id, book.name, book.publisher, book.price, book.path, book.writer, book.category
+		    ORDER BY avgm DESC
+		) sub
+		WHERE ROWNUM <![CDATA[<=]]> 5
 	</select>
 	
 	<select id="list_keyset" resultType="Book">

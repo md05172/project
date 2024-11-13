@@ -61,8 +61,9 @@
                                        </div>
                                        <div class="item_info">
                                           <p>소득공제</p>
-                                          <p><a href="book/detail/${item.id }">${item.name }</a></p>
-                                          <p><fmt:formatNumber value="${item.price }" type="number"/>원</p>
+                                          <p><a class="book_name" href="book/detail/${item.id }">${item.name }</a></p>
+                						  <p class="book_writer">${item.writer }</p>	
+                                          <p class="book_price"><fmt:formatNumber value="${item.price }" type="number"/>원</p>
                                        </div>
                                     </div>
                                  </td>
@@ -125,5 +126,7 @@
          </div>
       </div>
    </main>
+   
+   <jsp:include page="modal.jsp"></jsp:include>
 </body>
 </html>

@@ -561,6 +561,10 @@ div > h3 {
 	display: flex;
 }
 
+.hide {
+	display: none;
+}
+
 .review_list_empty {
 	width: 50%;
     margin: 0 auto;

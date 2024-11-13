@@ -13,11 +13,13 @@ window.addEventListener('load', () => {
 
     // 이벤트 뒷 배경
     const backgrounds = [
-        'linear-gradient(90deg, rgba(254,236,224,1) 35%, rgba(252,178,128,1) 100%)',
-        'linear-gradient(90deg, rgba(0,79,184,1) 35%, rgba(92,160,250,1) 100%)',
-        'linear-gradient(90deg, rgba(38,31,85,1) 35%, rgba(74,47,255,1) 100%)',
-        'linear-gradient(90deg, rgba(8,238,199,1) 35%, rgba(0,112,93,1) 100%)',
-        'linear-gradient(90deg, rgba(8,26,62,1) 35%, rgba(49,64,96,1) 100%)'
+        'linear-gradient(to right, #9796f0, #fbc7d4)',
+        'linear-gradient(to right, #acb6e5, #86fde8)',
+        'linear-gradient(to right, #f7f8f8, #acbb78)',
+        'linear-gradient(to right, #2193b0, #6dd5ed)',
+        'linear-gradient(to right, #4568dc, #b06ab3)',
+        'linear-gradient(to right, #2980b9, #2c3e50)',
+        'linear-gradient(to right, #70e1f5, #ffd194)'
     ];
 
     document.querySelector('nav').style.background = backgrounds[0];
@@ -87,7 +89,7 @@ window.addEventListener('load', () => {
     };
 
     const moveSlide = num => {
-        slides.style.left = -num * (slideWidth + slideMargin) - 78 + 'px';
+        slides.style.left = -num * (slideWidth + slideMargin) - 197 + 'px';
         current = num;
         
         changeBackgroundColor(current);
@@ -97,7 +99,7 @@ window.addEventListener('load', () => {
             changeBackgroundColor(0);
             setTimeout(() => {
                 slides.classList.remove('animated');
-                slides.style.left = '-78px';
+                slides.style.left = '-197px';
             }, 1000);
             setTimeout(() => { slides.classList.add('animated');}, 1500);
         } 
@@ -133,5 +135,5 @@ window.addEventListener('load', () => {
 
     prevBtn.addEventListener('mouseout', autoSlide);
 
-    window.addEventListener('resize', stopAutoSlide);
+    // window.addEventListener('resize', stopAutoSlide);
 });

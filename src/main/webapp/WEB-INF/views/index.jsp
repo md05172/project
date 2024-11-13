@@ -30,6 +30,8 @@
 						<li><a href=""><img src="/resources/images/event/event03.jpg" alt=""></a></li>
 						<li><a href=""><img src="/resources/images/event/event04.jpg" alt=""></a></li>
 						<li><a href=""><img src="/resources/images/event/event05.jpg" alt=""></a></li>
+						<li><a href=""><img src="/resources/images/event/event06.jpg" alt=""></a></li>
+						<li><a href=""><img src="/resources/images/event/event07.jpg" alt=""></a></li>
 					</ul>
 				</div>
 					<div class="prev"><i class="fa fa-angle-right" aria-hidden="true"></i></div> 

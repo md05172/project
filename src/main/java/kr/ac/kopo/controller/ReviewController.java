@@ -26,6 +26,7 @@ public class ReviewController {
 	
 	@PostMapping
 	public Review add(@RequestBody Review review, @SessionAttribute Customer customer, HttpSession session) {
+		System.out.println("review" + review);
 		service.add(review);
 		
 		customer.getReview().add(service.item(review.getId()));

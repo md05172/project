@@ -132,10 +132,11 @@ body {
 
 table {
    width: 100%;
+   border-collapse: collapse;
 }
 
 table tbody tr {
-	outline: 1px solid var(--line-color);
+	border-top: 1px solid var(--line-color);
 }
 
 table th:nth-child(2) {
@@ -226,7 +227,7 @@ td:last-child {
 
 .item_info p:nth-child(2){
    font-size: 14px;
- 
+	margin: 0;
 }
 
 .item_info p:nth-child(2) > a{
@@ -235,9 +236,16 @@ td:last-child {
 }
 
 .item_info p:nth-child(3){
+	font-size: 10px;
+    margin: 5px 0;
+    color: var(--border-color);	
+}
+
+.item_info p:nth-child(4){
 	font-size: 14px;
     font-weight: 700;
     color: #000;
+    margin: 0;
 }
 
 .all_check {

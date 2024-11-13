@@ -46,7 +46,7 @@ public class CustomerServiceImpl implements CustomerService{
 	public boolean login(Customer item) {
 		Customer customer = dao.check(item.getEmail());
 		Customer wishList = wishdao.wishList(customer);
-		System.out.println("왜 찜 안가져와" + wishList);
+		
 		Customer customerReview = reviewdao.customerReview(customer);
 		
 		if(customer != null) {

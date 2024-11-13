@@ -27,18 +27,14 @@ public class WishController {
 		service.add(wish); // 등록하고
 		customer = service.wishList(customer); // 다시 목록을 가져와서 customer에 넣어준다
 		
-		System.out.println("찜등록 " + customer);
-		
 		session.setAttribute("customer", customer);
 		return customer;
 	}
 	
 	@DeleteMapping("/{id}")
 	String delete(@PathVariable Long id, @SessionAttribute Customer customer) {
-		System.out.println("삭제전 " + customer);
 		customer.getWish().removeIf(e -> e.getId() == id);
 		
-		System.out.println("삭제후 " + customer);
 		int delete = service.delete(id);
 		
 		if(delete > 0) return "ok";
