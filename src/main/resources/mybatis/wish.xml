@@ -4,7 +4,7 @@
 
 	<insert id="add">
 		INSERT INTO wishlist
-		VALUES (SEQ_WISH.nextval, #{bookId}, #{custId}, #{apiId})
+		VALUES (SEQ_WISH.nextval, #{bookId}, #{custId})
 	</insert>
 	
 	<resultMap type="Customer" id="customerMap" autoMapping="true">
@@ -15,19 +15,20 @@
 		<collection column="cust_id" property="wish" ofType="Wish" javaType="ArrayList" autoMapping="true">
 			<id column="wish_id" property="id" javaType="Long"/>
 			<result column="book_id" property="bookId" javaType="Long"/>
+			<result column="cust_id" property="custId" javaType="Long"/>
 		</collection>		
 	</resultMap>
 
 	<select id="list" resultMap="customerMap">
-		select customer.*, 
+		SELECT customer.*, 
 			wishlist.id wish_id,
 			wishlist.book_id,
 			wishlist.cust_id cust_id
-		from customer
+		FROM customer
 		LEFT JOIN wishlist 
 		ON customer.id = wishlist.cust_id
-		where customer.id = (SELECT id FROM customer
-        WHERE email = #{email})
+		WHERE customer.id = (SELECT id FROM customer
+        	WHERE email = #{email})
 	</select>
 
 	<delete id="delete">

@@ -20,7 +20,8 @@ public class WishDaoImpl implements WishDao{
 
 	@Override
 	public Customer wishList(Customer item) {
-	return sql.selectOne("wish.list", item);
+		System.out.println("오는데.." + item);
+		return sql.selectOne("wish.list", item);
 	}
 
 	@Override

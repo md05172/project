@@ -27,7 +27,7 @@ public class RootController {
 
 	@Autowired
 	BookService service;
-	
+
 	@Autowired
 	CustomerService custService;
 
@@ -36,7 +36,7 @@ public class RootController {
 	
 	@Autowired
 	private KakaoService kakaoService;
-	
+
 	@GetMapping("/")
 	String index(Model model) {
 		model.addAttribute("kakao_logout", KakaoService.KAKAOLOGOUT);
@@ -63,20 +63,30 @@ public class RootController {
 		// 받은 코드로 토큰값 가져오기
 		String accessToken = kakaoService.getAccessToken(code);
 		// 토큰으로 사용자 정보 가져오기
-		Customer api = kakaoService.getUserInfo(accessToken);
-		System.out.println("api 확인 " + api);
 
-		Customer item = custService.login(api.getEmail());
-		if (item != null) {
-			session.setAttribute("api", item);
-			session.setAttribute("kaccessToken", accessToken);
+		Customer item = kakaoService.getUserInfo(accessToken);
+		System.out.println("api 확인 " + item);
+		
+		Customer check = custService.check(item.getEmail());
+		
+		if(check != null) {
+			// 로그인 시킨다
+			if(custService.login(item)) {
+				session.setAttribute("customer", item);
+				return "redirect:/";
+			} else {
+				return "redirect:/customer/login";
+			}
 		} else {
-			custService.join(api);
-			session.setAttribute("api", item);
-			session.setAttribute("kaccessToken", accessToken);
+			custService.join(item);
+			if(custService.login(item)) {
+				session.setAttribute("customer", item);
+				return "redirect:/";
+			} else {
+				return "redirect:/customer/login";
+			}
 		}
 
-		return "redirect:../";
 	}
 
 	// 카카오 로그아웃
@@ -89,9 +99,9 @@ public class RootController {
 		// 가져온 토큰으로 카카오톡 로그아웃을 하고
 		kakaoService.kakaoLogout(accessToken);
 		// 세션에서 사용자와 카카오톡 토큰을 없애준다.
-		session.removeAttribute("api");
+		session.removeAttribute("customer");
 		session.removeAttribute("kaccessToken");
-		return "redirect:../";
+		return "redirect:/";
 	}
 
 	// 네이버 로그인
@@ -99,7 +109,7 @@ public class RootController {
 	String naverLogin(HttpSession session, String code, String state)
 			throws JsonMappingException, JsonProcessingException, UnsupportedEncodingException {
 		if (code == null)
-			return "redirect:../";
+			return "redirect:/";
 
 		System.out.println("naver 들어옴");
 		System.out.println("code = " + code);
@@ -107,20 +117,29 @@ public class RootController {
 		// 네이버 로그인시 받은code와 state로 토큰을 가져온다.
 		String naverToken = naverService.getAccessToken(code, state);
 		// 토큰으로 사용자 정보 가져오기
-		Customer api = naverService.getUserInfo(naverToken);
-		System.out.println("api 확인 " + api);
-
-		Customer item = custService.item(api.getEmail());
-		if (item != null) {
-			session.setAttribute("api", item);
-			session.setAttribute("naceessToken", naverToken);
+		Customer item = naverService.getUserInfo(naverToken);
+		System.out.println("api 확인 " + item);
+		
+		Customer check = custService.check(item.getEmail());
+		// 있다는거
+		if(check != null) {
+			// 로그인 시킨다
+			if(custService.login(item)) {
+				session.setAttribute("customer", item);
+				return "redirect:/";
+			} else {
+				return "redirect:/customer/login";
+			}
 		} else {
-			service.join(api);
-			session.setAttribute("api", item);
-			session.setAttribute("naceessToken", naverToken);
+			custService.join(item);
+			if(custService.login(item)) {
+				session.setAttribute("customer", item);
+				return "redirect:/";
+			} else {
+				return "redirect:/customer/login";
+			}
 		}
 
-		return "redirect:../";
 	}
 
 	// 네이버 로그아웃
@@ -135,6 +154,7 @@ public class RootController {
 			session.removeAttribute("api");
 			session.removeAttribute("naceessToken");
 		}
-		return "redirect:../";
+		return "redirect:/";
 	}
+
 }

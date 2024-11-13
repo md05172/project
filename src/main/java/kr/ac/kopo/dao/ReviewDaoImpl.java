@@ -32,6 +32,7 @@ public class ReviewDaoImpl implements ReviewDao{
 
 	@Override
 	public Customer customerReview(Customer customer) {
+		System.out.println("여기도 되는데 " + customer);
 		return sql.selectOne("review.customer_review", customer);
 	}
 
