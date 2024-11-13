@@ -60,31 +60,73 @@
 					<p>배송 기간: 2~3일 (주말 제외)</p>
 				</div>
 
-				<div class="social_share">
-					<button class="share_facebook">Facebook</button>
-					<button class="share_twitter">Twitter</button>
-					<button class="share_instagram">Instagram</button>
-				</div>
-
-				<div class="buycart_box">
-					<div class="amount_box">
-						<div class="amount">
-							<div class="plus_minus">
-								<button>-</button>
-								<input type="text" value="1">
-								<button>+</button>
+				<div class="book-detail__delivery">
+					<span class="book-detail__title">배송정보</span>
+					<div class="book-info__wrap">
+						<div class="book-info__item">
+							<div class="book-info__title">
+								<span class="book-info__title-text">배송비</span>
 							</div>
-							<div class="cart_price_box">
-								<span>${item.price }</span> <span>원</span>
+							<div class="book-info__content">
+								<span class="book-info__text free">무료 <span class="book-info__sub">&nbsp;(해외배송의경우 지역에 따라 상이)</span></span>
 							</div>
 						</div>
-						<div class="btn_box">
-							<button class="cart" data-bookid="${item.id }">장바구니</button>
-							<button class="buy">구매하기</button>
+						<divb class="book-info__item book-info__delivery">
+							<div class="book-info__title">
+								<p class="book-info__title-text">배송안내</p>
+							</div>
+							<div class="book-info__content">
+								<div class="book-info__list">
+									<span class="book-info__text">서울특별시
+										강남구 강남대로 542(논현동, 영풍빌딩)</span>
+								</div>
+							</div>
+						</div>
+						<div class="book-info__item">
+							<div class="book-info__content2">
+								<div class="book-info__list">
+									<span class="badge-delivery badge-delivery--courier">택배배송</span>
+									<span  class="book-info__text"> 지금 택배 주문하면
+										<span class="text_green">오늘 출고 가능</span>
+									</span>
+								</div>
+								<div class="book-info__list">
+									<span class="badge-delivery badge-delivery--now-dream">나우드림</span>
+									<span class="book-info__text">택배보다 빠른 매장픽업 서비스</span>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+					
+					<div class="buycart_box">
+						<div class="amount_box">
+							<div class="amount">
+								<div class="plus_minus">
+									<button class="minus">-</button>
+									<input class="show_amount" type="text" value="1">
+									<button class="plus">+</button>
+								</div>
+								<div class="cart_price_box">
+									<span class="show_price">${item.price }</span> <span>원</span>
+								</div>
+							</div>
+							<div class="btn_box">
+								<button class="cart" data-bookid="${item.id }">장바구니</button>
+								<button class="buy">구매하기</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="social_share">
+						<div class="share_facebook"><img alt="" src="/resources/images/facebook.png"></div>
+						<div class="share_twitter"><img alt="" src="/resources/images/twitter.png"></div>
+						<div class="share_instagram"><img alt="" src="/resources/images/instargram.png"></div>
+					</div>
+					
+				</div> <!-- right_box end -->
+				
+			</div> <!-- detail_container end -->
+			
 		</div>
 
 		<div class="detail_nav_list">
@@ -254,92 +296,91 @@
 						더보기
 					</div>
 				</div>
+			</div>
+			<div class="claim_box">
 
-				<div class="claim_box">
+				<h2>교환/반품/환불</h2>
 
-					<h2>교환/반품/환불</h2>
-
-					<table>
-						<colgroup>
-							<col width="200">
-							<col>
-						</colgroup>
-						<tbody>
-							<tr>
-								<th>반품/교환방법</th>
-								<td>
-									<ul>
-										<li>마이페이지 > 주문관리 > 주문/배송조회 > 주문조회 후 [1:1상담신청] 또는 고객센터
-											(8282-8282)</li>
-										<li>※ 오픈마켓, 해외배송 주문상품 문의 시 [1:1상담신청] 또는 고객센터 (8282-8282)</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<th>반품/교환 가능기간</th>
-								<td>
-									<ul>
-										<li>변심반품의 경우 수령 후 7일 이내</li>
-										<li>상품의 결함 및 계약내용과 다를 경우 문제점 발견 후 30일 이내</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<th>반품/교환비용</th>
-								<td>
-									<ul>
-										<li>단순변심 혹은 구매착오로 인한 반품/교환은 반송료 고객 부담</li>
-										<li>해외직배송 도서 구매 후 단순변심에 의한 취소 및 반품 시 도서판매가의 20% 수수료 부과</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<th>반품/교환 불가 사유</th>
-								<td>
-									<ul>
-										<li>소비자의 책임 있는 사유로 상품 등이 손실 또는 훼손된 경우</li>
-										<li>소비자의 사용, 포장 개봉에 의해 상품 등의 가치가 현저히 감소한 경우 <br> 예)
-											만화, 잡지, 수험서 및 문제집류
-										</li>
-										<li>복제가 가능한 상품 등의 포장을 훼손한 경우 <br> 예) 음반/DVD/비디오,
-											소프트웨어, 만화책, 잡지, 영상 화보집
-										</li>
-										<li>소비자의 요청에 따라 개별적으로 주문 제작되는 상품의 경우</li>
-										<li>디지털 컨텐츠인 eBook, 오디오북 등을 1회 이상 다운로드를 받았을 경우</li>
-										<li>시간의 경과에 의해 재판매가 곤란한 정도로 가치가 현저히 감소한 경우</li>
-										<li>전자상거래 등에서의 소비자보호에 관한 법률이 정하는 소비자 청약철회 제한 내용에 해당되는 경우</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<th>상품 품절</th>
-								<td>
-									<ul>
-										<li>공급사(출판사) 재고 사정에 의해 품절/지연될 수 있으며, 품절 시 관련 사항에 대해서는
-											이메일과 문자로 안내드리겠습니다.</li>
-										<li>※ 오픈마켓, 해외배송 주문상품 문의 시 [1:1상담신청] 또는 고객센터 (8282-8282)</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<th>소비자 피해보상 환불지연에 따른 배상</th>
-								<td>
-									<ul>
-										<li>상품의 불량에 의한 교환, A/S, 환불, 품질보증 및 피해보상 등에 관한 사항은 소비자분쟁
-											해결 기준 (공정거래위원회 고시)에 준하여 처리됨</li>
-										<li>대금 환불 및 환불지연에 따른 배상금 지급 조건, 절차 등은 전자상거래 등에서의 소비자 보호에
-											관한 법률에 따라 처리함</li>
-									</ul>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				<table>
+					<colgroup>
+						<col width="200">
+						<col>
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>반품/교환방법</th>
+							<td>
+								<ul>
+									<li>마이페이지 > 주문관리 > 주문/배송조회 > 주문조회 후 [1:1상담신청] 또는 고객센터
+										(8282-8282)</li>
+									<li>※ 오픈마켓, 해외배송 주문상품 문의 시 [1:1상담신청] 또는 고객센터 (8282-8282)</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<th>반품/교환 가능기간</th>
+							<td>
+								<ul>
+									<li>변심반품의 경우 수령 후 7일 이내</li>
+									<li>상품의 결함 및 계약내용과 다를 경우 문제점 발견 후 30일 이내</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<th>반품/교환비용</th>
+							<td>
+								<ul>
+									<li>단순변심 혹은 구매착오로 인한 반품/교환은 반송료 고객 부담</li>
+									<li>해외직배송 도서 구매 후 단순변심에 의한 취소 및 반품 시 도서판매가의 20% 수수료 부과</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<th>반품/교환 불가 사유</th>
+							<td>
+								<ul>
+									<li>소비자의 책임 있는 사유로 상품 등이 손실 또는 훼손된 경우</li>
+									<li>소비자의 사용, 포장 개봉에 의해 상품 등의 가치가 현저히 감소한 경우 <br> 예)
+										만화, 잡지, 수험서 및 문제집류
+									</li>
+									<li>복제가 가능한 상품 등의 포장을 훼손한 경우 <br> 예) 음반/DVD/비디오,
+										소프트웨어, 만화책, 잡지, 영상 화보집
+									</li>
+									<li>소비자의 요청에 따라 개별적으로 주문 제작되는 상품의 경우</li>
+									<li>디지털 컨텐츠인 eBook, 오디오북 등을 1회 이상 다운로드를 받았을 경우</li>
+									<li>시간의 경과에 의해 재판매가 곤란한 정도로 가치가 현저히 감소한 경우</li>
+									<li>전자상거래 등에서의 소비자보호에 관한 법률이 정하는 소비자 청약철회 제한 내용에 해당되는 경우</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<th>상품 품절</th>
+							<td>
+								<ul>
+									<li>공급사(출판사) 재고 사정에 의해 품절/지연될 수 있으며, 품절 시 관련 사항에 대해서는
+										이메일과 문자로 안내드리겠습니다.</li>
+									<li>※ 오픈마켓, 해외배송 주문상품 문의 시 [1:1상담신청] 또는 고객센터 (8282-8282)</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<th>소비자 피해보상 환불지연에 따른 배상</th>
+							<td>
+								<ul>
+									<li>상품의 불량에 의한 교환, A/S, 환불, 품질보증 및 피해보상 등에 관한 사항은 소비자분쟁
+										해결 기준 (공정거래위원회 고시)에 준하여 처리됨</li>
+									<li>대금 환불 및 환불지연에 따른 배상금 지급 조건, 절차 등은 전자상거래 등에서의 소비자 보호에
+										관한 법률에 따라 처리함</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
 
 	<jsp:include page="../modal.jsp"/>
-	
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

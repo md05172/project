@@ -79,7 +79,7 @@
                                     </div>
                                  </td>
                                  <td>
-                                    <div><fmt:formatNumber value="${item.price }" type="number"/>원</div>
+                                    <div class="show_price"><fmt:formatNumber value="${item.price }" type="number"/>원</div>
                                  </td>
                               </tr>
                            </c:forEach>
@@ -125,8 +125,8 @@
             </div>
          </div>
       </div>
-   </main>
-   
+   </main>   
    <jsp:include page="modal.jsp"></jsp:include>
+   <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

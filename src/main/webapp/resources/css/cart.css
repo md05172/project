@@ -13,6 +13,10 @@ ul {
    display: flex;
 }
 
+td {
+	padding: 10px 0;
+}
+
 body {
    margin: 0;
    padding: 0;   
@@ -35,6 +39,7 @@ body {
    display: flex;
    min-height: 400px;
    max-width: 878px;
+   max-height: 400px;
    flex-direction: column;
    flex: 1;
    border-radius: 5px;
@@ -58,6 +63,10 @@ body {
 .books {
     height: 100%;
     overflow: auto;
+}
+
+.books::-webkit-scrollbar{
+  display:none;
 }
 
 .guide_box {
@@ -162,9 +171,11 @@ td:last-child {
 }
 
 .item_info {
-   display: inline-block;
+	display: inline-block;
     position: absolute;
     margin-left: 6px;
+    height: 100%;
+    width: 95%;
 }
 
 .link {
@@ -204,6 +215,10 @@ td:last-child {
     width: 25px;
 }   
 
+.show_price {
+	font-weight: 600;	
+}
+
 .all_box {
    height: 50px;
    border-bottom: 1px solid var(--line-color);
@@ -226,8 +241,12 @@ td:last-child {
 }
 
 .item_info p:nth-child(2){
-   font-size: 14px;
-	margin: 0;
+	font-size: 14px;
+    margin: 0;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    overflow: hidden;
 }
 
 .item_info p:nth-child(2) > a{
@@ -237,7 +256,7 @@ td:last-child {
 
 .item_info p:nth-child(3){
 	font-size: 10px;
-    margin: 5px 0;
+    margin: 8px 0;
     color: var(--border-color);	
 }
 

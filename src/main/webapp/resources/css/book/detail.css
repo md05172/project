@@ -106,8 +106,8 @@
     align-items: center;
     justify-content: space-between;	
     background-color: #f8f8f8;
-    border-bottom: 1px solid var(--line-color);
-    margin-bottom: 20px;
+    border-top: 1px solid var(--line-color);
+    margin: 30px 0;
 }
 
 .plus_minus button {
@@ -147,6 +147,11 @@
 	color: #ee293b;
     margin-left: 1px;
     font-size: 13px;
+}
+
+.social_share {
+	margin-top: 20px;
+	display: flex;
 }
 
 .btn_box {
@@ -226,7 +231,7 @@
 	list-style: none;
 }
 
-.faq_section, .related_boos, .book_info, #writer_info, .review_box, .claim_box {
+.faq_section, .related_boos, .book_info, #writer_info, .review_box {
 	border-bottom: 1px solid var(--line-color);
 	padding: 25px 0px 25px;
 }
@@ -265,6 +270,10 @@ div > h3 {
 	padding: 15px;
     box-sizing: border-box;
     border-top: solid 1px #dbdbdb;
+}
+
+.claim_box table tbody tr:last-child th, .claim_box table tbody tr:last-child td{
+	border-bottom: 1px solid #dbdbdb;
 }
 
 .claim_box table tbody td li {
@@ -494,12 +503,6 @@ div > h3 {
 	color: var(--white-color);
 }
 
-
-
-.review_list_box {
-    border-bottom: 1px solid var(--line-color);
-}
-
 .review_content {
 	border-top: 1px solid var(--line-color);
     position: relative;
@@ -573,9 +576,6 @@ div > h3 {
     color: var(--font-color-light-gray);
 }
 
-.claim_box {
-	border-top: 1px solid var(--line-color);
-}
 
 .btn_like, .btn_reply {
 	display: flex;
@@ -714,4 +714,44 @@ div > h3 {
     font-size: 14px;
     color: #333;
     font-weight: bold;
+}
+
+.book-detail__title, .delivery_info {
+	display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 28px;
+    color: #333;
+}
+
+.book-info__wrap {
+    font-size: 13px;
+    color: #80888a;
+}
+
+.book-info__item {
+	display: flex;
+	justify-content: center;
+}
+
+.book-info__content {
+	flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-info__content2 {
+	margin-left: 12%;
+    width: 50%;
+    font-size: 13px;
+    color: #80888a;
+}
+
+.book-info__content2 .book-info__list span:nth-child(2) {
+	margin-left: 5%;
+}
+
+.free {
+	width: 284px;
 }

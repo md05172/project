@@ -73,20 +73,11 @@ window.addEventListener('load', () => {
                 .then(result => {
                     // customer의 wish에 있는 bookid랑 찜하기누른 booki랑 같으면 wishid에 id를 넣어준다
                     // key값으로 꺼낼때 만약 id랑 bookid가 같을수도있으니까 key를 무시하고 반복을 돌면서 bookid만비교한다
-                    console.log(result);
-                    console.log(typeof result);
-                    console.log(typeof result.wish);
 
                     result.wish.forEach(item => {
-                        console.log(item);
-                        console.log(typeof item.bookId);
-                        console.log(typeof bookid);
-                        console.log(item.bookId == bookid);
                         if (item.bookId == bookid) {
-                            console.log(item.id);
                             b.target.setAttribute('data-wishid', item.id);
                             b.target.dataset.wishid = item.id;
-                            console.log(b.target.dataset.wishid);
                         }
                     })
                     b.target.src = '/resources/images/fullheart.png';
@@ -95,7 +86,6 @@ window.addEventListener('load', () => {
         } else {
             const { wishid } = b.target.dataset;
 
-            console.log(wishid);
 
             fetch(`/wish/${wishid}`, {
                 method: "DELETE"
@@ -106,6 +96,33 @@ window.addEventListener('load', () => {
                 });
         }
     });
+
+    // +버튼
+    document.querySelector('.plus').addEventListener('click', () => {
+        let amount = document.querySelector('.show_amount').value;
+        let price = document.querySelector('.price').textContent;
+
+        amount++;
+
+        document.querySelector('.show_amount').value = amount;        
+        document.querySelector('.show_price').textContent = Number(amount) * Number(price);
+    })
+
+    // -버튼
+    document.querySelector('.minus').addEventListener('click', () => {
+        let amount = document.querySelector('.show_amount').value;
+        let price = document.querySelector('.price').textContent;
+        
+
+        if(Number(amount) == 1) {
+            document.querySelector('.show_amount').value = 1;
+        }else {
+            amount--;
+            document.querySelector('.show_amount').value = amount;        
+            document.querySelector('.show_price').textContent = Number(amount) * Number(price);
+        }
+    })
+
 
     // 장바구니 모달 표시
     const showCartModal = (message, message2, src) => {
@@ -281,10 +298,7 @@ window.addEventListener('load', () => {
 
     // review div 만들기
     const makeReview = list => {
-        console.log('만드는값 확인' + list);
         const reviewList = document.querySelector('.review_list');
-        console.log(reviewList);
-        console.log(reviewList.legnth);
         // 리뷰 컨텐츠 요소 생성
         const reviewContent = document.createElement('div');
         reviewContent.className = 'review_content';
@@ -416,7 +430,6 @@ window.addEventListener('load', () => {
         }
 
         const { bookid, custid } = e.target.dataset;
-        console.log(currentRating);
         const item = {
             comments: text,
             bookId: bookid,
@@ -433,7 +446,6 @@ window.addEventListener('load', () => {
         })
             .then(resp => resp.json())
             .then(list => {
-                console.log('들어오나');
                 // 비어있습니다를 없애준다.
                 document.querySelector('.review_list_empty').classList.add('hide');
 
@@ -444,7 +456,6 @@ window.addEventListener('load', () => {
                 // 내용도 없애준다.
                 document.querySelector('.text').value = '';
 
-                console.log(list);
                 // 리뷰를 보여준다.
                 makeReview(list);
 
@@ -459,7 +470,6 @@ window.addEventListener('load', () => {
         .then(list => {
             document.querySelector('.more_button').style.display = 'none';
             document.querySelector('.review_list_empty').classList.remove('hide');
-            console.log('list 왜 안가져옴? ' + list[0].avg, + list[0].count);
             
             if (list.length > 0) {
                 document.querySelector('.review_list_empty').classList.add('hide');
@@ -484,7 +494,6 @@ window.addEventListener('load', () => {
                 document.querySelector('.more_button').style.display = 'none';
                 document.querySelector('.review_list_empty').classList.remove('hide');
 
-                console.log(list);
                 if (list.length > 0) {
                     document.querySelector('.review_list_empty').classList.add('hide');
                     makeReviewList(list);
@@ -500,7 +509,6 @@ window.addEventListener('load', () => {
         const allReviewContents = Array.from(document.querySelectorAll('.review_content'));
         const moreButton = document.querySelector('.more_button');
         
-        console.log('버튼 없어져라 ' + document.querySelectorAll('.review_content').length);
         if (document.querySelectorAll('.review_content').length > 3) {
             moreButton.style.display = 'flex';
         } else {
