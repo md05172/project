@@ -63,6 +63,7 @@ public class RootController {
 		// 받은 코드로 토큰값 가져오기
 		String accessToken = kakaoService.getAccessToken(code);
 		// 토큰으로 사용자 정보 가져오기
+
 		Customer item = kakaoService.getUserInfo(accessToken);
 		System.out.println("api 확인 " + item);
 		
