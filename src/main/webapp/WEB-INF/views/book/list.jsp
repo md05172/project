@@ -121,6 +121,6 @@
 	</section>
 	
 	<jsp:include page="../modal.jsp"/>
-
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
