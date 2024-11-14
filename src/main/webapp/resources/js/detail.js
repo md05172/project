@@ -28,12 +28,14 @@ window.addEventListener('load', () => {
             .then(result => {
                 // 이미 있는 카트에 담긴 상품일때
                 if (Object.keys(result.cart).includes(bookid)) {
+                    console.log('여기냐!')
                     addCart(items);
                     document.querySelector('.disc .secon').style.marginTop = '0px';
                     showCartModal('장바구니에 상품이 있어 수량이 추가되었습니다.', '장바구니로 이동하시겠습니까?', '/cart');
 
                     // 새로 담긴 상품일때
                 } else {
+                    console.log('여기냐?')
                     addCart(items);
                     document.querySelector('.disc .secon').style.marginTop = '22px';
                     showCartModal('장바구니에 상품이 담겼습니다.', '장바구니로 이동하시겠습니까?', '/cart');
@@ -138,11 +140,11 @@ window.addEventListener('load', () => {
         document.querySelector('.disc .secon').textContent = message2;
     
         // 취소 버튼 클릭 시 모달 닫기
-        document.querySelector('.cancle').addEventListener('click', () => {
+        document.querySelector('.cancle').addEventListener('click', e => {
             modal.classList.remove('show');  // 'show' 클래스를 제거하여 숨기기
             modalBackground.classList.remove('modal_background');
         });
-    
+        
         // 모달 배경을 클릭 시 닫히기
         modalBackground.addEventListener('click', e => {
             if (e.target === modalBackground) {

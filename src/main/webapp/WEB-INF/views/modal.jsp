@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div id="modal">
-		<div class="modal hide">
+		<div class="modal">
 			<div class="tip">
 				<div class="disc">
 					<p class="firs">찜하기는 로그인 후 이용할 수 있어요</p>
