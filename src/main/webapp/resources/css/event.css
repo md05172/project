@@ -86,7 +86,6 @@ li {
     display: flex;
     width: 50px;
     height: 50px;
-    z-index: 99;
     left: calc(50% - 430px);
     top: 50%;
     background: rgba(255, 255, 255, 0.3);

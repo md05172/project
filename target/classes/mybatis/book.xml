@@ -54,7 +54,7 @@
 		    GROUP BY book.id, book.name, book.publisher, book.price, book.path, book.writer, book.category
 		    ORDER BY avgm DESC
 		) sub
-		WHERE ROWNUM <![CDATA[<=]]> 5
+		WHERE ROWNUM <![CDATA[<=]]> 6
 	</select>
 	
 	<select id="list_keyset" resultType="Book">

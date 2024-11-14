@@ -28,6 +28,7 @@
 	position: relative;
 	padding: 0 15.625rem 1.875rem 0;
 	border-bottom: 0.0625rem solid #d8d8d9;
+    z-index: 0;
 }
 
 .footer ul {
