@@ -1,6 +1,7 @@
 package kr.ac.kopo.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,16 +12,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.ac.kopo.dao.CustomerDao;
+import kr.ac.kopo.model.Address;
+import kr.ac.kopo.model.OrdersDetail;
 import kr.ac.kopo.model.Book;
 import kr.ac.kopo.model.Customer;
 import kr.ac.kopo.service.BookService;
 import kr.ac.kopo.service.CustomerService;
 import kr.ac.kopo.service.KakaoService;
 import kr.ac.kopo.service.NaverService;
+import kr.ac.kopo.service.OrdersService;
 
 @Controller
 public class RootController {
@@ -30,6 +37,12 @@ public class RootController {
 
 	@Autowired
 	CustomerService custService;
+	
+	@Autowired
+	CustomerDao dao;
+	
+	@Autowired
+	OrdersService ordersSerivce;
 
 	@Autowired
 	private NaverService naverService;
@@ -156,5 +169,32 @@ public class RootController {
 		}
 		return "redirect:/";
 	}
-
+	
+	@GetMapping("/toss/success")
+	String success(Address address, String items, @SessionAttribute Customer customer) throws JsonMappingException, JsonProcessingException {
+		// 주소를 받는 배열을 만들고
+		List<Address> add = new ArrayList<Address>();
+		add.add(address);
+		
+		// 배열을 고객Model에 넣어준다
+		customer.setAddress(add);
+		
+		// 주소가담긴 고객을 넘겨줘서 address테이블 insert한다.
+		// 그전에 있는 주소인지 확인한다. 
+		// TODO 주소체크하고 있으면 address안넣고 실행
+		ordersSerivce.check(customer);
+		dao.address(customer);
+		System.out.println("address id값 " + customer.getAddress());
+		
+		// insert후 id값이 담긴 address를 넣어주어 orders테이블에 insert한다.
+		ordersService.add(customer.getAddress().get(0));
+		
+		ObjectMapper mapper = new ObjectMapper();
+		List<OrdersDetail> item = mapper.readValue(items, mapper.getTypeFactory().constructCollectionType(List.class, OrdersDetail.class));
+		
+		System.out.println(item);
+		
+		return "";
+	}
+	
 }

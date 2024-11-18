@@ -3,6 +3,10 @@ window.addEventListener('load', () => {
     let email_check = false;
     let pw_check = false;
 
+    document.querySelector('.id_box').addEventListener('change', () => {
+        email_check = false;
+    });
+
     // 아이디 중복확인
     document.querySelector('#id_check').addEventListener('click', () => {
         const email = document.querySelector('input[name="email"]');
@@ -127,16 +131,6 @@ window.addEventListener('load', () => {
             wrang.textContent = '전화번호를 입력해주세요';
             wrang.style.color = 'red';
             tel.focus();
-            return;
-        } else if (!postcode.value || postcode.value == '') {
-            wrang.textContent = '주소를 입력해주세요';
-            wrang.style.color = 'red';
-            postcode.focus();
-            return;
-        } else if (!detailAddressel.value || detailAddressel.value == '') {
-            wrang.textContent = '주소를 입력해주세요';
-            wrang.style.color = 'red';
-            detailAddressel.focus();
             return;
         } else if (!email_check) {
             wrang.textContent = '이메일 중복확인을 해주세요';

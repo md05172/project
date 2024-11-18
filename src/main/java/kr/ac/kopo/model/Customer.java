@@ -11,7 +11,7 @@ public class Customer {
 	private String password;
 	private int role;
 
-	private Address address;
+	private List<Address> address = new ArrayList<Address>();
 
 	private List<Wish> wish = new ArrayList<Wish>();
 
@@ -65,11 +65,11 @@ public class Customer {
 		this.role = role;
 	}
 
-	public Address getAddress() {
+	public List<Address> getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(List<Address> address) {
 		this.address = address;
 	}
 

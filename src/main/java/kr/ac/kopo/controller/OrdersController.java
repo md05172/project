@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.ac.kopo.model.Address;
+import kr.ac.kopo.model.OrdersDetail;
 import kr.ac.kopo.model.Book;
 import kr.ac.kopo.model.Buy;
 import kr.ac.kopo.service.BookService;
