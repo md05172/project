@@ -101,7 +101,6 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	public List<Book> nkoBookList() {
-		// TODO Auto-generated method stub
 		return dao.nkoBookList();
 	}
 

@@ -11,6 +11,8 @@
 <jsp:include page="deco.jsp"></jsp:include>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/resources/js/daumAddress.js"></script>
+<script src="https://js.tosspayments.com/v2/standard"></script>
+<script type="text/javascript" src="/resources/js/tosspay.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -32,6 +34,7 @@
 									<div class="item_wrap_box">
 										<div class="item_img_box"><img alt="" src="/upload/book/${item.path }"></div>
 										<div class="item_info_box">
+											<input type="hidden" value="${item.id }">
 											<div class="item_name_box"><p>${item.name }</p></div>
 											<div class="item_writer_box"><p>${item.writer }</p></div>
 											<div class="item_amount_box"><p><span class="item_amount">${item.count }</span><span>개</span></p></div>
@@ -107,6 +110,12 @@
 								<span class="fr">총 주문금액</span>
 								<span><span class="se">₩</span><span class="th">0</span></span>
 							</div>
+						</div>
+						<div class="pay_box">
+							 <button class="pay_button" id="payment">결제하기</button>
+						</div>
+						<div class="cancle_box">
+							 <button class="cancle_button">취소하기</button>
 						</div>
 					</div>
 					

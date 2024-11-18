@@ -295,7 +295,7 @@ td:last-child {
 }
 
 .order button {
-	background: var(--main-color);
+	background: var(--buy-color);
 	border: none;
 	color: var(--white-color);
 }

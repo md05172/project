@@ -29,12 +29,6 @@ public class CustomerServiceImpl implements CustomerService{
 		item.setRole(1);
 		
 		dao.join(item);
-		
-		Customer cust = check(item.getEmail());
-		
-		item.setId(cust.getId());
-		
-		dao.address(item);
 	}
 
 	@Override

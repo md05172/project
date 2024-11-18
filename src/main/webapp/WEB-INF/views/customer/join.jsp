@@ -7,9 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <jsp:include page="../deco.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/customer/join.css">
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="/resources/js/daumAddress.js"></script>
-<script type="text/javascript" src="/resources/js/j	oin.js"></script>
+<script type="text/javascript" src="/resources/js/join.js"></script>
 <title></title>
 </head>
 <body>
@@ -40,20 +38,6 @@
 				</div>
 				<div class="ph">
 					<input type="tel" name="phone" id="tel" maxlength="13" placeholder="전화번호">
-				</div>
-				<div class="form-group address-group address_box">
-					<input type="number" name="address.postcode" id="sample4_postcode" placeholder="우편번호" readonly="readonly">
-					<input type="button" class="find btn" value="우편번호 찾기">
-				</div>
-				<div class="form-group address-group ad">
-					<input type="text" name="address.roadaddress" id="sample4_roadAddress" placeholder="도로명주소">
-				</div>
-				<div class="form-group address-group ad">
-					<input type="text" name="address.jibunaddress" id="sample4_jibunAddress" placeholder="지번주소">
-				</div>
-				<div class="form-group address-group ad">
-					<input type="text" name="address.detailaddress" id="sample4_detailAddress" placeholder="상세주소">
-					<input type="text" name="address.extraaddress" id="sample4_extraAddress" placeholder="참고항목">
 				</div>
 				<div class="foot">
 					<button id="join" class="btn" type="button">회원가입</button>

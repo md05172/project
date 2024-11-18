@@ -118,7 +118,7 @@
                         </ul>
                      </div>
                      <div class="order">
-                        <button>주문하러가기</button>
+                        <button>주문</button>
                      </div>
                   </div>
                </aside>

@@ -3,7 +3,6 @@ package kr.ac.kopo.model;
 public class Address {
 	private Long id;
 	private Long custId;
-	private Long apiId;
 	private Integer postcode;
 	private String roadaddress;
 	private String jibunaddress;
@@ -24,14 +23,6 @@ public class Address {
 
 	public void setCustId(Long custId) {
 		this.custId = custId;
-	}
-
-	public Long getApiId() {
-		return apiId;
-	}
-
-	public void setApiId(Long apiId) {
-		this.apiId = apiId;
 	}
 
 	public Integer getPostcode() {
@@ -76,7 +67,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", custId=" + custId + ", apiId=" + apiId + ", postcode=" + postcode
+		return "Address [id=" + id + ", custId=" + custId + ", postcode=" + postcode
 				+ ", roadaddress=" + roadaddress + ", jibunaddress=" + jibunaddress + ", detailaddress=" + detailaddress
 				+ ", extraaddress=" + extraaddress + "]";
 	}

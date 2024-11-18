@@ -53,7 +53,8 @@
 
 .order_items, .customer_info, .simple_order_box, .shipping_info {
 	background: var(--white-color);
-	padding: 15px;
+	padding: 0px 15px 15px;
+	box-shadow: 2px 5px 5px #eee;
 }
 
 .order_items, .customer_info {
@@ -73,7 +74,7 @@
 
 .item_img_box {
 	width: 70px;
-	height: 130px;
+	height: 110px;
 }
 
 .item_img_box img {
@@ -171,4 +172,21 @@
 .body_total {
 	padding-top: 12px;
 	padding-bottom: 0px;
+}
+
+.pay_box, .cancle_box {
+	margin-top: 15px;
+}
+
+.pay_button, .cancle_button {
+	display: inline-block;
+    width: 100%;
+    background: var(--buy-color);
+    border: none;
+    height: 40px;
+}
+
+.cancle_button {
+	background: none;
+	border: 1px solid var(--main-color);
 }
