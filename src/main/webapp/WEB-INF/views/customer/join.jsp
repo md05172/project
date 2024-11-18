@@ -7,6 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <jsp:include page="../deco.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/customer/join.css">
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="/resources/js/daumAddress.js"></script>
 <script type="text/javascript" src="/resources/js/j	oin.js"></script>
 <title></title>
 </head>
@@ -61,7 +63,4 @@
 		</form>
 	</div>
 </body>
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="/resources/js/daumAddress.js"></script>
 </html>

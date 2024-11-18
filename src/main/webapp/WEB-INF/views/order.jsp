@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/order.css">
 <jsp:include page="deco.jsp"></jsp:include>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/resources/js/daumAddress.js"></script>
 <title>Insert title here</title>
 </head>
@@ -67,7 +68,7 @@
 							<h3>배송 정보</h3>
 						</div>
 					
-						<div class="address_box">
+						<div id="address_box">
 							<div class="form-group address-group address_box">
 								<input type="number" name="address.postcode" id="sample4_postcode" placeholder="우편번호" readonly="readonly">
 								<input type="button" class="find btn" value="우편번호 찾기">
@@ -90,11 +91,22 @@
 				
 				<div class="right_box">
 					<div class="simple_order_box">
-						<div>
+						<div class="simple_top">
 							<h3>주문 요약</h3>
 						</div>
-						<div>
-							
+						<div class="simple_body">
+							<div class="body_price">
+								<span class="fr">상품가격</span>
+								<span><span class="se">₩</span><span class="th">5000</span></span>
+							</div>
+							<div class="body_ship_price">
+								<span class="fr">배송비</span>
+								<span><span class="se">₩</span><span class="th">0</span></span>
+							</div>
+							<div class="body_total">
+								<span class="fr">총 주문금액</span>
+								<span><span class="se">₩</span><span class="th">0</span></span>
+							</div>
 						</div>
 					</div>
 					
