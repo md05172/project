@@ -272,17 +272,6 @@ td:last-child {
     height: 15px;
 }
 
-.up {
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-	border-right: none;
-}
-
-.down {
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-}
-
 .delete {
     height: 40px;
     border: 1px solid var(--main-color);

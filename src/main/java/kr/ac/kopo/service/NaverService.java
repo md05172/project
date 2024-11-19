@@ -60,8 +60,6 @@ public class NaverService {
 		// josn으로 변환
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> jsonMap = mapper.readValue(response.getBody(), new TypeReference<Map<String, Object>>() {});
-		System.out.println("jacson 확인 " + jsonMap);
-		System.out.println("jacson 확인 " + jsonMap.get("access_token"));
 		accessToken = (String) jsonMap.get("access_token");
 
 		return accessToken;
@@ -87,18 +85,13 @@ public class NaverService {
 		// json으로 변환하기
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> jsonMap = mapper.readValue(response.getBody(), new TypeReference<Map<String, Object>>() {});
-		System.out.println("info Map 확인 " + jsonMap);
 		Map<String, Object> response2 = mapper.convertValue(jsonMap.get("response"), new TypeReference<Map<String, Object>>() {});
-		System.out.println("info Map 확인2 " + response2);
-		System.out.println("name = " + response2.get("name"));
-		System.out.println("email = " + response2.get("email"));
-		System.out.println("moblie = " + response2.get("mobile"));
-		System.out.println("id = " + response2.get("id"));
 		
 		Customer cust = new Customer();
 		cust.setName((String) response2.get("name"));
 		cust.setEmail((String) response2.get("email"));
 		cust.setPassword("naverApiLogin" + response2.get("id"));
+		cust.setPhone((String)response2.get("mobile"));
 		cust.setRole(1);
 		
 		return cust;

@@ -29,7 +29,6 @@ public class OrdersController {
 	
 	@GetMapping
 	String order(Model model, HttpSession session) {
-		System.out.println("세션값" + session.getAttribute("buyList"));
 		
 		List<Buy> list = (List<Buy>) session.getAttribute("buyList");
 		List<Book> bookList = new ArrayList<Book>();

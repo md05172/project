@@ -70,11 +70,11 @@
                                  <td>
                                     <div class="wrap">
                                        <div class="amount">
-                                          <button data-bookid="${item.id }" class="up">+</button>
-                                          <input class="cnt" type="text" 
-                                          value="${sessionScope.cart.cart[item.id] != null && sessionScope.cart.cart[item.id] > 1 ? sessionScope.cart.cart[item.id] : 1}" 
-                                          readonly>
                                            <button data-bookid="${item.id }" class="down">-</button>
+	                                       <input class="cnt" type="text" 
+	                                       value="${sessionScope.cart.cart[item.id] != null && sessionScope.cart.cart[item.id] > 1 ? sessionScope.cart.cart[item.id] : 1}" 
+	                                       readonly>
+	                                       <button data-bookid="${item.id }" class="up">+</button>
                                        </div>
                                     </div>
                                  </td>
