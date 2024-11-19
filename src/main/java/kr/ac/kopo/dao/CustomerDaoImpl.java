@@ -22,9 +22,4 @@ public class CustomerDaoImpl implements CustomerDao{
 		return sql.selectOne("customer.check", email);
 	}
 
-	@Override
-	public void address(Customer item) {
-		sql.insert("customer.address", item);
-	}
-
 }

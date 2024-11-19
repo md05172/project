@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+.title {
+	color: var(--buy-color);
+}
+
+.big_container h2 {
+	font-size: 2em;
+	text-align: center;
+}
+
+.big_container {
+	width: 80%;
+	margin: 0 auto;
+	max-width: 1400px;
+}
+
+caption {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 15px;
+    position: relative;
+}
+
+caption a {
+	display: inline-block;
+	position: absolute;
+	bottom: 15px;
+	right: 0px;
+}
+
+caption a button {
+	height: 35px;
+    width: 75px;
+    border: none;
+    background: var(--main-color);
+    color: var(--white-color);
+    font-size: 14px;
+}
+
+.info_box table, .pay_info table, .left_box table, .right_box table{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.info_box table tbody tr td:not(:last-child) {
+	color: var(--font-color);
+}
+
+.info_box table thead, .pay_info table tr:first-child, .left_box table tr:first-child, .right_box table tr:first-child {
+	border-top: 2px solid var(--main-color);
+}
+
+.info_box table thead tr, .pay_info table tr {
+    border-bottom: solid 1px var(--line-color);
+}
+
+.info_box table tbody tr, .left_box table tr, .right_box table tr {
+    border-bottom: solid 1px var(--line-color);
+}
+
+.info_box table td, .pay_info table td, .left_box table td, .right_box table td {
+	text-align: center;
+	padding: 8px;
+}
+
+.info_box table td img {
+	max-width: 90px;
+    max-height: 130px;
+    width: 90px;
+    height: 130px;
+}
+
+.pay_info {
+	margin-top: 25px;
+}
+
+.pay_info table th {
+    width: 35%;
+    max-width: 420px;
+    min-width: 420px;
+}
+
+.pay_info table td {
+    text-align: left;
+}
+
+.pay_info table tbody tr td {
+	color: var(--font-color);
+}
+
+.pay_info table th, .pay_info table td {
+	padding: 10px;
+}
+
+.info_wrap {
+	display: flex;	
+    gap: 20px;
+}
+
+.left_box, .right_box {
+	flex: 1;
+}
+
+.total {
+	font-size: 18px;
+	color: #0078d7 !important;
+}
+
+.info_wrap table td{
+	color: var(--font-color);
+}
+.sale {
+	color: red !important;	
+}

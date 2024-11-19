@@ -13,6 +13,7 @@
 		<typeAlias type="kr.ac.kopo.model.Wish" alias="Wish"/>
 		<typeAlias type="kr.ac.kopo.model.Review" alias="Review"/>
 		<typeAlias type="kr.ac.kopo.model.Orders" alias="Orders"/>
+		<typeAlias type="kr.ac.kopo.model.Address" alias="Address"/>
 	</typeAliases>
 	
 	<mappers>

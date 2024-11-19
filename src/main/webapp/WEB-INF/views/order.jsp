@@ -60,7 +60,13 @@
 								<span>성함</span><span>${sessionScope.customer.name }</span>
 							</div>
 							<div class="cust_left_box">
-								<span>전화번호</span><span>${fn:substring(sessionScope.customer.phone, 0, 3) }-${fn:substring(sessionScope.customer.phone, 4, 8) }-****</span>
+								<span>전화번호</span>
+								<c:if test="${sessionScope.customer.phone != null }">
+									<span>${fn:substring(sessionScope.customer.phone, 0, 3) }-${fn:substring(sessionScope.customer.phone, 4, 8) }-****</span>
+								</c:if>
+								<c:if test="${sessionScope.customer.phone == null }">
+									<input type="text" id="tel" name="phone" maxlength="13">
+								</c:if>
 							</div>
 						</div> <!-- customer_info_box -->
 						
@@ -126,4 +132,14 @@
 		</div> <!-- main_container -->
 	</div> <!-- big_container -->
 </body>
+<script type="text/javascript">
+	// 전화번호 입력시 자동으로 하이픈 추가
+	if(document.querySelector('#tel')) {
+		document.querySelector('#tel').addEventListener('keyup', e => {
+		    e.target.value = e.target
+		        .value.replace(/[^0-9]/g, '')
+		        .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+// 	}
+});
+</script>
 </html>

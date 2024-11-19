@@ -18,11 +18,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.ac.kopo.dao.CustomerDao;
 import kr.ac.kopo.model.Address;
-import kr.ac.kopo.model.OrdersDetail;
 import kr.ac.kopo.model.Book;
 import kr.ac.kopo.model.Customer;
+import kr.ac.kopo.model.Orders;
+import kr.ac.kopo.model.OrdersDetail;
 import kr.ac.kopo.service.BookService;
 import kr.ac.kopo.service.CustomerService;
 import kr.ac.kopo.service.KakaoService;
@@ -37,9 +37,6 @@ public class RootController {
 
 	@Autowired
 	CustomerService custService;
-	
-	@Autowired
-	CustomerDao dao;
 	
 	@Autowired
 	OrdersService ordersSerivce;
@@ -171,7 +168,8 @@ public class RootController {
 	}
 	
 	@GetMapping("/toss/success")
-	String success(Address address, String items, @SessionAttribute Customer customer) throws JsonMappingException, JsonProcessingException {
+	String success(Address address, String items, @SessionAttribute Customer customer, String amount, String orderId, Model model) throws JsonMappingException, JsonProcessingException {
+		System.out.println("phone 받아오나 " + items);
 		// 주소를 받는 배열을 만들고
 		List<Address> add = new ArrayList<Address>();
 		add.add(address);
@@ -180,21 +178,47 @@ public class RootController {
 		customer.setAddress(add);
 		
 		// 주소가담긴 고객을 넘겨줘서 address테이블 insert한다.
-		// 그전에 있는 주소인지 확인한다. 
-		// TODO 주소체크하고 있으면 address안넣고 실행
-		ordersSerivce.check(customer);
-		dao.address(customer);
-		System.out.println("address id값 " + customer.getAddress());
+		// 회원아이디를 저장하고 저장한 address객체를 넘겨서 중복확인을 한다. 
+		customer.getAddress().get(0).setCustId(customer.getId());
+		Address check = ordersSerivce.check(customer.getAddress().get(0));
+		System.out.println("check 확인 " + check);
 		
-		// insert후 id값이 담긴 address를 넣어주어 orders테이블에 insert한다.
-		ordersService.add(customer.getAddress().get(0));
-		
+		if(check == null) // 주소가 중복이 아니면 주소를 넣는다.
+			ordersSerivce.address(customer);
+		else // 주소가 중복이면 check가 가지고 있는 address id값을 넣어준다.
+			customer.getAddress().get(0).setId(check.getId());
+			
+		// json으로 받은 bookid 수량을 객체로 받는다.
 		ObjectMapper mapper = new ObjectMapper();
 		List<OrdersDetail> item = mapper.readValue(items, mapper.getTypeFactory().constructCollectionType(List.class, OrdersDetail.class));
 		
-		System.out.println(item);
+		// address id값이 담긴 값 넣어주어 orders테이블에 insert한다.
+		Orders orders = new Orders();
+		orders.setCustId(customer.getId());
+		orders.setAddressId(customer.getAddress().get(0).getId());
+		orders.setDetails(item);
 		
-		return "";
+		ordersSerivce.add(orders);
+		
+		// 주문번호
+		model.addAttribute("orderId", orderId);
+		// 총가격
+		model.addAttribute("amount", amount);
+		// 주소
+		model.addAttribute("address", address);
+		// 구매상품
+		List<Book> bookList = new ArrayList<Book>();
+		item.forEach(e -> {
+			// bookList에 주문하기에 담긴 bookId를 줘서 책정보를 가져온다 사진을 가져오기 위함
+			Book book = service.item(e.getBookId());
+			// 수량도 담아준다 원래 Count는 책에 달린 댓글 개수이지만 그냥 쓴다.
+			book.setCount(e.getAmount());
+			// 주문상품책 정보를 list에 담아준다
+			bookList.add(book);
+		});	
+		model.addAttribute("bookList", bookList);
+		
+		return "success";
 	}
 	
 }

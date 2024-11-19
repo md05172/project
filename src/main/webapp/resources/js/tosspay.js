@@ -16,7 +16,11 @@ window.addEventListener('load', () => {
 
         item.push({bookId, amount});
     });
-    
+    if(document.querySelector('#tel')) {
+        const phone = document.querySelector('#tel').value;
+        item.push({phone});
+    }
+
     const itemsParam = encodeURIComponent(JSON.stringify(item));
 
     document.querySelector('.body_price .th').textContent = sum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");;

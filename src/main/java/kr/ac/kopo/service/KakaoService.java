@@ -57,12 +57,10 @@ public class KakaoService {
 				String.class
 				);
 
-		System.out.println("getAccessToken response = " + response.getBody());
 
 		// json으로 바꾸기
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> map = mapper.readValue(response.getBody(), new TypeReference<Map<String, Object>>() {});
-		System.out.println("카카오 확인 " + map);
 
 		accessToken = (String) map.get("access_token");
 		return accessToken;
@@ -85,17 +83,11 @@ public class KakaoService {
 				String.class
 				);
 
-		System.out.println("getUser Response = " + response.getBody());
 
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> map = mapper.readValue(response.getBody(), new TypeReference<Map<String, Object>>(){});
 		Map<String, Object> account = mapper.convertValue(map.get("kakao_account"), new TypeReference<Map<String, Object>>() {});
 		Map<String, Object> profile = mapper.convertValue(account.get("profile"), new TypeReference<Map<String, Object>>() {});
-		System.out.println("확인 " + account);
-		System.out.println("확인 " + profile);
-		System.out.println("이름: " + profile.get("nickname"));
-		System.out.println("이메일: " + account.get("email"));
-		System.out.println("아이디: " + map.get("id"));
 		
 		Customer cust = new Customer();
 		cust.setName((String) profile.get("nickname"));
@@ -128,7 +120,6 @@ public class KakaoService {
 				httpEntity,
 				String.class
 				);
-		System.out.println("logout reponse = " + response.getBody());
 	}
 
 }
