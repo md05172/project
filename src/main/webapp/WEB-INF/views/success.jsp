@@ -39,7 +39,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>
+		</div> <!-- 주문상품 끝 -->
 		
 		<div class="pay_info">
 			<table>
@@ -61,7 +61,7 @@
 					<td class="total">₩<fmt:formatNumber value="${amount }" type="Number"/></td>
 				</tr>
 			</table>
-		</div>
+		</div> <!-- 결제정보 끝 -->
 		
 		<div class="info_wrap">
 			<div class="left_box">
@@ -84,17 +84,26 @@
 						<td>${sessionScope.customer.name }</td>
 					</tr>
 					<tr>
+						<th>전화번호</th>
+						<td>${sessionScope.customer.phone }</td>
+					</tr>
+					<tr>
 						<th>이메일</th>
 						<td>${sessionScope.customer.email }</td>
 					</tr>
 				</table>
-			</div>
+			</div> <!-- 주문자 정보 끝 -->
+			
 			<div class="right_box">
 				<table>
 					<caption>배송지 정보</caption>
 					<tr>
 						<th>이름</th>
 						<td>${sessionScope.customer.name }</td>
+					</tr>
+					<tr>
+						<th>전화번호</th>
+						<td>${sessionScope.customer.phone }</td>
 					</tr>
 					<tr>
 						<th>배송지 주소</th>
@@ -113,10 +122,9 @@
 						<td>${sessionScope.customer.email }</td>
 					</tr>
 				</table>
-			</div>
-		</div>
-		
-	</div>
-	
+				
+			</div> <!-- 배송지 정보 끝 -->
+		</div> <!-- info_wrap -->
+	</div> <!-- big_container -->
 </body>
 </html>

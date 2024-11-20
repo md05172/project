@@ -1,11 +1,12 @@
 window.addEventListener('load', () => {
     const wish = document.querySelectorAll('.wish');
     const cart = document.querySelectorAll('.cart');
+    const buy = document.querySelectorAll('.buy');
     const check_box_list = document.querySelectorAll('.check_box');
     const allCheck = document.querySelector('.all_check');
     const allCartBtn = document.querySelector('.all_cart');
 
-    const login_message = '찜하기는 로그인 후 이용할 수 있어요';
+    const login_message = '찜하기는 로그인 후 이용할 수 있습니다.';
     const login_message2 = '로그인으로 이동하시겠습니까?';
     const login_src = '/customer/login';
     
@@ -198,4 +199,49 @@ window.addEventListener('load', () => {
             modalBackground.classList.remove('modal_background');
         });;
     };
+    
+    // 구매하기 버튼
+    buy.forEach(e => {
+        e.addEventListener('click', b => {
+            const { bookid, custid } = b.target.dataset;
+
+            // 로그인 안했으면 보내버리기
+            if (custid === 'false') {
+                // 모달 보이기
+                document.querySelector('.disc .secon').style.marginTop = '22px';
+                showCartModal('로그인 후 이용할 수 있습니다.', '로그인으로 이동하시겠습니까?', login_src);
+
+                return;
+            }
+            
+            const items = {};
+            const item_info = b.target.closest('.wrap').querySelector('.item_info');
+
+            const bookname = item_info.querySelector('.item_name a:first-child').textContent;
+            const writer = item_info.querySelector('.item_writer').textContent;
+            const price = Number(item_info.querySelector('.item_price').textContent.replace(/[^\d]/g, '', '').trim());
+            const amount = 1;
+            const sum = price * amount;
+
+            items[bookid] = {
+                amount: amount,
+                price: price,
+                sum: sum,
+                bookname: bookname,
+                writer: writer
+            };
+            console.log(items);
+            fetch('/order', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                body: JSON.stringify(items)
+            })
+            .then(resp => {
+                location.href= '/order';
+            })
+        }); 
+    })
+
 });

@@ -42,33 +42,6 @@ public class BookServiceImpl implements BookService{
 		dao.add(item);
 	}
 
-	@Transactional
-	@Override
-	public void dummy() {
-		for (Long i = 1L; i < 100; i++) {
-			Book item = new Book();
-			item.setName("name" + i);
-			item.setPublisher("출판사" + i);
-			item.setPrice(1000 * i.intValue());
-			item.setPath("path" + i);
-			item.setInfo("info" + i);
-			item.setWriter("저자" + i);
-			item.setWriterInfo("저자소개" + i);
-			item.setCategory("ko");
-			dao.add(item);
-		}
-	}
-	
-	@Transactional
-	@Override
-	public void init() {
-		for (Long i = 1L; i < 100; i++) {
-			Book item = new Book();
-			item.setName("name" + i);
-			dao.delete(item.getName());
-		}
-	}
-
 	@Override
 	public Book item(Long id) {
 		return dao.item(id);
@@ -102,6 +75,16 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<Book> nkoBookList() {
 		return dao.nkoBookList();
+	}
+
+	@Override
+	public void update(Book item) {
+		dao.update(item);
+	}
+
+	@Override
+	public void delete(Long id) {
+		dao.delete(id);
 	}
 
 }

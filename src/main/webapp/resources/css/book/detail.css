@@ -39,6 +39,7 @@
 .right_box {
     margin-left: 50px;
     width: 100%;
+    position: relative;
 } 
 
 .name {
@@ -52,8 +53,11 @@
 }
 
 .heart {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 33px;
 }
 
 .heart img {

@@ -14,7 +14,7 @@
 	<div class="container">
 		<form method="post">
 			<div class="join_logo">
-				<a href=""><img src="/resources/images/logo.png" alt="로고"></a>
+				<a href="/"><img src="/resources/images/logo.png" alt="로고"></a>
 			</div>
 			<div class="info_box">
 				<div class="top">

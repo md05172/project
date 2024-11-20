@@ -10,4 +10,6 @@ public interface CustomerService {
 
 	boolean login(Customer item);
 
+	int phone(Customer customer);
+
 }

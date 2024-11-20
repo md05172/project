@@ -12,7 +12,7 @@ public interface BookDao {
 
 	void add(Book item);
 
-	void delete(String name);
+	void delete(Long id);
 
 	int total(Pager pager);
 
@@ -27,5 +27,7 @@ public interface BookDao {
 	List<Book> koBookList();
 	
 	List<Book> nkoBookList();
+
+	void update(Book item);
 
 }

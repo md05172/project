@@ -13,4 +13,9 @@
         WHERE email = #{email}
 	</select>
 	
+	<update id="phone">
+		UPDATE customer SET phone = #{phone}
+		WHERE id = #{id}
+	</update>
+	
 </mapper>

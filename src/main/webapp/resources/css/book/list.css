@@ -221,6 +221,20 @@ section {
 	font-weight: bold;
 }
 
+.item_name button {
+	padding: 10px;
+	border: none;
+}
+
+.item_name a:nth-child(2) button {
+	background: #d9a227;
+	margin: 0px 12px;
+}	
+	
+.item_name a:last-child button {
+	background: #ed0000ad;
+}
+
 .item_writer, .item_publisher {
     font-size: 12px;
     color: var(--font-color-gray);

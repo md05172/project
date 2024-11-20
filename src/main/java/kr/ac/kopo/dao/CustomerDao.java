@@ -8,4 +8,6 @@ public interface CustomerDao {
 
 	Customer check(String email);
 
+	int phone(Customer customer);
+
 }

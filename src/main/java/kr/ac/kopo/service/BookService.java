@@ -12,10 +12,6 @@ public interface BookService {
 
 	void add(Book item);
 
-	void dummy();
-
-	void init();
-
 	Book item(Long id);
 
 	List<Book> list(Set<Long> keySet);
@@ -27,5 +23,9 @@ public interface BookService {
 	List<Book> koBookList();
 	
 	List<Book> nkoBookList();
+
+	void update(Book item);
+
+	void delete(Long id);
 
 }

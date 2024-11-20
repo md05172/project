@@ -112,20 +112,6 @@ public class BookController {
 		return "redirect:../";
 	}
 	
-	@GetMapping("/dummy")
-	String dummy() {
-		service.dummy();
-		
-		return "redirect:..";
-	}
-	
-	@GetMapping("/init")
-	String init() {
-		service.init();
-		
-		return "redirect:..";
-	}
-	
 	@GetMapping("/search/{bookName}")
 	@ResponseBody
 	List<Book> searchKeyword (@PathVariable String bookName) {
@@ -139,6 +125,67 @@ public class BookController {
 		System.out.println(list);
 		
 		return list;
+	}
+	
+	@GetMapping("/update/{id}")
+	String update(@PathVariable Long id, Model model) {
+		model.addAttribute("item", service.item(id));
+		return path + "update";
+	}
+	
+	@PostMapping("/update/{id}")
+	String update(Book item, @PathVariable Long id, List<MultipartFile> uploadFile) {
+		// 기존에 있던 사진과 다른 사진인지 알아야함.
+		Book book = service.item(id);
+		
+		// 새로운 사진으로 등록
+		for (MultipartFile file : uploadFile) {
+			if(file != null && !file.isEmpty()) {
+				// 파일 원본 이름을 가져온다.
+				String filename = file.getOriginalFilename();
+				// 랜덤한 문자열을 만들어준다.
+				String uuid = UUID.randomUUID().toString();
+				String str = "";
+				System.out.println(filename);
+				System.out.println(uuid);
+				
+				// 기존에 있던 사진이랑 다르면 기존에 있는 사진을 지운다
+				if(!book.getPath().substring(book.getPath().indexOf("_")+1).equals(filename) || !book.getPath().equals(filename)) {
+					File beforFile = new File(uploadPath + book.getPath());
+					beforFile.delete();
+					
+					try {
+						// 지정해둔 경로에 원본이름이랑 랜덤한 문자열을 연결해서 저장한다.
+						file.transferTo(new File(uploadPath + uuid + "_" + filename));
+						
+						str = uuid + "_" + filename;
+						item.setPath(str);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			} else {
+				// 사진을 바꾸지 않으면 그냥 기존에 있는 사진을 쓴다.
+				item.setPath(book.getPath());
+			}
+		}
+			
+		item.setId(id);
+		
+		service.update(item);
+		
+		return "redirect:../list/" + item.getCategory();
+	}
+	
+	@GetMapping("/delete/{id}")
+	String delete(@PathVariable Long id) {
+		Book item = service.item(id);
+		
+		service.delete(id);
+		File file = new File(uploadPath + item.getPath());
+		file.delete();
+		
+		return "redirect:../list/" + item.getCategory();
 	}
 	
 }

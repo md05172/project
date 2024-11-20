@@ -33,13 +33,12 @@
 		</div>
 		<c:if test="${sessionScope.customer == null && sessionScope.kaccessToken == null && sessionScope.naceessToken == null }">
 			<ul class="login_out">  
-				<li><a href="${pageContext.request.contextPath }/customer/login">로그인</a></li>
-				<li><a href="${pageContext.request.contextPath }/customer/join">회원가입</a></li>
+				<li><a href="${pageContext.request.contextPath }/customer/login"><img src="/resources/images/user.png" alt=""></a></li>
 				<li><a class="cart_img" href="${pageContext.request.contextPath }/cart"></a></li>
 			</ul>
 		</c:if>
 		
-		<c:if test="${sessionScope.customer != null}">
+		<c:if test="${sessionScope.customer != null && empty sessionScope.customer.api}">
 			<ul class="login_out">
 				<li>${sessionScope.customer.name }</li>
 				<li><a href="${pageContext.request.contextPath }/customer/logout">로그아웃</a></li>
@@ -47,17 +46,17 @@
 			</ul> 
 		</c:if>
 		
-		<c:if test="${sessionScope.kaccessToken != null }">
+		<c:if test="${sessionScope.customer != null && sessionScope.customer.api eq 'kakao' }">
 			<ul class="login_out">
-				<li>${sessionScope.api.name }</li>
+				<li>${sessionScope.customer.name }</li>
 				<li><a href="${kakao_logout }">카카오 로그아웃</a></li>
 				<li><a class="cart_img" href="/cart"></a></li>
 			</ul> 
 		</c:if>
 		
-		<c:if test="${sessionScope.naceessToken != null }">
+		<c:if test="${sessionScope.customer != null && sessionScope.customer.api eq 'naver' }">
 			<ul class="login_out">
-				<li>${sessionScope.api.name }</li>
+				<li>${sessionScope.customer.name }</li>
 				<li><a href="${pageContext.request.contextPath }/naver/logout">네이버 로그아웃</a></li>
 				<li><a class="cart_img" href="/cart"></a></li>
 			</ul> 

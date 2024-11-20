@@ -75,6 +75,7 @@ public class RootController {
 		// 토큰으로 사용자 정보 가져오기
 
 		Customer item = kakaoService.getUserInfo(accessToken);
+		item.setApi("kakao");
 		System.out.println("api 확인 " + item);
 		
 		Customer check = custService.check(item.getEmail());
@@ -128,6 +129,7 @@ public class RootController {
 		String naverToken = naverService.getAccessToken(code, state);
 		// 토큰으로 사용자 정보 가져오기
 		Customer item = naverService.getUserInfo(naverToken);
+		item.setApi("naver");
 		System.out.println("api 확인 " + item);
 		
 		Customer check = custService.check(item.getEmail());
@@ -168,8 +170,17 @@ public class RootController {
 	}
 	
 	@GetMapping("/toss/success")
-	String success(Address address, String items, @SessionAttribute Customer customer, String amount, String orderId, Model model) throws JsonMappingException, JsonProcessingException {
-		System.out.println("phone 받아오나 " + items);
+	String success(Address address, String items, @SessionAttribute Customer customer, String amount, String orderId, Model model, HttpServletRequest request, HttpSession session) throws JsonMappingException, JsonProcessingException {
+		
+		 HttpSession completCheck = request.getSession();
+		    
+	    // 이미 주문 완료 상태인지 확인
+	    if (completCheck.getAttribute("orderCompleted") != null) {
+	        // 주문이 완료된 상태이면, 메인 페이지로 리다이렉트
+	        return "redirect:/";
+	    }
+		
+		
 		// 주소를 받는 배열을 만들고
 		List<Address> add = new ArrayList<Address>();
 		add.add(address);
@@ -216,9 +227,18 @@ public class RootController {
 			// 주문상품책 정보를 list에 담아준다
 			bookList.add(book);
 		});	
+		
+		// 주문 완료처리를 한다 다시 페이지로 돌아오는걸 막기위해
+		session.setAttribute("orderCompleted", true);
+		
 		model.addAttribute("bookList", bookList);
 		
 		return "success";
+	}
+	
+	@GetMapping("/sendLogin")
+	String sendLogin() {
+		return "sendLogin";
 	}
 	
 }

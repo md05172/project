@@ -10,6 +10,7 @@ public class Customer {
 	private String email;
 	private String password;
 	private int role;
+	private String api;
 
 	private List<Address> address = new ArrayList<Address>();
 
@@ -89,10 +90,19 @@ public class Customer {
 		this.review = review;
 	}
 
+	public String getApi() {
+		return api;
+	}
+
+	public void setApi(String api) {
+		this.api = api;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", password="
-				+ password + ", role=" + role + ", address=" + address + ", wish=" + wish + ", review=" + review + "]";
+				+ password + ", role=" + role + ", api=" + api + ", address=" + address + ", wish=" + wish + ", review="
+				+ review + "]";
 	}
 
 }
