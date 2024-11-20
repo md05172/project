@@ -11,6 +11,7 @@ public class Customer {
 	private String password;
 	private int role;
 	private String api;
+	private Long userId;
 
 	private List<Address> address = new ArrayList<Address>();
 
@@ -96,6 +97,14 @@ public class Customer {
 
 	public void setApi(String api) {
 		this.api = api;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	@Override
