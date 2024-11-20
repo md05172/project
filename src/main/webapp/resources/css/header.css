@@ -147,15 +147,8 @@
 	height: 32px;
 	display: flex;
 	align-items: center;
-}
-
-.login_out li a {
-	text-decoration: none;
-    color: var(--border-color);
-    margin: 0 8px;
-    display: inline-block;
-    height: 100%;
-    width: 36px;
+	position: relative;
+	height: 40%;
 }
 
 .login_out li a img {
@@ -227,3 +220,46 @@
     color: #595959;
 }
 
+.user_img_box {
+    color: var(--border-color);
+    margin: 7px 8px 0px;
+    display: inline-block;
+    width: 36px;
+    opacity: 0.5;
+}
+
+.user_img_box img {
+	width: 100%;
+	height: 100%;
+}
+
+.hidden_box {
+	display: none;
+    position: absolute;
+    top: 40px;
+    z-index: 2;
+    background: white;
+    width: 150px;
+    padding-top: 2px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hidden_box_inner {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.hidden_box_inner p {
+	margin: 35px 0;
+}
+
+.hidden_box_inner p a {
+	text-decoration: none;
+	color: black;
+}
+
+.hover:hover .hidden_box {
+	display: block;
+}

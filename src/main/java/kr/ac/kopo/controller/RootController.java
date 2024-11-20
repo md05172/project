@@ -75,7 +75,8 @@ public class RootController {
 		// 토큰으로 사용자 정보 가져오기
 
 		Customer item = kakaoService.getUserInfo(accessToken);
-		item.setApi("kakao");
+		Long userId = item.getUserId();
+
 		System.out.println("api 확인 " + item);
 		
 		Customer check = custService.check(item.getEmail());
@@ -83,6 +84,9 @@ public class RootController {
 		if(check != null) {
 			// 로그인 시킨다
 			if(custService.login(item)) {
+				item.setApi("kakao");
+				item.setUserId(userId);
+				session.setAttribute("kaccessToken", accessToken);
 				session.setAttribute("customer", item);
 				return "redirect:/";
 			} else {
@@ -91,6 +95,9 @@ public class RootController {
 		} else {
 			custService.join(item);
 			if(custService.login(item)) {
+				item.setApi("kakao");
+				item.setUserId(userId);
+				session.setAttribute("kaccessToken", accessToken);
 				session.setAttribute("customer", item);
 				return "redirect:/";
 			} else {
@@ -102,16 +109,17 @@ public class RootController {
 
 	// 카카오 로그아웃
 	@GetMapping("/kakao/logout")
-	String kakaoLogout(HttpSession session) {
+	String kakaoLogout(HttpServletRequest request) {
 		System.out.println("kakao logout 들어옴");
 		// 세션에서 카카오톡 로그인시 저장되었던 토큰을 가져온다
+		HttpSession session = request.getSession();
+		Customer customer = (Customer) session.getAttribute("customer");
 		String accessToken = (String) session.getAttribute("kaccessToken");
 		System.out.println("가져왔나? " + accessToken);
 		// 가져온 토큰으로 카카오톡 로그아웃을 하고
-		kakaoService.kakaoLogout(accessToken);
+		kakaoService.kakaoLogout(accessToken, customer.getUserId());
 		// 세션에서 사용자와 카카오톡 토큰을 없애준다.
-		session.removeAttribute("customer");
-		session.removeAttribute("kaccessToken");
+		session.invalidate();
 		return "redirect:/";
 	}
 
@@ -129,7 +137,7 @@ public class RootController {
 		String naverToken = naverService.getAccessToken(code, state);
 		// 토큰으로 사용자 정보 가져오기
 		Customer item = naverService.getUserInfo(naverToken);
-		item.setApi("naver");
+		
 		System.out.println("api 확인 " + item);
 		
 		Customer check = custService.check(item.getEmail());
@@ -137,6 +145,8 @@ public class RootController {
 		if(check != null) {
 			// 로그인 시킨다
 			if(custService.login(item)) {
+				item.setApi("naver");
+				session.setAttribute("naccessToken", naverToken);
 				session.setAttribute("customer", item);
 				return "redirect:/";
 			} else {
@@ -145,6 +155,8 @@ public class RootController {
 		} else {
 			custService.join(item);
 			if(custService.login(item)) {
+				item.setApi("naver");
+				session.setAttribute("naccessToken", naverToken);
 				session.setAttribute("customer", item);
 				return "redirect:/";
 			} else {
@@ -160,11 +172,10 @@ public class RootController {
 		System.out.println("naver로그아웃");
 		HttpSession session = request.getSession();
 		// 세션에서 네이버 로그인시 저장했던 토큰을 가져온다.
-		String naccessToken = (String) session.getAttribute("naceessToken");
+		String naccessToken = (String) session.getAttribute("naccessToken");
 		boolean result = NaverService.naverLogout(naccessToken);
 		if (result) {
-			session.removeAttribute("api");
-			session.removeAttribute("naceessToken");
+			session.invalidate();
 		}
 		return "redirect:/";
 	}

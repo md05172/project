@@ -61,7 +61,7 @@ public class KakaoService {
 		// json으로 바꾸기
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> map = mapper.readValue(response.getBody(), new TypeReference<Map<String, Object>>() {});
-
+		System.out.println("토큰 " + map);
 		accessToken = (String) map.get("access_token");
 		return accessToken;
 	}
@@ -88,38 +88,50 @@ public class KakaoService {
 		Map<String, Object> map = mapper.readValue(response.getBody(), new TypeReference<Map<String, Object>>(){});
 		Map<String, Object> account = mapper.convertValue(map.get("kakao_account"), new TypeReference<Map<String, Object>>() {});
 		Map<String, Object> profile = mapper.convertValue(account.get("profile"), new TypeReference<Map<String, Object>>() {});
-		
+		System.out.println("사용자 정보 " + map);
 		Customer cust = new Customer();
 		cust.setName((String) profile.get("nickname"));
 		cust.setEmail((String) account.get("email"));
 		cust.setPassword("kakaoApiLogin" + map.get("id"));
+		cust.setUserId((Long) map.get("id"));
 		cust.setRole(1);
 		
 		return cust;
 	}
 	
 	// 카카오 로그아웃
-	public void kakaoLogout(String accessToken) {
+	public void kakaoLogout(String accessToken, Long userId) {
+		System.out.println("토큰값 + userId값 " + accessToken + "    " + userId);
 		// HttpHeader 생성
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + accessToken);
-		headers.add("Content-type", "application/x-www-form-urlencoded");
+		headers.add(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded;charset=utf-8");
 		
-		// body 생성
-//		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-//		params.add("client_id", KAKAOAPIKEY);
-//		params.add("logout_redirect_uri", LOGOUT);
+//		 body 생성
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("target_id_type", "user_id");
+		params.add("target_id", String.valueOf(userId));
+		
 		
 		// HttpHeader + body 담기
-		HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(headers);
+		HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(params, headers);
+		
 		// Http 요청
 		RestTemplate rt = new RestTemplate();
-		ResponseEntity<String> response = rt.exchange(
-				"https://kapi.kakao.com/v1/user/logout",
+		ResponseEntity<String> exchange = rt.exchange(
+				"https://kapi.kakao.com/v1/user/unlink",
 				HttpMethod.POST,
 				httpEntity,
 				String.class
 				);
+		
+		System.out.println("화긴여" + exchange);
+		System.out.println("화긴여" + exchange.getStatusCodeValue());
+		System.out.println("화긴여" + exchange.toString());
+		System.out.println("화긴여" + exchange.getHeaders());
+		System.out.println("화긴여" + exchange.getStatusCode());
+		System.out.println("화긴여" + exchange.getBody());
+
 	}
 
 }

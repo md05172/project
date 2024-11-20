@@ -31,33 +31,73 @@
 				</div>
 			</div>
 		</div>
-		<c:if test="${sessionScope.customer == null && sessionScope.kaccessToken == null && sessionScope.naceessToken == null }">
+		<c:if test="${sessionScope.customer == null && sessionScope.customer.api == null && sessionScope.customer.api == null }">
 			<ul class="login_out">  
-				<li><a href="${pageContext.request.contextPath }/customer/login"><img src="/resources/images/user.png" alt=""></a></li>
-				<li><a class="cart_img" href="${pageContext.request.contextPath }/cart"></a></li>
+				<li class="hover">
+					<span class="user_img_box"><img src="/resources/images/user.png" alt=""></span>
+					<div class="hidden_box">
+						<div class="hidden_box_inner_wrap">
+							<div class="hidden_box_inner">
+								<p><a href="/customer/login">로그인</a></p>
+								<p><a href="/customer/join">회원가입</a></p>
+							</div>
+						</div>
+					</div>	
+				</li>
+				<li><a class="cart_img" href="/cart"></a></li>
 			</ul>
 		</c:if>
 		
-		<c:if test="${sessionScope.customer != null && empty sessionScope.customer.api}">
+		<c:if test="${sessionScope.customer != null && sessionScope.customer.api == null}">
 			<ul class="login_out">
-				<li>${sessionScope.customer.name }</li>
-				<li><a href="${pageContext.request.contextPath }/customer/logout">로그아웃</a></li>
+				<li class="hover">
+					<span class="user_img_box"><img src="/resources/images/user.png" alt=""></span>
+					<div class="hidden_box">
+						<div class="hidden_box_inner_wrap">
+							<div class="hidden_box_inner">
+								<p>${sessionScope.customer.name }님</p>
+								<p><a>마이페이지</a></p>
+								<p><a href="/customer/logout">로그아웃</a></p>
+							</div>
+						</div>
+					</div>	
+				</li>
 				<li><a class="cart_img" href="/cart"></a></li>
 			</ul> 
 		</c:if>
 		
-		<c:if test="${sessionScope.customer != null && sessionScope.customer.api eq 'kakao' }">
+		<c:if test="${sessionScope.customer != null && sessionScope.customer.api == 'kakao' }">
 			<ul class="login_out">
-				<li>${sessionScope.customer.name }</li>
-				<li><a href="${kakao_logout }">카카오 로그아웃</a></li>
+				<li class="hover">
+					<span class="user_img_box"><img src="/resources/images/user.png" alt=""></span>
+					<div class="hidden_box">
+						<div class="hidden_box_inner_wrap">
+							<div class="hidden_box_inner">
+								<p>${sessionScope.customer.name }님</p>
+								<p><a>마이페이지</a></p>
+								<p><a href="/kakao/logout">로그아웃</a></p>
+							</div>
+						</div>
+					</div>	
+				</li>
 				<li><a class="cart_img" href="/cart"></a></li>
 			</ul> 
 		</c:if>
 		
-		<c:if test="${sessionScope.customer != null && sessionScope.customer.api eq 'naver' }">
+		<c:if test="${sessionScope.customer != null && sessionScope.customer.api == 'naver' }">
 			<ul class="login_out">
-				<li>${sessionScope.customer.name }</li>
-				<li><a href="${pageContext.request.contextPath }/naver/logout">네이버 로그아웃</a></li>
+				<li class="hover">
+					<span class="user_img_box"><img src="/resources/images/user.png" alt=""></span>
+					<div class="hidden_box">
+						<div class="hidden_box_inner_wrap">
+							<div class="hidden_box_inner">
+								<p>${sessionScope.customer.name }님</p>
+								<p><a>마이페이지</a></p>
+								<p><a href="/naver/logout">로그아웃</a></p>
+							</div>
+						</div>
+					</div>	
+				</li>
 				<li><a class="cart_img" href="/cart"></a></li>
 			</ul> 
 		</c:if>
