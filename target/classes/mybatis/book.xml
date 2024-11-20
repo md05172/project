@@ -75,7 +75,7 @@
 	
 	<delete id="delete">
 		DELETE FROM book
-		WHERE name = #{name}
+		WHERE id = #{id}
 	</delete>
 	
 	<select id="item" resultType="Book">
@@ -85,7 +85,14 @@
 	
 	<update id="update">
 		UPDATE book
-		SET name = #{name}, publisher = #{publisher}, price = #{price}
+		SET name = #{name},
+		 publisher = #{publisher},
+		 price = #{price}, 
+		 path = #{path}, 
+		 info = #{info},
+		 writer = #{writer},
+		 writer_info = #{writerInfo},
+		 category = #{category}
 		WHERE id = #{id}
 	</update>
 	

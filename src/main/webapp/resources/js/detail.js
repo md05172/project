@@ -544,4 +544,45 @@ window.addEventListener('load', () => {
         });
     }
 
+    // 구매하기
+    document.querySelector('.buy').addEventListener('click', b => {
+        const { bookid, custid } = b.target.dataset;
+
+        // 로그인 안했으면 로그인으로 보내기
+        if(custid === "false") {
+            // 모달 보이기
+            document.querySelector('.disc .secon').style.marginTop = '22px';
+            showCartModal('로그인 후 이용할 수 있습니다.', '로그인으로 이동하시겠습니까?', '/customer/login');
+            return;
+        }
+        
+        const items = {};
+        const item_info = b.target.closest('.right_box');
+        console.log(item_info);
+        const bookname = item_info.querySelector('.name').textContent;
+        const writer = item_info.querySelector('.writer').textContent;
+        const price = Number(item_info.querySelector('.price_box').querySelector('.price').textContent);
+        const amount = 1;
+        const sum = price * amount;
+
+        items[bookid] = {
+            amount: amount,
+            price: price,
+            sum: sum,
+            bookname: bookname,
+            writer: writer
+        };
+        console.log(items);
+        fetch('/order', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            },
+            body: JSON.stringify(items)
+        })
+        .then(resp => {
+            location.href= '/order';
+        })
+    });
+
 });

@@ -28,8 +28,8 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	@Override
-	public void delete(String name) {
-		sql.delete("book.delete", name);
+	public void delete(Long id) {
+		sql.delete("book.delete", id);
 	}
 
 	@Override
@@ -69,6 +69,11 @@ public class BookDaoImpl implements BookDao {
 	@Override
 	public List<Book> nkoBookList() {
 		return sql.selectList("book.nko");
+	}
+
+	@Override
+	public void update(Book item) {
+		sql.update("book.update", item);
 	}
 
 }

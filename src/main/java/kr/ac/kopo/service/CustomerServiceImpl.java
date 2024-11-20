@@ -62,4 +62,9 @@ public class CustomerServiceImpl implements CustomerService{
 		return false;
 	}
 
+	@Override
+	public int phone(Customer customer) {
+		return dao.phone(customer);
+	}
+
 }

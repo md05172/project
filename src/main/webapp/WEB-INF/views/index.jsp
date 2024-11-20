@@ -25,13 +25,13 @@
 			<div class="slide_wrapper">
 				<div class="innder_box">
 					<ul class="slides">
-						<li><a href=""><img src="/resources/images/event/event01.jpg" alt=""></a></li>
-						<li><a href=""><img src="/resources/images/event/event02.jpg" alt=""></a></li>
-						<li><a href=""><img src="/resources/images/event/event03.jpg" alt=""></a></li>
-						<li><a href=""><img src="/resources/images/event/event04.jpg" alt=""></a></li>
-						<li><a href=""><img src="/resources/images/event/event05.jpg" alt=""></a></li>
-						<li><a href=""><img src="/resources/images/event/event06.jpg" alt=""></a></li>
-						<li><a href=""><img src="/resources/images/event/event07.jpg" alt=""></a></li>
+						<li><a><img src="/resources/images/event/event01.jpg" alt=""></a></li>
+						<li><a><img src="/resources/images/event/event02.jpg" alt=""></a></li>
+						<li><a><img src="/resources/images/event/event03.jpg" alt=""></a></li>
+						<li><a><img src="/resources/images/event/event04.jpg" alt=""></a></li>
+						<li><a><img src="/resources/images/event/event05.jpg" alt=""></a></li>
+						<li><a><img src="/resources/images/event/event06.jpg" alt=""></a></li>
+						<li><a><img src="/resources/images/event/event07.jpg" alt=""></a></li>
 					</ul>
 				</div>
 					<div class="prev"><i class="fa fa-angle-right" aria-hidden="true"></i></div> 
@@ -108,6 +108,7 @@
 							</c:forEach>
 						</div>
 					</div>
+					
 					<div class="nko_box">
 						<p><span>외국도서</span><a href="book/list/nko"><span><img class="down" src="/resources/images/formkit_down.svg">더보기</span></a></p>
 						<div class="nko">
@@ -117,12 +118,12 @@
 								</div>
 							</c:forEach>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+					</div> <!-- 외국도서 -->
+					
+				</div> <!-- 이달의 주목도서 box -->
+			</div> <!-- 베스트도서 끝 -->
+		</div> <!-- 이달의 주목도서 -->
+	</div> <!-- big_container -->
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

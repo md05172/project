@@ -5,6 +5,7 @@ public class OrdersDetail {
 	private Long ordersId;
 	private Long bookId;
 	private Integer amount;
+	private String phone;
 
 	public Long getId() {
 		return id;
@@ -38,9 +39,18 @@ public class OrdersDetail {
 		this.amount = amount;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	@Override
 	public String toString() {
-		return "AddressDetail [id=" + id + ", ordersId=" + ordersId + ", bookId=" + bookId + ", amount=" + amount + "]";
+		return "OrdersDetail [id=" + id + ", ordersId=" + ordersId + ", bookId=" + bookId + ", amount=" + amount
+				+ ", phone=" + phone + "]";
 	}
 
 }

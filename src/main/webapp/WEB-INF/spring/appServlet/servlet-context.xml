@@ -33,4 +33,24 @@
 	
 	<tx:annotation-driven/>
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/wish/**"/>
+			<mapping path="/order/**"/>
+			<mapping path="/toss/**"/>
+			
+			<beans:bean class="kr.ac.kopo.interceptor.UserInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/book/**"/>
+
+			<exclude-mapping path="/book/list/**"/>			
+			<exclude-mapping path="/book/detail/**"/>			
+			<exclude-mapping path="/book/search/**"/>			
+			
+			<beans:bean class="kr.ac.kopo.interceptor.AdminInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>

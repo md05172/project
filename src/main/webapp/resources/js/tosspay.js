@@ -16,10 +16,6 @@ window.addEventListener('load', () => {
 
         item.push({bookId, amount});
     });
-    if(document.querySelector('#tel')) {
-        const phone = document.querySelector('#tel').value;
-        item.push({phone});
-    }
 
     const itemsParam = encodeURIComponent(JSON.stringify(item));
 
@@ -57,6 +53,16 @@ window.addEventListener('load', () => {
     // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
     // @docs https://docs.tosspayments.com/sdk/v2/js#paymentrequestpayment
     document.querySelector('#payment').addEventListener('click', () => {
+        if(document.querySelector('#tel')) {
+            const phone = document.querySelector('#tel').value;
+            fetch(`/customer/phone/${phone}`, {
+                method: "POST"
+            })
+            .then(resp => resp.text())
+            .then(result => {
+                console.log(result);
+            })
+        };
 
          // 주소 정보 가져오기
         const postcode = document.querySelector('#sample4_postcode').value;

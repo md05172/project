@@ -94,7 +94,7 @@
 							</div>
 						</div>
 							
-					</div>
+					</div> <!-- shipping_info -->
 					
 				</div> <!-- left_box -->
 				
@@ -125,8 +125,7 @@
 						</div>
 					</div>
 					
-				</div>
-					
+				</div> <!-- 주문요약 끝 -->
 				
 			</div> <!-- order_container -->
 		</div> <!-- main_container -->
@@ -139,7 +138,8 @@
 		    e.target.value = e.target
 		        .value.replace(/[^0-9]/g, '')
 		        .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
-// 	}
-});
+		});
+	}
+
 </script>
 </html>
