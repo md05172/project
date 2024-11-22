@@ -9,7 +9,7 @@
 <jsp:include page="deco.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/cart.css">
 <script type="text/javascript" src="/resources/js/cart.js"></script>
-<title></title>
+<title>책모이 - 장바구니</title>
 </head>
 <body>   
    

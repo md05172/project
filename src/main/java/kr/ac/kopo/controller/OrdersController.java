@@ -45,7 +45,6 @@ public class OrdersController {
 		
 		//구매목록에 담김 상품을 세션에서 지워준다.
 		session.removeAttribute("buyList");
-		session.removeAttribute("orderCompleted");
 		
 		model.addAttribute("list", bookList);
 		

@@ -70,12 +70,10 @@ body {
 }
 
 .guide_box {
-    position: sticky;
-    width: 25%;
-    min-width: 300px;
-    max-width: 300px;
+position: sticky;
+    width: 28%;
     max-height: 400px;
-    margin-left: 20px;
+    margin-left: auto;
     border-radius: 5px;
     border: 1.5px solid var(--main-color);
     top: 8%;

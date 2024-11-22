@@ -15,6 +15,15 @@
 	max-width: 1400px;
 }
 
+.info_box {
+    max-height: 400px;
+    overflow: overlay;
+}
+
+.info_box::-webkit-scrollbar{
+	display:none;
+}
+
 caption {
     text-align: left;
     font-size: 20px;

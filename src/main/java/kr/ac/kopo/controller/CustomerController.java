@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.ac.kopo.model.Customer;
 import kr.ac.kopo.service.CustomerService;
 import kr.ac.kopo.service.KakaoService;
 import kr.ac.kopo.service.NaverService;
+import kr.ac.kopo.service.OrdersService;
 import kr.ac.kopo.service.WishService;
 
 @Controller
@@ -26,8 +28,12 @@ public class CustomerController {
 	
 	@Autowired
 	CustomerService service;
+	
 	@Autowired
 	WishService wishService;
+	
+	@Autowired
+	OrdersService ordersService;
 	
 	@GetMapping("/login") 
 	String login(HttpSession session, Model model) {
@@ -90,4 +96,11 @@ public class CustomerController {
 		else
 			return "no";
 	}
+	
+	@GetMapping("/mypage")
+	String mypage(@SessionAttribute Customer customer) {
+		ordersService.list(customer.getId());
+		return path + "mypage";
+	}
+	
 }

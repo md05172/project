@@ -88,7 +88,7 @@ window.addEventListener('load', () => {
                 currency: "KRW",
                 value: sum,
             },
-            orderId: generateSecureRandomString(10), // 고유 주분번호
+            orderId: generateSecureRandomString(20), // 고유 주분번호
             orderName: name,
             successUrl: window.location.origin + "/toss/success?" + addressInfo + '&items=' + itemsParam, // 결제 요청이 성공하면 리다이렉트되는 URL
             failUrl: window.location.origin + "/toss/fail", // 결제 요청이 실패하면 리다이렉트되는 URL

@@ -22,7 +22,7 @@
 	
 	<insert id="add">
 		INSERT INTO ORDERS
-		VALUES (SEQ_ORDERS.nextval, #{custId}, #{addressId}, SYSDATE)
+		VALUES (SEQ_ORDERS.nextval, #{custId}, #{addressId}, SYSDATE, #{code})
 		
 		<selectKey keyProperty="id" resultType="Long" order="AFTER">
 			SELECT SEQ_ORDERS.currval FROM dual		
@@ -30,9 +30,36 @@
 		
 	</insert>	
 	
+	<select id="order_check" resultType="Orders">
+		SELECT * FROM orders
+		WHERE code = #{orderId}
+	</select>
+	
+	
 	<insert id="add_detail">
 		INSERT INTO orders_detail
 		VALUES (SEQ_ORDERSDETAIL.nextval, #{ordersId}, #{bookId}, #{amount})
 	</insert>
+	
+	<resultMap type="Orders" id="OrdersMap" autoMapping="true">
+		<id column="id" property="id" javaType="Long"/>
+		
+		<collection column="orders_id" property="details" javaType="ArrayList" ofType="OrdersDetail" autoMapping="true">
+			<id column="detail_id" property="id" javaType="Long"/>
+		</collection>
+	</resultMap>
+	
+	<!-- 회원이 주문한 주문목록을 가져온다 -->
+	<select id="list" resultMap="OrdersMap">
+		SELECT orders.*,
+			orders_detail.id detail_id,
+			orders_detail.orders_id orders_id,
+			orders_detail.book_id, 
+			orders_detail.amount
+		FROM orders
+		JOIN orders_detail
+		ON orders.id = orders_detail.orders_id
+		WHERE cust_id = #{customerId}
+	</select>
 	
 </mapper>

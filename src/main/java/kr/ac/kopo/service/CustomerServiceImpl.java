@@ -19,7 +19,6 @@ public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	WishDao wishdao;
 	
-	
 	@Autowired
 	ReviewDao reviewdao;
 	
@@ -39,10 +38,14 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public boolean login(Customer item) {
 		Customer customer = dao.check(item.getEmail());
+		
+		// 회원 찜 목록
 		Customer wishList = wishdao.wishList(customer);
 		
+		// 회원 리뷰 목록
 		Customer customerReview = reviewdao.customerReview(customer);
 		
+		// 회원이있고 비밀번호가 같다면
 		if(customer != null) {
 			if(item.getPassword().equals(customer.getPassword())) {
 				// 찾은 customer 정보를 item에 복사해준다
@@ -56,6 +59,7 @@ public class CustomerServiceImpl implements CustomerService{
 					
 				// 비밀번호는 null로
 				item.setPassword(null);
+				System.out.println("비밀번호 null 확인 " + item);
 				return true;
 			}
 		}

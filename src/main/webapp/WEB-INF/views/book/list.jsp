@@ -11,7 +11,12 @@
 <jsp:include page="../deco.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/book/list.css">
 <script type="text/javascript" src="/resources/js/list.js"></script>
-<title></title>
+<c:if test="${category eq 'ko' }">
+	<title>책모이 - 국내도서</title>
+</c:if>
+<c:if test="${category eq 'nko' }">
+	<title>책모이 - 외국도서</title>
+</c:if>
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
@@ -59,7 +64,8 @@
 								<div class="item_info">
 									<p class="item_name"><a href="../detail/${item.id }">${item.name }</a> 
 										<c:if test="${sessionScope.customer.role == 99 }">
-											<a href="/book/update/${item.id }"><button>수정</button></a><a href="/book/delete/${item.id }"><button>삭제</button></a>
+											<a href="/book/update/${item.id }"><button>수정</button></a>
+											<a href="/book/delete/${item.id }"><button>삭제</button></a>
 										</c:if>
 									</p>
 									<span class="item_publisher">${item.publisher }</span>
@@ -88,7 +94,7 @@
 												<c:set var="wishbookId" value="${wishs.bookId }"></c:set>
 											</c:if>
 										</c:forEach>
-											<img class="wish" data-bookid="${item.id }" data-custid="${sessionScope.customer.id != null}"
+											<img class="wish" data-bookid="${item.id }" data-custid="${sessionScope.customer.id != null ? sessionScope.customer.id : 'false'}"
 												alt="" 
 												src="${wishbookId != '' && wishbookId == item.id ? '/resources/images/fullheart.png' : '/resources/images/heart.png'}"
 												<c:if test="${wishbookId != '' && wishbookId == item.id }">

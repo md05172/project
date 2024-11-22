@@ -181,12 +181,11 @@ public class RootController {
 	}
 	
 	@GetMapping("/toss/success")
-	String success(Address address, String items, @SessionAttribute Customer customer, String amount, String orderId, Model model, HttpServletRequest request, HttpSession session) throws JsonMappingException, JsonProcessingException {
+	String success(Address address, String items, @SessionAttribute Customer customer, String amount, String orderId, Model model) throws JsonMappingException, JsonProcessingException {
 		
-		 HttpSession completCheck = request.getSession();
-		    
 	    // 이미 주문 완료 상태인지 확인
-	    if (completCheck.getAttribute("orderCompleted") != null) {
+	    if (ordersSerivce.orderCheck(orderId)) {
+	    	System.out.println("주문한 상품");
 	        // 주문이 완료된 상태이면, 메인 페이지로 리다이렉트
 	        return "redirect:/";
 	    }
@@ -218,6 +217,7 @@ public class RootController {
 		Orders orders = new Orders();
 		orders.setCustId(customer.getId());
 		orders.setAddressId(customer.getAddress().get(0).getId());
+		orders.setCode(orderId);
 		orders.setDetails(item);
 		
 		ordersSerivce.add(orders);
@@ -238,9 +238,6 @@ public class RootController {
 			// 주문상품책 정보를 list에 담아준다
 			bookList.add(book);
 		});	
-		
-		// 주문 완료처리를 한다 다시 페이지로 돌아오는걸 막기위해
-		session.setAttribute("orderCompleted", true);
 		
 		model.addAttribute("bookList", bookList);
 		

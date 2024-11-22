@@ -56,7 +56,7 @@
 						<div class="hidden_box_inner_wrap">
 							<div class="hidden_box_inner">
 								<p>${sessionScope.customer.name }님</p>
-								<p><a>마이페이지</a></p>
+								<p><a href="/customer/mypage">마이페이지</a></p>
 								<p><a href="/customer/logout">로그아웃</a></p>
 							</div>
 						</div>
@@ -74,7 +74,7 @@
 						<div class="hidden_box_inner_wrap">
 							<div class="hidden_box_inner">
 								<p>${sessionScope.customer.name }님</p>
-								<p><a>마이페이지</a></p>
+								<p><a href="/customer/mypage">마이페이지</a></p>
 								<p><a href="/kakao/logout">로그아웃</a></p>
 							</div>
 						</div>
@@ -92,7 +92,7 @@
 						<div class="hidden_box_inner_wrap">
 							<div class="hidden_box_inner">
 								<p>${sessionScope.customer.name }님</p>
-								<p><a>마이페이지</a></p>
+								<p><a href="/customer/mypage">마이페이지</a></p>
 								<p><a href="/naver/logout">로그아웃</a></p>
 							</div>
 						</div>

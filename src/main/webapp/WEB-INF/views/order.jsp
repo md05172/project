@@ -13,7 +13,7 @@
 <script type="text/javascript" src="/resources/js/daumAddress.js"></script>
 <script src="https://js.tosspayments.com/v2/standard"></script>
 <script type="text/javascript" src="/resources/js/tosspay.js"></script>
-<title>Insert title here</title>
+<title>책모이 - 주문</title>
 </head>
 <body>
 	<div class="big_container">
@@ -121,7 +121,7 @@
 							 <button class="pay_button" id="payment">결제하기</button>
 						</div>
 						<div class="cancle_box">
-							 <button class="cancle_button">취소하기</button>
+							 <a href="/cart"><button class="cancle_button">취소하기</button></a>
 						</div>
 					</div>
 					

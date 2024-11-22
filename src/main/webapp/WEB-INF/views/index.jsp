@@ -11,7 +11,7 @@
 <script type="text/javascript" src="/resources/js/event.js"></script>
 <script type="text/javascript" src="/resources/js/index.js"></script>
 <jsp:include page="deco.jsp"></jsp:include>
-<title>Insert title here</title>
+<title>책모이</title>
 </head>
 <body>
 	<div class="big_container">
@@ -103,7 +103,9 @@
 						<div class="ko">
 							<c:forEach var="ko" items="${koList }">
 								<div class="ko_img_box">
-									<img alt="" src="/upload/book/${ko.path }">
+									<a href="/book/detail/${ko.id }">
+										<img alt="" src="/upload/book/${ko.path }">
+									</a>
 								</div>
 							</c:forEach>
 						</div>
@@ -114,7 +116,9 @@
 						<div class="nko">
 							<c:forEach var="ko" items="${nkoList }">
 								<div class="nko_img_box">
-									<img alt="" src="/upload/book/${ko.path }">
+									<a href="/book/detail/${ko.id }">
+										<img alt="" src="/upload/book/${ko.path }">
+									</a>
 								</div>
 							</c:forEach>
 						</div>

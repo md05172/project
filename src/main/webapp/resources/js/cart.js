@@ -234,6 +234,7 @@ window.addEventListener('load', () => {
     };
 
 
+    // 주문버튼
     document.querySelector('.order button').addEventListener('click', () => {
 
         let items = {};
@@ -241,6 +242,7 @@ window.addEventListener('load', () => {
         let amount = 0;
         let price = 0;
         let sum = 0;
+
         // 현재 tr에서 있는 checkbox를 가져와서 checkbox가 체크되어 있는 애들만 계산한다.
         document.querySelectorAll('tr').forEach(row => {
             const checkBox = row.querySelector('.checkid');
@@ -262,6 +264,11 @@ window.addEventListener('load', () => {
                 };
             }
         });
+
+        if(Object.keys(items).length == 0) {
+            alert('주문할 상품을 선택해주세요.');
+            return;
+        }
 
         console.log(items);
 

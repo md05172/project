@@ -38,7 +38,7 @@
 						</c:if>
 					</c:forEach>
 					<img class="wish" data-bookid="${item.id }"
-						data-custid="${sessionScope.customer.id != null}"
+						data-custid="${sessionScope.customer.id != null ? sessionScope.customer.id : 'false'}"
 						alt=""
 						src="${wishbookId != '' && wishbookId == item.id ? '/resources/images/fullheart.png' : '/resources/images/heart.png'}"
 						<c:if test="${wishbookId != '' && wishbookId == item.id }">
@@ -255,7 +255,7 @@
 						<textarea class="text"
 							placeholder="이 책을 읽고 어떤 느낌을 받으셨나요? 리뷰를 남기고 다른 독자들과 함께 공유해보세요."></textarea>
 						<button class="review_submit" data-bookid="${item.id }"
-							data-custid="${sessionScope.customer != null}">작성</button>
+							data-custid="${sessionScope.customer != null ? sessionScope.customer.id : 'false'}">작성</button>
 					</div>
 				</div>
 				<div class="select_box">

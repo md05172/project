@@ -112,8 +112,8 @@ window.addEventListener('load', () => {
             moveSlide(current + direction);
             stopAutoSlide();
             setTimeout(() => {
-                isSliding = false; // 1.5초 후에 다시 클릭 가능
-            }, 1500); // 1.5초 후에 다시 클릭할 수 있게 설정
+                isSliding = false; 
+            }, 1000); 
         }
     };
 

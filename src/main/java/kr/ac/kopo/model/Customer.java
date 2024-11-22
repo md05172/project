@@ -19,6 +19,8 @@ public class Customer {
 
 	private List<Review> review = new ArrayList<Review>();
 
+	private List<Orders> orders = new ArrayList<Orders>();
+
 	public Long getId() {
 		return id;
 	}
@@ -107,11 +109,19 @@ public class Customer {
 		this.userId = userId;
 	}
 
+	public List<Orders> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Orders> orders) {
+		this.orders = orders;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", password="
-				+ password + ", role=" + role + ", api=" + api + ", address=" + address + ", wish=" + wish + ", review="
-				+ review + "]";
+				+ password + ", role=" + role + ", api=" + api + ", userId=" + userId + ", address=" + address
+				+ ", wish=" + wish + ", review=" + review + ", orders=" + orders + "]";
 	}
 
 }

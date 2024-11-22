@@ -8,6 +8,7 @@ public class Orders {
 	private Long custId;
 	private Long addressId;
 	private Date orderdate;
+	private String code;
 
 	private List<OrdersDetail> details;
 
@@ -49,6 +50,14 @@ public class Orders {
 
 	public void setDetails(List<OrdersDetail> details) {
 		this.details = details;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	@Override
