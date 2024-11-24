@@ -36,6 +36,8 @@ public class ReviewController {
 	
 	@GetMapping("/{bookId}/{select}")
 	public List<Review> list(@PathVariable Long bookId, @PathVariable Integer select) {
+		System.out.println("Long " + bookId);
+		System.out.println("select " + select);
 		Review review = new Review();
 		review.setBookId(bookId);
 		// 최신순인지 별점순인지

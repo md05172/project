@@ -15,6 +15,7 @@
 		<typeAlias type="kr.ac.kopo.model.Orders" alias="Orders"/>
 		<typeAlias type="kr.ac.kopo.model.OrdersDetail" alias="OrdersDetail"/>
 		<typeAlias type="kr.ac.kopo.model.Address" alias="Address"/>
+		<typeAlias type="kr.ac.kopo.model.Mypage" alias="Mypage"/>
 	</typeAliases>
 	
 	<mappers>

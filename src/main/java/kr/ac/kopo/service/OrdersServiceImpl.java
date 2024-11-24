@@ -1,7 +1,5 @@
 package kr.ac.kopo.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,9 +44,4 @@ public class OrdersServiceImpl implements OrdersService{
 		return dao.orderCheck(orderId);
 	}
 
-	@Override
-	public List<Orders> list(Long customerId) {
-		return dao.list(customerId);
-	}
-	
 }

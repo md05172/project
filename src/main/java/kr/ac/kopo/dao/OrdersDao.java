@@ -1,7 +1,5 @@
 package kr.ac.kopo.dao;
 
-import java.util.List;
-
 import kr.ac.kopo.model.Address;
 import kr.ac.kopo.model.Customer;
 import kr.ac.kopo.model.Orders;
@@ -19,5 +17,4 @@ public interface OrdersDao {
 
 	boolean orderCheck(String orderId);
 
-	List<Orders> list(Long customerId);
 }

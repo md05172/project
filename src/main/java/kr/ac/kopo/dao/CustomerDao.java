@@ -1,6 +1,9 @@
 package kr.ac.kopo.dao;
 
+import java.util.List;
+
 import kr.ac.kopo.model.Customer;
+import kr.ac.kopo.model.Mypage;
 
 public interface CustomerDao {
 
@@ -9,5 +12,7 @@ public interface CustomerDao {
 	Customer check(String email);
 
 	int phone(Customer customer);
+
+	List<Mypage> list(Long id);
 
 }

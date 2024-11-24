@@ -1,5 +1,7 @@
 package kr.ac.kopo.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.ac.kopo.model.Customer;
+import kr.ac.kopo.model.Mypage;
 import kr.ac.kopo.service.CustomerService;
 import kr.ac.kopo.service.KakaoService;
 import kr.ac.kopo.service.NaverService;
@@ -98,8 +101,13 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/mypage")
-	String mypage(@SessionAttribute Customer customer) {
-		ordersService.list(customer.getId());
+	String mypage(@SessionAttribute Customer customer, Model model) {
+		List<Mypage> list = service.list(customer.getId());
+		
+		System.out.println("마이페이지 " + list);
+		
+		model.addAttribute("mypage", list);
+		
 		return path + "mypage";
 	}
 	

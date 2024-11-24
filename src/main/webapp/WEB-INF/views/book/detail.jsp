@@ -139,8 +139,8 @@
 				<div class="nav_box">
 					<ul class="nav">
 						<li><a href="#writer_info">작가 소개</a></li>
-						<li><a href="#info">책 소개</a></li>
-						<li><a href="#review">리뷰(<span class="review_count"></span>)
+						<li><a href="#book_info">책 소개</a></li>
+						<li><a href="#review_write">리뷰(<span class="review_count"></span>)
 						</a></li>
 					</ul>
 				</div>
@@ -194,7 +194,7 @@
 				</div>
 			</div> <!-- 책 추천 끝 -->
 	
-			<div class="book_info">
+			<div class="book_info" id="book_info">
 				<div class="head">
 					<h3>책소개</h3>
 				</div>
@@ -208,7 +208,7 @@
 				<div class="winfo">${item.writerInfo }</div>
 			</div>
 	
-			<div class="review_box">
+			<div class="review_box" id="review_write">
 				<div>
 					<h3>100자평</h3>
 				</div>
