@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+.big_container {
+    display: flex;
+    min-width: 1200px;
+    width: 80%;
+    margin: 0 auto;
+    gap: 5px;
+}
+
+.left {
+	flex-basis: 16%;
+    min-width: 175px;
+	background: #cfa7164a;
+}
+
+.left ul {
+	list-style-type: "-";
+	padding-left: 20px;
+}
+
+.left ul li {
+    margin-bottom: 12px;
+}
+
+.right {
+	flex: 1;
+}
+
+.mypage_top_box {
+	padding: 30px;
+	background: var(--main-color);
+}
+
+.top_inner_box {
+	display: flex;
+	color: white;
+}
+
+.top_inner_box button {
+	border: 1px solid var(--white-color);
+	color: white;
+}
+
+.grade_box {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inner_box_left {
+	flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.line {
+	border: 1px solid white;
+    margin: 0 45px;
+}
+
+.inner_box_right {
+	flex-basis: 330px;
+}
+
+.inner_box_right p {
+	display: flex;
+	justify-content: space-between;
+}
+
+.name, .grade {
+    font-size: 22px;
+}
+
+.buy_info_box span:first-child {
+	border-right: 1px solid white;
+    padding-right: 20px;
+}
+
+.buy_info_box span:last-child {
+	margin-left: 20px;	
+}
+
+.grade_button_box button, .update_customer_box button {
+	width: 110px;
+	text-align: center;
+	padding: 5px;
+	border-radius: 20px;
+}
+
+.font {
+	font-weight: 700;
+}
+
+.guide_line {
+    border: 1px solid var(--line-color);
+    margin-top: 40px;
+}
+
+.recently_box .head span:first-child {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.recently_box .head span:last-child {
+	color: gray;
+}
+
+.head {
+    margin: 20px 0px;
+}
+
+.wrap {
+	display: flex;
+    padding: 10px 30px;
+    border: 1px solid var(--line-color);
+    width: 90%;
+    margin: 0 auto;
+}
+
+.recently {
+    flex: 1;
+    border-right: 1px solid var(--line-color);
+}
+
+.recently_info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.cancle {
+	flex-basis: 250px;
+	text-align: center;
+}
+
+.cnt {
+	font-weight: 700;
+}
+
+.cancle > div {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,7 +1,5 @@
 package kr.ac.kopo.dao;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -44,11 +42,6 @@ public class OrdersDaoImpl implements OrdersDao{
 		
 		// selectOne이 있으면 주문을 했다는것 없다면 주문안한것
 		return selectOne != null ? true : false;
-	}
-
-	@Override
-	public List<Orders> list(Long customerId) {
-		return sql.selectList("orders.list", customerId);
 	}
 
 }

@@ -1,5 +1,7 @@
 package kr.ac.kopo.service;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import kr.ac.kopo.dao.CustomerDao;
 import kr.ac.kopo.dao.ReviewDao;
 import kr.ac.kopo.dao.WishDao;
 import kr.ac.kopo.model.Customer;
+import kr.ac.kopo.model.Mypage;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
@@ -69,6 +72,11 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public int phone(Customer customer) {
 		return dao.phone(customer);
+	}
+
+	@Override
+	public List<Mypage> list(Long id) {
+		return dao.list(id);
 	}
 
 }

@@ -1,7 +1,5 @@
 package kr.ac.kopo.service;
 
-import java.util.List;
-
 import kr.ac.kopo.model.Address;
 import kr.ac.kopo.model.Customer;
 import kr.ac.kopo.model.Orders;
@@ -17,5 +15,4 @@ public interface OrdersService {
 
 	boolean orderCheck(String orderId);
 	
-	List<Orders> list(Long customerId);
 }

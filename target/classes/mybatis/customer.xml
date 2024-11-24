@@ -18,7 +18,85 @@
 		WHERE id = #{id}
 	</update>
 	
-	<!-- 마이페이지기능 (찜, 리뷰, 주문, 주소) 다 가져오기 -->
+	<resultMap type="Mypage" id="MyMap" autoMapping="true">
+		<id column="book_id" property="bookId"/>
+		<result column="name" property="bookName"/>
+		<result column="publisher" property="bookPublisher"/>
+		
+		<collection column="wishList_id" property="wishs"  javaType="ArrayList" ofType="Wish" autoMapping="true">
+			<id column="wishList_id" property="id" javaType="Long"/>
+		</collection>
+		
+		<collection column="review_book_id" property="reviews" javaType="ArrayList" ofType="Review" autoMapping="true">
+			<id column="review_book_id" property="id" javaType="Long"/>
+		</collection>
+		
+		<collection column="orders_id" property="orders" javaType="ArrayList" ofType="Orders" autoMapping="true">
+			<id column="orders_id" property="id" javaType="Long"/>
+			
+			<collection column="detail_id" property="details" ofType="OrdersDetail" javaType="ArrayList" autoMapping="true">
+				<id column="detail_id" property="id" javaType="Long"/>
+			</collection>
+		</collection>
+		
+		<collection column="address_id" property="address" javaType="ArrayList" ofType="Address" autoMapping="true">
+			<id column="address_id" property="id" javaType="Long"/>
+		</collection>
+		
+	</resultMap>
 	
+	<!-- 마이페이지기능 (찜, 리뷰, 주문, 주소) 다 가져오기 -->
+	<select id="list" resultMap="MyMap">
+		SELECT 
+		    book.id AS book_id,
+		    book.name,
+		    book.publisher,
+		    
+		    <!-- 찜한 책 목록 -->
+		    wishlist.id AS wishlist_id,
+		    wishlist.book_id AS wishList_book_id,
+		    wishlist.cust_id AS wishList_cust_id,
+		    
+		    <!-- 리뷰한 책 목록 -->
+		    review.book_id AS review_book_id,
+		    review.comments,
+		    review.write_date,
+		
+		    <!-- 주문한 책 목록 -->
+		    orders.id AS orders_id,
+		    orders.orderdate,
+		    orders.code,
+		    orders_detail.id detail_id,
+		    orders_detail.book_id,
+		    orders_detail.amount,
+		    
+		    <!-- 주문 주소 -->
+		    address.id AS address_id,
+		    address.postcode,
+		    address.roadaddress,
+		    address.detailaddress,
+		    address.jibunaddress,
+		    address.extraaddress
+		    
+		FROM book
+		LEFT JOIN wishlist ON book.id = wishlist.book_id
+        AND wishlist.cust_id = #{id}
+		
+        LEFT JOIN review ON book.id = review.book_id
+        AND review.cust_id = #{id}
+        
+		LEFT JOIN orders_detail ON book.id = orders_detail.book_id
+		
+        LEFT JOIN orders ON orders.id = orders_detail.orders_id
+		AND orders.cust_id = #{id}
+        
+        LEFT JOIN address ON address.id = orders.address_id
+		AND address.cust_id = #{id}
+        
+        LEFT JOIN customer ON customer.id = wishlist.cust_id 
+		                  OR customer.id = review.cust_id 
+		                  OR customer.id = orders.cust_id
+		WHERE customer.id = #{id}
+	</select>
 	
 </mapper>

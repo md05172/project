@@ -19,8 +19,9 @@ window.addEventListener('load', () => {
     // 장바구니 버튼 클릭
     document.querySelector('.cart').addEventListener('click', b => {
         const { bookid } = b.target.dataset;
+        const cnt = Number(document.querySelector('.show_amount').value);
         const items = {
-            [bookid]: 1
+            [bookid]: cnt
         };
 
         fetch(`/cart/list`)
@@ -562,7 +563,7 @@ window.addEventListener('load', () => {
         const bookname = item_info.querySelector('.name').textContent;
         const writer = item_info.querySelector('.writer').textContent;
         const price = Number(item_info.querySelector('.price_box').querySelector('.price').textContent);
-        const amount = 1;
+        const amount = Number(document.querySelector('.show_amount').value);
         const sum = price * amount;
 
         items[bookid] = {
