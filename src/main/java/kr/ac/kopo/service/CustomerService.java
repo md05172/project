@@ -17,4 +17,6 @@ public interface CustomerService {
 
 	List<Mypage> list(Long id);
 
+	void update(Customer customer);
+
 }

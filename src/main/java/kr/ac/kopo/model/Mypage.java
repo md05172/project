@@ -7,6 +7,8 @@ public class Mypage {
 	private Long bookId;
 	private String bookName;
 	private String bookPublisher;
+	private Integer bookPrice;
+	private String bookPath;
 
 	private List<Wish> wishs = new ArrayList<Wish>();
 
@@ -70,6 +72,22 @@ public class Mypage {
 
 	public void setAddress(List<Address> address) {
 		this.address = address;
+	}
+
+	public Integer getBookPrice() {
+		return bookPrice;
+	}
+
+	public void setBookPrice(Integer bookPrice) {
+		this.bookPrice = bookPrice;
+	}
+
+	public String getBookPath() {
+		return bookPath;
+	}
+
+	public void setBookPath(String bookPath) {
+		this.bookPath = bookPath;
 	}
 
 	@Override

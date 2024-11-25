@@ -28,4 +28,9 @@ public class WishServiceImpl implements WishService{
 		return dao.delete(id);
 	}
 
+	@Override
+	public Integer wishCount(Long custId) {
+		return dao.wishCount(custId) != null ? dao.wishCount(custId) : 0;
+	}
+
 }

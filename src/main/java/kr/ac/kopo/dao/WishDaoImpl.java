@@ -28,4 +28,9 @@ public class WishDaoImpl implements WishDao{
 		return sql.delete("wish.delete", id);
 	}
 
+	@Override
+	public Integer wishCount(Long custId) {
+		return sql.selectOne("wish.count", custId);
+	}
+
 }

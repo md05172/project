@@ -17,4 +17,10 @@ public interface OrdersDao {
 
 	boolean orderCheck(String orderId);
 
+	Integer ordersCount(Long custId);
+
+	Integer ordersSum(Long custId);
+	
+	Integer ordersBookCount(Long custId);
+
 }

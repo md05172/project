@@ -88,4 +88,9 @@
 		WHERE book_id = #{id}
 	</select>
 	
+	<select id="review_count" resultType="Integer">
+		select COUNT(*) from review
+		where cust_id = #{custId}
+	</select>
+	
 </mapper>

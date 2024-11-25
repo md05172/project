@@ -79,4 +79,9 @@ public class CustomerServiceImpl implements CustomerService{
 		return dao.list(id);
 	}
 
+	@Override
+	public void update(Customer customer) {
+		dao.update(customer);
+	}
+
 }

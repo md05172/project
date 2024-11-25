@@ -18,10 +18,10 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	
 	<!-- 학교 -->
-<!-- 	<resources location="file:///d:/upload/" mapping="/upload/**"></resources> -->
+	<resources location="file:///d:/upload/" mapping="/upload/**"></resources>
 	
 	<!-- 집 -->
-	<resources location="file:///c:/upload/" mapping="/upload/**"></resources>
+<!-- 	<resources location="file:///c:/upload/" mapping="/upload/**"></resources> -->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -38,6 +38,10 @@
 			<mapping path="/wish/**"/>
 			<mapping path="/order/**"/>
 			<mapping path="/toss/**"/>
+			<mapping path="/review/**"/>
+			<mapping path="/customer/mypage/**"/>
+			
+			<exclude-mapping path="/review/**"/>
 			
 			<beans:bean class="kr.ac.kopo.interceptor.UserInterceptor"/>
 		</interceptor>

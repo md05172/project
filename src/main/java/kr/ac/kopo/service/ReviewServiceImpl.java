@@ -45,4 +45,9 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.count(bookId);
 	}
 
+	@Override
+	public Integer reviewCount(Long custId) {
+		return dao.reviewCount(custId);
+	}
+
 }

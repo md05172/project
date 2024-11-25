@@ -44,4 +44,19 @@ public class OrdersServiceImpl implements OrdersService{
 		return dao.orderCheck(orderId);
 	}
 
+	@Override
+	public Integer ordersCount(Long custId) {
+		return dao.ordersCount(custId) != null ? dao.ordersCount(custId) : 0;
+	}
+
+	@Override
+	public Integer ordersSum(Long custId) {
+		return dao.ordersSum(custId) != null ? dao.ordersSum(custId) : 0;
+	}
+
+	@Override
+	public Integer ordersBookCount(Long custId) {
+		return dao.ordersBookCount(custId) != null ? dao.ordersBookCount(custId) : 0;
+	}
+
 }

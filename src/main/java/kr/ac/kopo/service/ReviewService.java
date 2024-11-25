@@ -19,4 +19,5 @@ public interface ReviewService {
 
 	public Integer count(Long bookId);
 
+	public Integer reviewCount(Long custId);
 }

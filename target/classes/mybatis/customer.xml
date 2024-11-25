@@ -22,6 +22,8 @@
 		<id column="book_id" property="bookId"/>
 		<result column="name" property="bookName"/>
 		<result column="publisher" property="bookPublisher"/>
+		<result column="price" property="bookPrice"/>
+		<result column="path" property="bookPath"/>
 		
 		<collection column="wishList_id" property="wishs"  javaType="ArrayList" ofType="Wish" autoMapping="true">
 			<id column="wishList_id" property="id" javaType="Long"/>
@@ -51,6 +53,8 @@
 		    book.id AS book_id,
 		    book.name,
 		    book.publisher,
+		    book.price,
+		    book.path,
 		    
 		    <!-- 찜한 책 목록 -->
 		    wishlist.id AS wishlist_id,
@@ -86,9 +90,14 @@
         AND review.cust_id = #{id}
         
 		LEFT JOIN orders_detail ON book.id = orders_detail.book_id
-		
-        LEFT JOIN orders ON orders.id = orders_detail.orders_id
-		AND orders.cust_id = #{id}
+	    AND EXISTS (
+	        SELECT 1 FROM orders 
+	        WHERE orders.id = orders_detail.orders_id 
+	        AND orders.cust_id = #{id}
+	    )
+	    
+      	LEFT JOIN orders ON orders.id = orders_detail.orders_id
+    	AND orders.cust_id = #{id}
         
         LEFT JOIN address ON address.id = orders.address_id
 		AND address.cust_id = #{id}
@@ -98,5 +107,10 @@
 		                  OR customer.id = orders.cust_id
 		WHERE customer.id = #{id}
 	</select>
+	
+	<update id="update">
+		UPDATE customer SET password = #{password}
+		WHERE id = #{id}
+	</update>
 	
 </mapper>

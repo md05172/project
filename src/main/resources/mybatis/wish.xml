@@ -35,5 +35,10 @@
 		DELETE FROM wishlist
 		WHERE id = #{id}
 	</delete>
-
+	
+	<select id="count" resultType="Integer">
+		SELECT COUNT(*) FROM wishlist
+		WHERE cust_id = #{custId}
+	</select>
+	
 </mapper>

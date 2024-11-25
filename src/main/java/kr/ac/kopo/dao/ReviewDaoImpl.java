@@ -45,4 +45,9 @@ public class ReviewDaoImpl implements ReviewDao{
 		return sql.selectOne("review.count", bookId);
 	}
 
+	@Override
+	public Integer reviewCount(Long custId) {
+		return sql.selectOne("review.review_count", custId);
+	}
+
 }

@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+.left > div:first-child h2 a {
+	text-decoration: none;
+	color: black;
+}
+
+.right > div:first-child, .right > div:first-child h2 {
+	margin-top: 0 !important;
+}
+
+.update_box > div table {
+	width: 100%;
+	border-collapse: collapse;
+    border: solid 1px gray;
+}
+
+.update_box > div table tr {
+	border-bottom: solid 1px gray;
+}
+
+.update_box > div table td, .update_box > div table th {
+    border-right: solid 1px var(--main-color);
+    padding: 5px;
+}
+
+.update_box > div table td:first-child, .update_box > div table th:first-child {
+    background: #fffbe6;
+}
+
+.btnn_group {
+	width: 30%;
+	margin: 0 auto;
+	margin-top: 12px;
+	text-align: center;
+}
+
+.btnn_group span {
+    display: inline-block;
+    width: 15%;
+}
+
+.btnn_group button {
+	border: 1px solid var(--line-color);
+	width: 100%;
+	height: 30px;
+	border-radius: 5px;
+}
+
+.btnn_group a button {
+	width: 100%;
+}
+
+.ok {
+	background: var(--main-color);
+	color: var(--white-color);
+}
+
+.update_cust_box table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.update_cust_box table th {
+	width: 15%;
+	text-align: left;
+	background: var(--line-color);
+	opacity: 0.5;
+}
+
+.update_cust_box table th, .update_cust_box table td {
+	padding: 15px;
+}
+
+.bt {
+	text-align: center;
+}
+
+.bt button {
+	width: 10%;
+	height: 30px;
+	border-radius: 5px;
+	border: none;
+	background: var(--main-color);
+	color: white;
+}
+
+.hide {
+	display: none;
+}

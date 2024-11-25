@@ -35,4 +35,9 @@ public class CustomerDaoImpl implements CustomerDao{
 		return sql.selectList("customer.list", id);
 	}
 
+	@Override
+	public void update(Customer customer) {
+		sql.update("customer.update", customer);
+	}
+
 }

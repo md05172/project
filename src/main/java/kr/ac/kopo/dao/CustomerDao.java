@@ -15,4 +15,6 @@ public interface CustomerDao {
 
 	List<Mypage> list(Long id);
 
+	void update(Customer customer);
+
 }

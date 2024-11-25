@@ -44,4 +44,19 @@ public class OrdersDaoImpl implements OrdersDao{
 		return selectOne != null ? true : false;
 	}
 
+	@Override
+	public Integer ordersCount(Long custId) {
+		return sql.selectOne("orders.count", custId);
+	}
+
+	@Override
+	public Integer ordersSum(Long custId) {
+		return sql.selectOne("orders.sum", custId);
+	}
+
+	@Override
+	public Integer ordersBookCount(Long custId) {
+		return sql.selectOne("orders.book_count", custId);
+	}
+	
 }

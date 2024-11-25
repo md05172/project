@@ -11,5 +11,6 @@ public interface WishDao {
 	
 	int delete(Long id);
 
+	Integer wishCount(Long custId);
 
 }

@@ -12,6 +12,12 @@ public class UserInterceptor extends HandlerInterceptorAdapter{
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+		
+		// review로 시작하고 POST매핑이면 처리한다.
+		if ("POST".equals(request.getMethod()) && request.getRequestURI().startsWith("/review")) {
+            return false;
+        }
+		
 		// 세션을 가져온다
 		HttpSession session = request.getSession();
 		

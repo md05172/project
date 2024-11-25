@@ -1,6 +1,7 @@
 package kr.ac.kopo.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -21,6 +23,7 @@ import kr.ac.kopo.service.CustomerService;
 import kr.ac.kopo.service.KakaoService;
 import kr.ac.kopo.service.NaverService;
 import kr.ac.kopo.service.OrdersService;
+import kr.ac.kopo.service.ReviewService;
 import kr.ac.kopo.service.WishService;
 
 @Controller
@@ -37,6 +40,9 @@ public class CustomerController {
 	
 	@Autowired
 	OrdersService ordersService;
+	
+	@Autowired
+	ReviewService reviewService;
 	
 	@GetMapping("/login") 
 	String login(HttpSession session, Model model) {
@@ -102,13 +108,63 @@ public class CustomerController {
 	
 	@GetMapping("/mypage")
 	String mypage(@SessionAttribute Customer customer, Model model) {
+
+		model.addAttribute("orderCount", ordersService.ordersCount(customer.getId()));
+		model.addAttribute("orderSum", ordersService.ordersSum(customer.getId()));
+		model.addAttribute("orderBookCount", ordersService.ordersBookCount(customer.getId()));
+		model.addAttribute("wishCount", wishService.wishCount(customer.getId()));
+		model.addAttribute("reviewCount", reviewService.reviewCount(customer.getId()));
+		
+		return path + "mypage";
+	}
+	
+	@GetMapping("/mypage/order/list")
+	String orderList(@SessionAttribute Customer customer, Model model) {
 		List<Mypage> list = service.list(customer.getId());
 		
 		System.out.println("마이페이지 " + list);
 		
 		model.addAttribute("mypage", list);
 		
-		return path + "mypage";
+		return path + "orderList";
+	}
+	
+	@GetMapping("/mypage/wish/list")
+	String wishList(@SessionAttribute Customer customer, Model model) {
+		List<Mypage> list = service.list(customer.getId());
+		
+		System.out.println("마이페이지 " + list);
+		
+		model.addAttribute("mypage", list);
+		
+		return path + "wishList";
+	}
+	
+	@GetMapping("/mypage/update")
+	String customerUpdate() {
+		return path + "update";
+	}
+	
+	@PostMapping("/check/pw/{password}")
+	@ResponseBody
+	String checkPassword(@SessionAttribute Customer customer, @PathVariable String password) {
+		System.out.println("aaa " + password);
+		Customer check = service.check(customer.getEmail());
+		
+		if(check.getPassword().equals(password)) return "ok";
+		else return "no";
+	}
+	
+	@PostMapping("/update/pw")
+	@ResponseBody
+	String updatePassword(@SessionAttribute Customer customer, @RequestBody Map<String, String> password) {
+		if(password.get("pw").equals(password.get("repw"))) {
+			customer.setPassword(password.get("pw"));
+			service.update(customer);
+			return "ok";
+		} else {
+			return "no";
+		}
 	}
 	
 }

@@ -41,4 +41,26 @@
 		VALUES (SEQ_ORDERSDETAIL.nextval, #{ordersId}, #{bookId}, #{amount})
 	</insert>
 	
+	<select id="count" resultType="Integer">
+		SELECT count(*) FROM orders
+		WHERE cust_id = #{custId}
+	</select>
+	
+	<select id="sum" resultType="Integer">
+		select SUM(price) 
+		FROM book
+		WHERE id IN (
+		select book_id from orders
+		JOIN orders_detail
+		ON orders_detail.orders_id = orders.id
+		WHERE orders.cust_id = #{custId})
+	</select>
+	
+	<select id="book_count" resultType="Integer">
+		select count(book_id) from orders
+		JOIN orders_detail
+		ON orders_detail.orders_id = orders.id
+		WHERE orders.cust_id = #{custId}
+	</select>
+	
 </mapper>
