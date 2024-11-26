@@ -29,7 +29,7 @@
 					<input type="password" name="password" placeholder="비밀번호">
 				</div>
 				<div class="btn_box">
-					<button id="login" type="button">로그인</button>
+					<button id="login" class="custom-btn btn-5" type="button">로그인</button>
 					<a href="join"><button id="join" type="button">회원가입</button></a>
 				</div>
 				<hr>

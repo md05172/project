@@ -40,7 +40,7 @@
 					<input type="tel" name="phone" id="tel" maxlength="13" placeholder="전화번호">
 				</div>
 				<div class="foot">
-					<button id="join" class="btn" type="button">회원가입</button>
+					<button id="join" class="custom-btn btn btn-5" type="button">회원가입</button>
 					<a id="cancle" href="../"><button class="btn" type="button">취소</button></a>
 				</div>
 			</div>
