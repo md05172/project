@@ -55,7 +55,7 @@ public class CustomerController {
 	@PostMapping("/login")
 	String login(HttpSession session, Customer item) {
 		if(service.login(item)) {
-			System.out.println("일반 login " + item);
+			
 			session.setAttribute("customer", item);
 			return "redirect:../";
 		} else {
@@ -93,11 +93,11 @@ public class CustomerController {
 	@PostMapping("/phone/{phone}")
 	@ResponseBody
 	String update(@PathVariable String phone, HttpServletRequest request) {
-		System.out.println("확인하자 " + phone);
 		HttpSession session = request.getSession();
+		
 		Customer customer = (Customer)session.getAttribute("customer");
 		customer.setPhone(phone);
-		System.out.println("왜 " + customer.getPhone());
+		
 		int result = service.phone(customer);
 		
 		if(result > 0)

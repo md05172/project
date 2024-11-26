@@ -21,4 +21,6 @@ public interface ReviewDao {
 
 	public Integer reviewCount(Long custId);
 
+	public int delete(Long reviewId);
+
 }

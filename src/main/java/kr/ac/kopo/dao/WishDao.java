@@ -5,12 +5,12 @@ import kr.ac.kopo.model.Wish;
 
 public interface WishDao {
 
-	int add(Wish wish);
+	public int add(Wish wish);
 	
-	Customer wishList(Customer item);
+	public Customer wishList(Customer item);
 	
-	int delete(Long id);
+	public int delete(Long id);
 
-	Integer wishCount(Long custId);
+	public Integer wishCount(Long custId);
 
 }

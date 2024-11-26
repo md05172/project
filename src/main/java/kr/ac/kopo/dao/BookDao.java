@@ -8,26 +8,26 @@ import kr.ac.kopo.page.Pager;
 
 public interface BookDao {
 
-	List<Book> list(Pager pager);
+	public List<Book> list(Pager pager);
 
-	void add(Book item);
-
-	void delete(Long id);
-
-	int total(Pager pager);
-
-	Book item(Long id);
-
-	List<Book> list(Set<Long> keySet);
-
-	List<Book> best();
-
-	List<Book> novel(String writer);
-
-	List<Book> koBookList();
+	public void add(Book item);
 	
-	List<Book> nkoBookList();
-
-	void update(Book item);
+	public void delete(Long id);
+	
+	public int total(Pager pager);
+	
+	public Book item(Long id);
+	
+	public List<Book> list(Set<Long> keySet);
+	
+	public List<Book> best();
+	
+	public List<Book> novel(String writer);
+	
+	public List<Book> koBookList();
+	
+	public List<Book> nkoBookList();
+	
+	public void update(Book item);
 
 }

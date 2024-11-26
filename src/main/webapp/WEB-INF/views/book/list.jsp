@@ -70,7 +70,7 @@
 									</p>
 									<span class="item_publisher">${item.publisher }</span>
 									<span class="item_writer">${item.writer }</span>
-									<p class="item_price">${item.price }원</p>
+									<p class="item_price"><fmt:formatNumber value="${item.price }" type="Number"/>원</p>
 									<p class="item_writerInfo">${item.writerInfo }</p>
 									<p class="info">${item.info }</p>
 									<div class="review">

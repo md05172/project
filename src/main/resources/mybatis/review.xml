@@ -93,4 +93,9 @@
 		where cust_id = #{custId}
 	</select>
 	
+	<delete id="delete">
+		DELETE FROM review
+		WHERE id = #{reviewId}
+	</delete>
+	
 </mapper>

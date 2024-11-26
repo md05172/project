@@ -19,8 +19,8 @@ window.addEventListener('load', () => {
 
     const itemsParam = encodeURIComponent(JSON.stringify(item));
 
-    document.querySelector('.body_price .th').textContent = sum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");;
-    document.querySelector('.body_total .th').textContent = sum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");;
+    document.querySelector('.body_price .th').textContent = sum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    document.querySelector('.body_total .th').textContent = sum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
 
     if(count > 1) name = `${name} 외${count-1}개`;

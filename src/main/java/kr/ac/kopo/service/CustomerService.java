@@ -7,16 +7,16 @@ import kr.ac.kopo.model.Mypage;
 
 public interface CustomerService {
 
-	void join(Customer item);
+	public void join(Customer item);
 
-	Customer check(String email);
+	public Customer check(String email);
 
-	boolean login(Customer item);
+	public boolean login(Customer item);
 
-	int phone(Customer customer);
+	public int phone(Customer customer);
 
-	List<Mypage> list(Long id);
+	public List<Mypage> list(Long id);
 
-	void update(Customer customer);
+	public void update(Customer customer);
 
 }

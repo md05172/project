@@ -9,7 +9,8 @@
 <jsp:include page="../deco.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/book/detail.css">
 <script type="text/javascript">
-	const detailBookId = "${item.id}"
+	const detailBookId = "${item.id}";
+	const custId = "${sessionScope.customer.id}";
 </script>
 <script type="text/javascript" src="/resources/js/detail.js"></script>
 <title>Insert title here</title>
@@ -53,7 +54,7 @@
 				</div>
 	
 				<div class="price_box">
-					<span class="price">${item.price }</span> <span class="won">원</span>
+					<span class="price"><fmt:formatNumber value="${item.price }" type="Number"/></span> <span class="won">원</span>
 				</div>
 	
 				<div class="delivery_info">
@@ -108,7 +109,7 @@
 									<button class="plus">+</button>
 								</div>
 								<div class="cart_price_box">
-									<span class="show_price">${item.price }</span> <span>원</span>
+									<span class="show_price"><fmt:formatNumber value="${item.price }" type="Number"/></span> <span>원</span>
 								</div>
 							</div>
 							<div class="btn_box">
@@ -140,7 +141,7 @@
 					<ul class="nav">
 						<li><a href="#writer_info">작가 소개</a></li>
 						<li><a href="#book_info">책 소개</a></li>
-						<li><a href="#review_write">리뷰(<span class="review_count"></span>)
+						<li><a href="#review_write">리뷰(<span class="review_count">0</span>)
 						</a></li>
 					</ul>
 				</div>
@@ -176,7 +177,7 @@
 								<span class="r_publisher">${relate.publisher }</span>
 							</div>
 							<div class="relate_price">
-								<p>${relate.price }원</p>
+								<p><fmt:formatNumber value="${relate.price }" type="Number"/>원</p>
 							</div>
 							<div class="relate_review">
 								<span class="relate_star"><img alt="" src="/resources/images/full_star.png"></span>

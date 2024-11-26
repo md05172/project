@@ -22,8 +22,8 @@ import kr.ac.kopo.model.Customer;
 public class KakaoService {
 
 	public static final String KAKAOAPIKEY = "92bef2ab9e055a604cd9efcdafc5551e";
-	public static final String REDIRECTURI = "http://localhost:9090/kakao/callback";
-	public static final String LOGOUT = "http://localhost:9090/kakao/logout";
+	public static final String REDIRECTURI = "http://172.16.145.10:9090/kakao/callback";
+	public static final String LOGOUT = "http://172.16.145.10:9090/kakao/logout";
 	public static final String KAKAOURL = "https://kauth.kakao.com/oauth/authorize?response_type=code&" + "client_id="
 			+ KAKAOAPIKEY + "&" + "redirect_uri=" + REDIRECTURI + "&" + "response_type=code";
 	public static final String KAKAOLOGOUT = "https://kauth.kakao.com/oauth/logout?"

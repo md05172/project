@@ -50,4 +50,9 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.reviewCount(custId);
 	}
 
+	@Override
+	public int delete(Long reviewId) {
+		return dao.delete(reviewId);
+	}
+
 }

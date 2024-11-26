@@ -8,24 +8,24 @@ import kr.ac.kopo.page.Pager;
 
 public interface BookService {
 
-	List<Book> list(Pager pager);
+	public List<Book> list(Pager pager);
 
-	void add(Book item);
+	public void add(Book item);
 
-	Book item(Long id);
+	public Book item(Long id);
 
-	List<Book> list(Set<Long> keySet);
+	public List<Book> list(Set<Long> keySet);
 
-	List<Book> best();
+	public List<Book> best();
 
-	List<Book> novel(String writer);
+	public List<Book> novel(String writer);
 	
-	List<Book> koBookList();
+	public List<Book> koBookList();
 	
-	List<Book> nkoBookList();
+	public List<Book> nkoBookList();
 
-	void update(Book item);
+	public void update(Book item);
 
-	void delete(Long id);
+	public void delete(Long id);
 
 }

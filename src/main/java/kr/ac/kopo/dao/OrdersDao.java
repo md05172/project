@@ -7,20 +7,20 @@ import kr.ac.kopo.model.OrdersDetail;
 
 public interface OrdersDao {
 
-	Address check(Address address);
+	public Address check(Address address);
 	
-	void address(Customer item);
+	public void address(Customer item);
 
-	void add(Orders orders);
+	public void add(Orders orders);
 
-	void addDetail(OrdersDetail detail);
+	public void addDetail(OrdersDetail detail);
 
-	boolean orderCheck(String orderId);
+	public boolean orderCheck(String orderId);
 
-	Integer ordersCount(Long custId);
+	public Integer ordersCount(Long custId);
 
-	Integer ordersSum(Long custId);
+	public Integer ordersSum(Long custId);
 	
-	Integer ordersBookCount(Long custId);
+	public Integer ordersBookCount(Long custId);
 
 }

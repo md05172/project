@@ -50,4 +50,9 @@ public class ReviewDaoImpl implements ReviewDao{
 		return sql.selectOne("review.review_count", custId);
 	}
 
+	@Override
+	public int delete(Long reviewId) {
+		return sql.delete("review.delete", reviewId);
+	}
+
 }

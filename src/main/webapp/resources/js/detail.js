@@ -301,6 +301,7 @@ window.addEventListener('load', () => {
 
     // review div 만들기
     const makeReview = list => {
+      
         const reviewList = document.querySelector('.review_list');
         // 리뷰 컨텐츠 요소 생성
         const reviewContent = document.createElement('div');
@@ -354,6 +355,17 @@ window.addEventListener('load', () => {
         reviewBody.className = 'review_body';
         reviewBody.textContent = list.comments; // 리뷰 내용
 
+        // 리뷰 삭제
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'review_delete';
+        deleteButton.setAttribute('data-reviewid', list.id );
+        deleteButton.setAttribute('data-custid', list.custId);
+
+        // 로그인한 사용자와 같은 리뷰일때만 보여지게한다.
+        if(Number(list.custId) === Number(custId)) {
+            reviewBody.append(deleteButton);
+        }
+
         // 리뷰 푸터 (예: 좋아요)
         const reviewFoot = document.createElement('div');
         reviewFoot.className = 'review_foot';
@@ -394,17 +406,19 @@ window.addEventListener('load', () => {
         footRightArea.append(rightGoodButton, rightReplyButton);
         reviewFoot.append(footRightArea);
 
+        // 왼쪽과 오른쪽 영역을 헤더에 추가
+        reviewHeader.append(leftArea);
+        reviewHeader.append(rightArea);
+        
         // 모든 요소들을 종합해서 reviewContent에 추가
         reviewContent.append(reviewHeader);
         reviewContent.append(reviewBody);
         reviewContent.append(reviewFoot);
 
-        // 왼쪽과 오른쪽 영역을 헤더에 추가
-        reviewHeader.append(leftArea);
-        reviewHeader.append(rightArea);
 
         // review_listd맨 앞에 리뷰 컨텐츠 추가
         reviewList.prepend(reviewContent);
+
     };
 
     const makeReviewList = list => list.forEach(makeReview);
@@ -473,14 +487,15 @@ window.addEventListener('load', () => {
         .then(list => {
             document.querySelector('.more_button').style.display = 'none';
             document.querySelector('.review_list_empty').classList.remove('hide');
-            
+            console.log(Array(list));
+            console.log(list);
             if (list.length > 0) {
                 document.querySelector('.review_list_empty').classList.add('hide');
                 starAvg = [];
                 showAvgCount(list[0].avg, list[0].count);
 
                 makeReviewList(list);
-
+                deleteEvent();
                 makeButtonEvent();
             } 
         });
@@ -500,7 +515,7 @@ window.addEventListener('load', () => {
                 if (list.length > 0) {
                     document.querySelector('.review_list_empty').classList.add('hide');
                     makeReviewList(list);
-
+                    deleteEvent();
                     makeButtonEvent();
                 }
             })
@@ -585,5 +600,29 @@ window.addEventListener('load', () => {
             location.href= '/order';
         })
     });
+
+    // 삭제 버튼이 있을때만 동작하기
+    const deleteEvent = () => {
+        if(document.querySelectorAll('.review_delete').length > 0) {
+            document.querySelectorAll('.review_delete').forEach(f => {
+                f.addEventListener('click', e => {
+                    console.log('들어옴')
+                    const {reviewid} = e.target.dataset;
+                    
+                    const bool = confirm('삭제하시겠습니까?');
+                    if(bool) {
+                        fetch(`/review/${reviewid}`, {
+                            method: "DELETE"
+                        })
+                        .then(resp => resp.text())
+                        .then(result => {
+                            e.target.closest('.review_content').remove();
+                            makeButtonEvent();
+                        });
+                    };
+                });
+            });
+        };
+    }
 
 });

@@ -63,7 +63,7 @@ window.addEventListener('load', () => {
                         writerspan.textContent = `${el.writer}(${el.publisher})`;
                         
                         const pricespan = document.createElement('span');
-                        pricespan.textContent = `${el.price}원`;
+                        pricespan.textContent = `${el.price.toLocaleString()}원`;
     
                         righta.append(namespan);
     
