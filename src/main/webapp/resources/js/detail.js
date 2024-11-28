@@ -102,19 +102,21 @@ window.addEventListener('load', () => {
 
     // +버튼
     document.querySelector('.plus').addEventListener('click', () => {
+        console.log('plus')
         let amount = document.querySelector('.show_amount').value;
-        let price = document.querySelector('.price').textContent;
-
+        let price = Number(document.querySelector('.price').textContent.replace(/[^\d]/g, '', '').trim());
+        console.log(price);
         amount++;
-
+        
         document.querySelector('.show_amount').value = amount;        
-        document.querySelector('.show_price').textContent = Number(amount) * Number(price);
+        document.querySelector('.show_price').textContent = `${(Number(amount) * Number(price)).toLocaleString()}`;
     })
-
+    
     // -버튼
     document.querySelector('.minus').addEventListener('click', () => {
+        console.log('pminus')
         let amount = document.querySelector('.show_amount').value;
-        let price = document.querySelector('.price').textContent;
+        let price = Number(document.querySelector('.price').textContent.replace(/[^\d]/g, '', '').trim());
         
 
         if(Number(amount) == 1) {
@@ -122,7 +124,7 @@ window.addEventListener('load', () => {
         }else {
             amount--;
             document.querySelector('.show_amount').value = amount;        
-            document.querySelector('.show_price').textContent = Number(amount) * Number(price);
+            document.querySelector('.show_price').textContent = `${(Number(amount) * Number(price)).toLocaleString()}`;
         }
     })
 
