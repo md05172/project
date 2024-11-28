@@ -603,6 +603,7 @@ window.addEventListener('load', () => {
 
     // 삭제 버튼이 있을때만 동작하기
     const deleteEvent = () => {
+        console.log("안들어오나");
         if(document.querySelectorAll('.review_delete').length > 0) {
             document.querySelectorAll('.review_delete').forEach(f => {
                 f.addEventListener('click', e => {
