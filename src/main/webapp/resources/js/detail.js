@@ -475,7 +475,7 @@ window.addEventListener('load', () => {
 
                 // 리뷰를 보여준다.
                 makeReview(list);
-
+                deleteEvent();
                 makeButtonEvent();
             })
 
