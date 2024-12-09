@@ -1,0 +1,265 @@
+@charset "UTF-8";
+
+.head_container {
+	display: flex;
+	width: 1200px;
+	margin: 0 auto;
+	padding: 25px 0;
+}
+
+.logo {
+	display: flex;
+    width: 15%;
+    height: 90px;
+    justify-content: center;
+}
+
+.logo a {
+	display: block;
+	height: 100%;
+}
+
+.logo img {
+	width: 100%;
+	height: 100%;
+}
+
+.search_container {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+   	align-items: center;
+}
+
+.search_wrap {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.keyword {
+	margin-right: auto;
+    margin-left: 50px;
+}
+
+.keyword ul {
+	display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 00;
+    margin: 0;
+    margin-top: 8px;
+}
+
+.keyword ul li {
+	font-size: 12px;
+    color: #80888a;
+    line-height: 16px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.wrap_search_item {
+	margin-right: 8px;
+}
+
+.search_box {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 10px;
+    margin-left: -10px;
+    width: 100%;
+}
+
+.show_search {
+    max-height: 300px;
+    overflow: auto;
+	display: none;
+	background: var(--white-color);
+    width: 85%;
+    max-height: 300px;
+    position: absolute;
+    top: 83%;
+    left: 7%;
+    z-index: 2;
+    -ms-overflow-style: none;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.show_search.show {
+	display: block;
+}
+
+.show_search::-webkit-scrollbar{
+  display:none;
+}
+
+.search_box input {
+	margin-top: 20px;
+	width: 85%;
+	height: 44px;
+	border-radius: 8px;
+	border: 1.5px solid  var(--border-color);
+	padding: 13px 52px 13px 13px;
+}
+
+.search_box input:focus {
+	outline: none;
+}
+
+.search_img_container {
+	width: 4%;
+	position: absolute;
+	top: 67%;
+	right: 9%;
+    transform: translateY(-50%);
+}
+
+.search_img_container a {
+	display: block;	
+}
+
+.search_img_container img {
+	width: 25px;
+	filter: opacity(0.5);
+}
+
+.login_out {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.login_out li {
+	display: inline-block;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	height: 40%;
+}
+
+.login_out li a img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    margin-top: 2px;
+}
+
+.cart_img {
+	background-image: url(/resources/images/cart.png); 
+	background-repeat: no-repeat;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-size: 32px;
+    opacity: 0.5;
+}
+
+.show_search ul {
+	margin: 0;
+	padding: 0;
+}
+
+.show_search ul li {
+	display: flex;
+	margin-top: 8px;
+}
+
+.show_search ul li:first-child {
+	margin-top: 0;
+}
+
+.search_img_box {
+	width: 65px;
+    height: 85px;
+}
+
+.search_img_box a {
+	width: 100%;
+	height: 100%;
+}
+
+.search_img_box a img {
+	width: 100%;
+	height: 100%;
+}
+
+.search_right_div {
+    flex: 1;
+	display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.search_right_div a{
+	text-decoration: none;
+	color: black;	
+	font-weight: bold;
+}
+
+.search_right_div span {
+	font-size: 14px;
+	font-weight: 600;	
+}
+
+.search_right_div .search_writer {
+	font-size: 12px;
+    color: #595959;
+}
+
+.user_img_box {
+    color: var(--border-color);
+    margin: 7px 8px 0px;
+    display: inline-block;
+    width: 36px;
+    opacity: 0.5;
+}
+
+.user_img_box img {
+	width: 100%;
+	height: 100%;
+}
+
+.hidden_box {
+	display: none;
+    position: absolute;
+    top: 40px;
+    z-index: 2;
+    background: white;
+    width: 150px;
+    padding-top: 2px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hidden_box_inner {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.hidden_box_inner p {
+	margin: 35px 0;
+}
+
+.hidden_box_inner p a {
+	text-decoration: none;
+	color: black;
+}
+
+.hover:hover .hidden_box {
+	display: block;
+}

@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+:root {
+	--main-color: #45486b;
+	--cart-color: #77789f;
+	--buy-color: #cfa716;
+	--font-small: 14px;
+	--font-to-small: 11px;
+	--font-color-gray: #535353;
+	--font-color: #595959;
+	--font-color-light-gray: #767676;
+	--border-color: #80888a;
+	--white-color: #fff;
+	--black-color: #000;
+	--line-color: #d8d8d9;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	background: none;
+}
+
+button:hover, img:hover, input[type="checkbox"]:hover, label:hover {
+	cursor: pointer;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--cart-color);
+}

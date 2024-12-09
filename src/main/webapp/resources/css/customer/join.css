@@ -1,0 +1,176 @@
+@charset "UTF-8";
+
+body {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container {
+	width: 30%;
+	border: 2px solid var(--main-color);
+	border-radius: 5px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.join_logo {
+	height: 120px;
+	text-align: center;
+}
+
+.join_logo a {
+	display: inline-block;
+	height: 100%;
+}
+
+.join_logo img {
+	height: 100%;
+}
+
+.info_box {
+	width: 60%;
+	margin: 0 auto;
+	margin-bottom: 35px;
+}
+
+.top {
+	text-align: center;
+}
+
+.id_box>input {
+	width: 65%;
+	height: 40px;
+	border-radius: 5px;
+	border: 1.5px solid #b5b4b6;
+	padding: 13px 52px 13px 13px;
+	margin-bottom: 12px;
+}
+
+.address_box>input:nth-child(1) {
+	width: 55%;
+	height: 40px;
+	border-radius: 5px;
+	border: 1.5px solid #b5b4b6;
+	padding: 13px 52px 13px 13px;
+	margin-bottom: 12px;
+}
+
+.btn {
+	height: 40px;
+	background: none;
+	border: 1.5px solid var(--main-color);
+	border-radius: 5px;
+}
+
+.pw input, .ad input, .ph input, .name{
+	display: block;
+	width: 100%;
+	height: 40px;
+	border-radius: 5px;
+	border: 1.5px solid #b5b4b6;
+	padding: 13px 52px 13px 13px;
+	margin-bottom: 12px;
+}
+
+.id_box, .address_box {
+	position: relative;
+}
+
+.id_box button, .address_box input:nth-child(2) {
+	position: absolute;
+	right: 0;
+}
+
+.foot {
+    position: relative;
+    height: 50px; 
+    margin-top: 12px;
+}
+
+#join {
+    position: absolute;
+    width: 47%;
+    height: 40px;
+    left: 0;
+}
+
+#cancle {
+    position: absolute;
+    width: 47%;
+    height: 40px;
+    right: 0;
+}
+
+#cancle button {
+	width: 100%;
+	height: 100%;
+}
+
+.wrang_box {
+	display: none;
+}
+
+.pwwrang {
+	display: none;
+}
+
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+}
+
+.btn-5 {
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    background: var(--main-color);
+}
+
+.btn-5:hover {
+    color: #000;
+    background: transparent;
+    box-shadow: none;
+}
+
+.btn-5:before,
+.btn-5:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: var(--main-color);
+    box-shadow:
+        -1px -1px 5px 0px #fff,
+        7px 7px 20px 0px #0003,
+        4px 4px 5px 0px #0002;
+    transition: 400ms ease all;
+}
+
+.btn-5:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.btn-5:hover:before,
+.btn-5:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}

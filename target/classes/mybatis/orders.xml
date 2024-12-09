@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orders">
+
+	<insert id="address">
+		INSERT INTO address
+		VALUES (SEQ_ADDRESS.nextval, #{id}, #{address[0].postcode}, #{address[0].roadaddress}, #{address[0].jibunaddress}, #{address[0].detailaddress}, #{address[0].extraaddress})
+		
+		<selectKey keyColumn="id" keyProperty="address[0].id" resultType="Long" order="AFTER">
+			SELECT SEQ_ADDRESS.currval FROM dual
+		</selectKey>
+	</insert>
+
+	<select id="check" resultType="Address">
+		SELECT * FROM address
+		WHERE cust_id = #{custId}
+		AND postcode = #{postcode}
+		AND roadaddress = #{roadaddress}
+		AND jibunaddress = #{jibunaddress}
+		AND extraaddress = #{extraaddress}
+	</select>
+	
+	<insert id="add">
+		INSERT INTO ORDERS
+		VALUES (SEQ_ORDERS.nextval, #{custId}, #{addressId}, SYSDATE, #{code})
+		
+		<selectKey keyProperty="id" resultType="Long" order="AFTER">
+			SELECT SEQ_ORDERS.currval FROM dual		
+		</selectKey>
+		
+	</insert>	
+	
+	<select id="order_check" resultType="Orders">
+		SELECT * FROM orders
+		WHERE code = #{orderId}
+	</select>
+	
+	
+	<insert id="add_detail">
+		INSERT INTO orders_detail
+		VALUES (SEQ_ORDERSDETAIL.nextval, #{ordersId}, #{bookId}, #{amount})
+	</insert>
+	
+	<select id="count" resultType="Integer">
+		SELECT count(*) FROM orders
+		WHERE cust_id = #{custId}
+	</select>
+	
+	<select id="sum" resultType="Integer">
+		select SUM(price * amount) from 
+		book
+		JOIN orders_detail
+		ON book.id = orders_detail.book_id
+		AND orders_detail.orders_id IN (select id 
+		from orders
+		where cust_id = #{custId})
+	</select>
+	
+	<select id="book_count" resultType="Integer">
+		select count(book_id) from orders
+		JOIN orders_detail
+		ON orders_detail.orders_id = orders.id
+		WHERE orders.cust_id = #{custId}
+	</select>
+	
+</mapper>

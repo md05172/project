@@ -1,0 +1,297 @@
+@charset "UTF-8";
+
+section {
+	display: flex;
+    min-width: 1200px;
+    max-width: 1200px;
+	margin: 0 auto;
+}
+
+.container_box {
+	display: flex;
+	flex-direction: column;
+	padding-left: 40px;
+	width: 100%;
+}
+
+.all_box {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    margin-left: auto;
+}
+
+.all_box input {
+	width: 22px;
+    height: 15px;
+}
+
+.all_box button {
+    width: 100px;
+    text-align: right;
+    height: 40px;
+    border-radius: 5px;
+    border: 1.5px solid var(--main-color);
+    margin-left: 20px;
+    background-image: url(/resources/images/cart.png);
+    background-size: 23px;
+    background-repeat: no-repeat;
+    background-position: 4px 6px;
+}
+
+.sidemenu {
+	margin: 0;
+	padding: 0;
+	list-style: none;	
+	min-width: 170px;
+	border-bottom: 1px solid var(--line-color);
+    margin-bottom: 12px;
+}
+.sidemenu_box h1 {
+	font-size: 28px;
+}
+
+.sidemenu li {
+	font-size: 14px;
+	margin-bottom: 12px;
+}
+
+.sidemenu li:first-child {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.menu_check {
+    text-decoration: underline;
+}
+
+.check_box {
+	width: 22px;
+    height: 15px;
+}
+
+.item_list {
+	list-style: none;
+	width: 100%;
+	padding: 0px;
+}
+
+.item_list li {
+	border-top: 1px solid var(--line-color);
+}
+.item_list li:last-child {
+	border-bottom: 1.5px solid var(--line-color);
+}
+
+.item {
+	display: flex;
+	height: 234px;
+    align-items: center;
+    margin: 10px 0px
+}
+
+.item_img {
+    min-width: 141px;
+    max-width: 142px;
+    min-height: 206px;
+    max-height: 206px;
+}
+
+.img_box {
+	height: 100%;
+}
+
+.img_box a {
+	display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.item_img img {
+    width: 100%;
+    height: 100%;
+}
+
+.item_info {
+	margin-left: 16px;
+	position: relative;
+    width: 71%;
+	min-width: 642px;
+    max-width: 642px;
+    height: 206px;
+}
+
+.wrap {
+	display: flex;
+}
+
+.item_info p {
+	margin: 0px;
+	margin-top: 8px;
+}
+
+.item_info a {
+	text-decoration: none;
+	color: black;
+}
+
+.buycart {
+    max-width: 150px;
+    min-width: 150px;
+    text-align: right;
+}
+
+.buycart div:nth-child(2) {
+	align-items: center;
+}
+.buycart button {
+	width: 50%;
+	height: 40px;
+	border-radius: 5px;
+	border: 1.5px solid var(--main-color);
+	margin-top: 12px;
+}
+
+.info {
+	-webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+	font-size: 14px;
+	color: var(--font-color-gray);
+}
+
+.review {
+	margin-top: 8px;
+}
+
+.review img {
+	max-width: 12px;
+}
+
+.review .review_text {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.review .side {
+    font-size: 14px;
+    color: var(--border-color);
+}
+
+.buycart {
+    display: flex;
+    flex-direction: column;
+    padding-top: 4%;
+}
+
+.heart {
+    width: 25px;
+    height: 25px;
+    right: 47px;
+    top: 19%;
+    align-self: flex-end;
+}
+
+.heart img {
+	width: 100%;
+	height: 100%;
+}
+
+.btn {
+    bottom: 25%;
+}
+
+.btn .cart{
+	color: var(--white-color);
+	background: var(--cart-color);
+	border: none;
+}
+
+.btn .buy {
+	color: var(--white-color);
+	background: var(--buy-color);
+	border: none;
+}
+
+.item_name {
+	margin: 0;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.item_name button {
+	padding: 5px;
+	border: none;
+}
+
+.item_name a:nth-child(2) button {
+	background: #d9a227;
+	margin: 0px 12px;
+}	
+	
+.item_name a:last-child button {
+	background: #ed0000ad;
+}
+
+.item_writer, .item_publisher {
+    font-size: 12px;
+    color: var(--font-color-gray);
+}
+
+.item_publisher {
+    border-right: 1px solid var(--border-color);
+    padding-right: 10px;
+}
+
+.item_price {
+    font-weight: 700;
+}
+
+.item_writerInfo {
+	-webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 14px;
+    color: #333;
+}
+
+.page_box {
+	display: flex;
+    justify-content: center;
+}
+
+.page_box > div {
+	width: 25px;
+    text-align: center;
+}
+
+.page_box > div > a {
+	text-decoration: none;
+	color: gray;
+    display: block;
+    width: 100%;
+}
+
+.page_box > div > a:hover, .page_box > div > a.active{
+	background: var(--main-color);
+	color: var(--white-color);
+	border-radius: 10px;
+}
+
+.first i, .prev i {
+	transform: rotate(180deg);
+}
+
+.check {
+	flex: 0 0 32px;
+	height: 206px;
+    display: flex;
+    align-items: center;
+}
+
+.check input {
+	position: absolute;
+}

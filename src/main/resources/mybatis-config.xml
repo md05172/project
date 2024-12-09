@@ -2,11 +2,28 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "https://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>	
+		<setting name="jdbcTypeForNull" value="VARCHAR"/>
+	</settings>
+
 	<typeAliases>
-	
+		<typeAlias type="kr.ac.kopo.model.Book" alias="Book"/>
+		<typeAlias type="kr.ac.kopo.model.Customer" alias="Customer"/>
+		<typeAlias type="kr.ac.kopo.model.Wish" alias="Wish"/>
+		<typeAlias type="kr.ac.kopo.model.Review" alias="Review"/>
+		<typeAlias type="kr.ac.kopo.model.Orders" alias="Orders"/>
+		<typeAlias type="kr.ac.kopo.model.OrdersDetail" alias="OrdersDetail"/>
+		<typeAlias type="kr.ac.kopo.model.Address" alias="Address"/>
+		<typeAlias type="kr.ac.kopo.model.Mypage" alias="Mypage"/>
 	</typeAliases>
 	
 	<mappers>
-	
+		<mapper resource="mybatis/book.xml"/>
+		<mapper resource="mybatis/customer.xml"/>
+		<mapper resource="mybatis/wish.xml"/>
+		<mapper resource="mybatis/review.xml"/>
+		<mapper resource="mybatis/orders.xml"/>
 	</mappers>
+
 </configuration>
