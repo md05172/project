@@ -22,9 +22,9 @@ import kr.ac.kopo.model.Customer;
 @Service
 public class NaverService {
 
-	public static final String NAVERAPIKEY = "8cgsISIdMiFJbJa7Crpa";
+	public static final String NAVERAPIKEY = "네이버API키값";
 	public static final String REDIRECTURI = "http://172.16.145.10:9090/naver/callback";
-	public static final String NAVERSECRET = "DSpCfIN9zV";
+	public static final String NAVERSECRET = "네이버시크릿키";
 	public static final String NAVERURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code&" + "client_id="
 			+ NAVERAPIKEY + "&" + "state=STATE_STRING&" + "redirect_uri=" + REDIRECTURI;
 
